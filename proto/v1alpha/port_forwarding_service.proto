@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package ntt.ztna.v1alpha;
+
+import "edgelq-sdk/common/types/meta.proto";
+
+import "google/api/resource.proto";
+
+option java_package = "com.ntt.ztna.pb.v1alpha";
+
+option java_outer_classname = "PortForwardingServiceProto";
+
+option java_multiple_files = true;
+
+option go_package = "github.com/cloudwan/ztna-sdk/resources/v1alpha/port_forwarding_service;port_forwarding_service";
+
+message PortForwardingService {
+  option (google.api.resource) = {
+    type : "ztna.edgelq.com/PortForwardingService"
+    pattern : "projects/{project}/portForwardingServices/"
+              "{port_forwarding_service}"
+  };
+
+  // Name of PortForwardingService
+  string name = 1;
+
+  // Display name of Pod
+  string display_name = 2;
+
+  ntt.types.Meta metadata = 3;
+
+  Spec spec = 4;
+
+  Status status = 5;
+
+  // The addresses that requests will be redirected to.
+  // For TCP connections use `tcp://<IP>:<PORT>` format.
+  message Spec {
+    // The target addresses sessions should be redirected to.
+    repeated string addresses = 1;
+    // The target addresses for specific providers.
+    // This field overrides the normal addresses values when
+    // configured for the requesting provider.
+    // map<string, repeated string> custom_addresses = 2;
+
+    // How traffic is load balanced when there's two or more
+    // providers are available for the service.
+    LoadBalancingMode provider_load_balancing_mode = 3;
+
+    // How traffic is load balanced when there's two or more
+    // IP addresses are available for the service in a provider.
+    LoadBalancingMode target_load_balancing_mode = 4;
+
+    // Temporary disabling the portforwarding.
+    // Note that changing this value won't close ongoing port
+    // forwarding sessions.
+    bool disabled = 5;
+
+    // Custom access points for clients to connect to.
+    // When not set, clients will use default access points.
+    repeated string access_points = 6;
+
+    enum LoadBalancingMode {
+      PROVIDER_LOAD_BALANCING_MODE_UNSPECIFIED = 0;
+
+      ROUND_ROBIN = 2;
+
+      RANDOM = 3;
+    }
+  }
+
+  message Status {}
+}

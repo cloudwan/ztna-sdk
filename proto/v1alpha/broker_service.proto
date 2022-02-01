@@ -3,40 +3,26 @@ syntax = "proto3";
 package ntt.ztna.v1alpha;
 
 import "edgelq-sdk/iam/proto/v1alpha2/condition.proto";
-
 import "edgelq-sdk/iam/proto/v1alpha2/permission.proto";
-
 import "google/api/annotations.proto";
-
 import "google/api/client.proto";
-
 import "google/protobuf/empty.proto";
-
 import "google/protobuf/field_mask.proto";
-
 import "goten-sdk/runtime/api/view.proto";
-
 import "goten-sdk/runtime/api/watch_type.proto";
-
 import "ztna-sdk/proto/v1alpha/broker_custom.proto";
-
 import "ztna-sdk/proto/v1alpha/port_forwarding_service.proto";
-
 import "ztna-sdk/proto/v1alpha/port_forwarding_service_change.proto";
 
 option go_package = "github.com/cloudwan/ztna-sdk/client/v1alpha/broker;broker_client";
-
-option java_package = "com.ntt.ztna.pb.v1alpha";
-
-option java_outer_classname = "BrokerServiceProto";
-
 option java_multiple_files = false;
+option java_outer_classname = "BrokerServiceProto";
+option java_package = "com.ntt.ztna.pb.v1alpha";
 
 // Broker service API for ZTNA
 service BrokerService {
-  option (google.api.oauth_scopes) = "https://apis.edgelq.com";
-
   option (google.api.default_host) = "ztna.edgelq.com";
+  option (google.api.oauth_scopes) = "https://apis.edgelq.com";
 
   // Connect
   rpc Connect(stream ConnectRequest) returns (stream ConnectResponse) {

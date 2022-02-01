@@ -3,29 +3,17 @@ syntax = "proto3";
 package ntt.ztna.v1alpha;
 
 import "edgelq-sdk/iam/proto/v1alpha/iam.proto";
-
 import "google/api/annotations.proto";
-
 import "google/api/client.proto";
-
 import "google/protobuf/empty.proto";
-
 import "ztna-sdk/proto/v1alpha/access_point.proto";
-
 import "ztna-sdk/proto/v1alpha/access_point_service.proto";
-
 import "ztna-sdk/proto/v1alpha/broker_custom.proto";
-
 import "ztna-sdk/proto/v1alpha/broker_service.proto";
-
 import "ztna-sdk/proto/v1alpha/port_forwarding_service.proto";
-
 import "ztna-sdk/proto/v1alpha/port_forwarding_service_service.proto";
 
-option java_multiple_files = true;
-
 option go_package = "github.com/cloudwan/ztna-sdk/client/v1alpha/ztna;ztna_client";
-
-option java_package = "com.ntt.ztna.pb.v1alpha";
-
+option java_multiple_files = true;
 option java_outer_classname = "ZTNAProto";
+option java_package = "com.ntt.ztna.pb.v1alpha";

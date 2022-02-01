@@ -3,18 +3,13 @@ syntax = "proto3";
 package ntt.ztna.v1alpha;
 
 import "google/api/resource.proto";
-
 import "google/protobuf/field_mask.proto";
-
 import "ztna-sdk/proto/v1alpha/port_forwarding_service.proto";
 
-option java_package = "com.ntt.ztna.pb.v1alpha";
-
-option java_outer_classname = "PortForwardingServiceChangeProto";
-
-option java_multiple_files = false;
-
 option go_package = "github.com/cloudwan/ztna-sdk/resources/v1alpha/port_forwarding_service;port_forwarding_service";
+option java_multiple_files = false;
+option java_outer_classname = "PortForwardingServiceChangeProto";
+option java_package = "com.ntt.ztna.pb.v1alpha";
 
 // PortForwardingServiceChange is used by Watch notifications Responses to
 // describe change of single PortForwardingService One of Added, Modified,

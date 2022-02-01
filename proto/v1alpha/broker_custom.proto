@@ -3,16 +3,12 @@ syntax = "proto3";
 package ntt.ztna.v1alpha;
 
 import "ztna-sdk/proto/v1alpha/port_forwarding_service.proto";
-
 import "ztna-sdk/proto/v1alpha/port_forwarding_service_change.proto";
 
-option java_package = "com.ntt.ztna.pb.v1alpha";
-
-option java_outer_classname = "BrokerCustomProto";
-
-option java_multiple_files = false;
-
 option go_package = "github.com/cloudwan/ztna-sdk/client/v1alpha/broker;broker_client";
+option java_multiple_files = false;
+option java_outer_classname = "BrokerCustomProto";
+option java_package = "com.ntt.ztna.pb.v1alpha";
 
 // Request message for method [Listen][ntt.ztna.Listen]
 message ListenRequest {

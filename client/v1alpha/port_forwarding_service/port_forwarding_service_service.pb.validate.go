@@ -78,6 +78,13 @@ func (obj *BatchGetPortForwardingServicesResponse) GotenValidate() error {
 	if obj == nil {
 		return nil
 	}
+	for idx, elem := range obj.PortForwardingServices {
+		if subobj, ok := interface{}(elem).(gotenvalidate.Validator); ok {
+			if err := subobj.GotenValidate(); err != nil {
+				return gotenvalidate.NewValidationError("BatchGetPortForwardingServicesResponse", "portForwardingServices", obj.PortForwardingServices[idx], "nested object validation failed", err)
+			}
+		}
+	}
 	if cvobj, ok := interface{}(obj).(gotenvalidate.CustomValidator); ok {
 		return cvobj.GotenCustomValidate()
 	}
@@ -98,6 +105,13 @@ func (obj *ListPortForwardingServicesRequest) GotenValidate() error {
 func (obj *ListPortForwardingServicesResponse) GotenValidate() error {
 	if obj == nil {
 		return nil
+	}
+	for idx, elem := range obj.PortForwardingServices {
+		if subobj, ok := interface{}(elem).(gotenvalidate.Validator); ok {
+			if err := subobj.GotenValidate(); err != nil {
+				return gotenvalidate.NewValidationError("ListPortForwardingServicesResponse", "portForwardingServices", obj.PortForwardingServices[idx], "nested object validation failed", err)
+			}
+		}
 	}
 	if cvobj, ok := interface{}(obj).(gotenvalidate.CustomValidator); ok {
 		return cvobj.GotenCustomValidate()
@@ -145,6 +159,13 @@ func (obj *WatchPortForwardingServicesRequest) GotenValidate() error {
 func (obj *WatchPortForwardingServicesResponse) GotenValidate() error {
 	if obj == nil {
 		return nil
+	}
+	for idx, elem := range obj.PortForwardingServiceChanges {
+		if subobj, ok := interface{}(elem).(gotenvalidate.Validator); ok {
+			if err := subobj.GotenValidate(); err != nil {
+				return gotenvalidate.NewValidationError("WatchPortForwardingServicesResponse", "portForwardingServiceChanges", obj.PortForwardingServiceChanges[idx], "nested object validation failed", err)
+			}
+		}
 	}
 	if subobj, ok := interface{}(obj.PageTokenChange).(gotenvalidate.Validator); ok {
 		if err := subobj.GotenValidate(); err != nil {

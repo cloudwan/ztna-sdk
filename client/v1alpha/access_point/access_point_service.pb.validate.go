@@ -78,6 +78,13 @@ func (obj *BatchGetAccessPointsResponse) GotenValidate() error {
 	if obj == nil {
 		return nil
 	}
+	for idx, elem := range obj.AccessPoints {
+		if subobj, ok := interface{}(elem).(gotenvalidate.Validator); ok {
+			if err := subobj.GotenValidate(); err != nil {
+				return gotenvalidate.NewValidationError("BatchGetAccessPointsResponse", "accessPoints", obj.AccessPoints[idx], "nested object validation failed", err)
+			}
+		}
+	}
 	if cvobj, ok := interface{}(obj).(gotenvalidate.CustomValidator); ok {
 		return cvobj.GotenCustomValidate()
 	}
@@ -98,6 +105,13 @@ func (obj *ListAccessPointsRequest) GotenValidate() error {
 func (obj *ListAccessPointsResponse) GotenValidate() error {
 	if obj == nil {
 		return nil
+	}
+	for idx, elem := range obj.AccessPoints {
+		if subobj, ok := interface{}(elem).(gotenvalidate.Validator); ok {
+			if err := subobj.GotenValidate(); err != nil {
+				return gotenvalidate.NewValidationError("ListAccessPointsResponse", "accessPoints", obj.AccessPoints[idx], "nested object validation failed", err)
+			}
+		}
 	}
 	if cvobj, ok := interface{}(obj).(gotenvalidate.CustomValidator); ok {
 		return cvobj.GotenCustomValidate()
@@ -145,6 +159,13 @@ func (obj *WatchAccessPointsRequest) GotenValidate() error {
 func (obj *WatchAccessPointsResponse) GotenValidate() error {
 	if obj == nil {
 		return nil
+	}
+	for idx, elem := range obj.AccessPointChanges {
+		if subobj, ok := interface{}(elem).(gotenvalidate.Validator); ok {
+			if err := subobj.GotenValidate(); err != nil {
+				return gotenvalidate.NewValidationError("WatchAccessPointsResponse", "accessPointChanges", obj.AccessPointChanges[idx], "nested object validation failed", err)
+			}
+		}
 	}
 	if subobj, ok := interface{}(obj.PageTokenChange).(gotenvalidate.Validator); ok {
 		if err := subobj.GotenValidate(); err != nil {

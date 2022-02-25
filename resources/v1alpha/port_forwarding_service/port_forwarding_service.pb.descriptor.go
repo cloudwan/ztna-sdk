@@ -30,15 +30,7 @@ var (
 )
 
 var (
-	descriptor = &Descriptor{
-		typeName: gotenresource.NewTypeName(
-			"PortForwardingService", "PortForwardingServices", "ztna.edgelq.com"),
-		nameDescriptor: gotenresource.NewNameDescriptor(
-			&PortForwardingService_FieldTerminalPath{selector: PortForwardingService_FieldPathSelectorName},
-			"pattern", "portForwardingServiceId",
-			[]string{"projectId"},
-			[]gotenresource.NamePattern{NamePattern_Project}),
-	}
+	descriptor *Descriptor
 )
 
 type Descriptor struct {
@@ -50,19 +42,11 @@ func GetDescriptor() *Descriptor {
 	return descriptor
 }
 
-func (d *Descriptor) NewPortForwardingService() *PortForwardingService {
+func (d *Descriptor) NewResource() gotenresource.Resource {
 	return &PortForwardingService{}
 }
 
-func (d *Descriptor) NewResource() gotenresource.Resource {
-	return d.NewPortForwardingService()
-}
-
 func (d *Descriptor) NewResourceName() gotenresource.Name {
-	return NewNameBuilder().Name()
-}
-
-func (d *Descriptor) NewPortForwardingServiceName() *Name {
 	return NewNameBuilder().Name()
 }
 
@@ -81,30 +65,29 @@ func (d *Descriptor) NewSearchQuery() gotenresource.SearchQuery {
 func (d *Descriptor) NewWatchQuery() gotenresource.WatchQuery {
 	return &WatchQuery{}
 }
-func (d *Descriptor) NewPortForwardingServiceCursor() *PagerCursor {
+
+func (d *Descriptor) NewResourceCursor() gotenresource.Cursor {
 	return &PagerCursor{}
 }
 
-func (d *Descriptor) NewResourceCursor() gotenresource.Cursor {
-	return d.NewPortForwardingServiceCursor()
+func (d *Descriptor) NewResourceFilter() gotenresource.Filter {
+	return &Filter{}
 }
-func (d *Descriptor) NewPortForwardingServiceChange() *PortForwardingServiceChange {
-	return &PortForwardingServiceChange{}
+
+func (d *Descriptor) NewResourceOrderBy() gotenresource.OrderBy {
+	return &OrderBy{}
+}
+
+func (d *Descriptor) NewResourceFieldMask() gotenobject.FieldMask {
+	return &PortForwardingService_FieldMask{}
 }
 
 func (d *Descriptor) NewResourceChange() gotenresource.ResourceChange {
-	return d.NewPortForwardingServiceChange()
-}
-
-func (d *Descriptor) NewPortForwardingServiceQueryResultSnapshot() *QueryResultSnapshot {
-	return &QueryResultSnapshot{}
+	return &PortForwardingServiceChange{}
 }
 
 func (d *Descriptor) NewQueryResultSnapshot() gotenresource.QueryResultSnapshot {
-	return d.NewPortForwardingServiceQueryResultSnapshot()
-}
-func (d *Descriptor) NewPortForwardingServiceQueryResultChange() *QueryResultChange {
-	return &QueryResultChange{}
+	return &QueryResultSnapshot{}
 }
 
 func (d *Descriptor) NewSearchQueryResultSnapshot() gotenresource.SearchQueryResultSnapshot {
@@ -112,63 +95,35 @@ func (d *Descriptor) NewSearchQueryResultSnapshot() gotenresource.SearchQueryRes
 }
 
 func (d *Descriptor) NewQueryResultChange() gotenresource.QueryResultChange {
-	return d.NewPortForwardingServiceQueryResultChange()
-}
-
-func (d *Descriptor) NewPortForwardingServiceList(size, reserved int) PortForwardingServiceList {
-	return make(PortForwardingServiceList, size, reserved)
+	return &QueryResultChange{}
 }
 
 func (d *Descriptor) NewResourceList(size, reserved int) gotenresource.ResourceList {
 	return make(PortForwardingServiceList, size, reserved)
-}
-func (d *Descriptor) NewPortForwardingServiceChangeList(size, reserved int) PortForwardingServiceChangeList {
-	return make(PortForwardingServiceChangeList, size, reserved)
 }
 
 func (d *Descriptor) NewResourceChangeList(size, reserved int) gotenresource.ResourceChangeList {
 	return make(PortForwardingServiceChangeList, size, reserved)
 }
 
-func (d *Descriptor) NewPortForwardingServiceNameList(size, reserved int) PortForwardingServiceNameList {
-	return make(PortForwardingServiceNameList, size, reserved)
-}
-
 func (d *Descriptor) NewNameList(size, reserved int) gotenresource.NameList {
 	return make(PortForwardingServiceNameList, size, reserved)
-}
-
-func (d *Descriptor) NewPortForwardingServiceReferenceList(size, reserved int) PortForwardingServiceReferenceList {
-	return make(PortForwardingServiceReferenceList, size, reserved)
 }
 
 func (d *Descriptor) NewReferenceList(size, reserved int) gotenresource.ReferenceList {
 	return make(PortForwardingServiceReferenceList, size, reserved)
 }
-func (d *Descriptor) NewPortForwardingServiceParentNameList(size, reserved int) PortForwardingServiceParentNameList {
-	return make(PortForwardingServiceParentNameList, size, reserved)
-}
 
 func (d *Descriptor) NewParentNameList(size, reserved int) gotenresource.ParentNameList {
 	return make(PortForwardingServiceParentNameList, size, reserved)
-}
-func (d *Descriptor) NewPortForwardingServiceParentReferenceList(size, reserved int) PortForwardingServiceParentReferenceList {
-	return make(PortForwardingServiceParentReferenceList, size, reserved)
 }
 
 func (d *Descriptor) NewParentReferenceList(size, reserved int) gotenresource.ParentReferenceList {
 	return make(PortForwardingServiceParentReferenceList, size, reserved)
 }
 
-func (d *Descriptor) NewPortForwardingServiceMap(reserved int) PortForwardingServiceMap {
-	return make(PortForwardingServiceMap, reserved)
-}
-
 func (d *Descriptor) NewResourceMap(reserved int) gotenresource.ResourceMap {
 	return make(PortForwardingServiceMap, reserved)
-}
-func (d *Descriptor) NewPortForwardingServiceChangeMap(reserved int) PortForwardingServiceChangeMap {
-	return make(PortForwardingServiceChangeMap, reserved)
 }
 
 func (d *Descriptor) NewResourceChangeMap(reserved int) gotenresource.ResourceChangeMap {
@@ -187,10 +142,23 @@ func (d *Descriptor) ParseFieldPath(raw string) (gotenobject.FieldPath, error) {
 	return ParsePortForwardingService_FieldPath(raw)
 }
 
-func (d *Descriptor) ParsePortForwardingServiceName(nameStr string) (*Name, error) {
+func (d *Descriptor) ParseResourceName(nameStr string) (gotenresource.Name, error) {
 	return ParseName(nameStr)
 }
 
-func (d *Descriptor) ParseResourceName(nameStr string) (gotenresource.Name, error) {
-	return ParseName(nameStr)
+func initPortForwardingServiceDescriptor() {
+	descriptor = &Descriptor{
+		typeName: gotenresource.NewTypeName(
+			"PortForwardingService", "PortForwardingServices", "ztna.edgelq.com", "v1alpha"),
+		nameDescriptor: gotenresource.NewNameDescriptor(
+			&PortForwardingService_FieldTerminalPath{selector: PortForwardingService_FieldPathSelectorName},
+			"pattern", "portForwardingServiceId",
+			[]string{"projectId"},
+			[]gotenresource.NamePattern{NamePattern_Project}),
+	}
+	gotenresource.GetRegistry().RegisterDescriptor(descriptor)
+}
+
+func init() {
+	initPortForwardingServiceDescriptor()
 }

@@ -26,15 +26,7 @@ var (
 )
 
 var (
-	descriptor = &Descriptor{
-		typeName: gotenresource.NewTypeName(
-			"AccessPoint", "AccessPoints", "ztna.edgelq.com"),
-		nameDescriptor: gotenresource.NewNameDescriptor(
-			&AccessPoint_FieldTerminalPath{selector: AccessPoint_FieldPathSelectorName},
-			"pattern", "accessPointId",
-			[]string{"projectId"},
-			[]gotenresource.NamePattern{NamePattern_Project}),
-	}
+	descriptor *Descriptor
 )
 
 type Descriptor struct {
@@ -46,19 +38,11 @@ func GetDescriptor() *Descriptor {
 	return descriptor
 }
 
-func (d *Descriptor) NewAccessPoint() *AccessPoint {
+func (d *Descriptor) NewResource() gotenresource.Resource {
 	return &AccessPoint{}
 }
 
-func (d *Descriptor) NewResource() gotenresource.Resource {
-	return d.NewAccessPoint()
-}
-
 func (d *Descriptor) NewResourceName() gotenresource.Name {
-	return NewNameBuilder().Name()
-}
-
-func (d *Descriptor) NewAccessPointName() *Name {
 	return NewNameBuilder().Name()
 }
 
@@ -77,30 +61,29 @@ func (d *Descriptor) NewSearchQuery() gotenresource.SearchQuery {
 func (d *Descriptor) NewWatchQuery() gotenresource.WatchQuery {
 	return &WatchQuery{}
 }
-func (d *Descriptor) NewAccessPointCursor() *PagerCursor {
+
+func (d *Descriptor) NewResourceCursor() gotenresource.Cursor {
 	return &PagerCursor{}
 }
 
-func (d *Descriptor) NewResourceCursor() gotenresource.Cursor {
-	return d.NewAccessPointCursor()
+func (d *Descriptor) NewResourceFilter() gotenresource.Filter {
+	return &Filter{}
 }
-func (d *Descriptor) NewAccessPointChange() *AccessPointChange {
-	return &AccessPointChange{}
+
+func (d *Descriptor) NewResourceOrderBy() gotenresource.OrderBy {
+	return &OrderBy{}
+}
+
+func (d *Descriptor) NewResourceFieldMask() gotenobject.FieldMask {
+	return &AccessPoint_FieldMask{}
 }
 
 func (d *Descriptor) NewResourceChange() gotenresource.ResourceChange {
-	return d.NewAccessPointChange()
-}
-
-func (d *Descriptor) NewAccessPointQueryResultSnapshot() *QueryResultSnapshot {
-	return &QueryResultSnapshot{}
+	return &AccessPointChange{}
 }
 
 func (d *Descriptor) NewQueryResultSnapshot() gotenresource.QueryResultSnapshot {
-	return d.NewAccessPointQueryResultSnapshot()
-}
-func (d *Descriptor) NewAccessPointQueryResultChange() *QueryResultChange {
-	return &QueryResultChange{}
+	return &QueryResultSnapshot{}
 }
 
 func (d *Descriptor) NewSearchQueryResultSnapshot() gotenresource.SearchQueryResultSnapshot {
@@ -108,63 +91,35 @@ func (d *Descriptor) NewSearchQueryResultSnapshot() gotenresource.SearchQueryRes
 }
 
 func (d *Descriptor) NewQueryResultChange() gotenresource.QueryResultChange {
-	return d.NewAccessPointQueryResultChange()
-}
-
-func (d *Descriptor) NewAccessPointList(size, reserved int) AccessPointList {
-	return make(AccessPointList, size, reserved)
+	return &QueryResultChange{}
 }
 
 func (d *Descriptor) NewResourceList(size, reserved int) gotenresource.ResourceList {
 	return make(AccessPointList, size, reserved)
-}
-func (d *Descriptor) NewAccessPointChangeList(size, reserved int) AccessPointChangeList {
-	return make(AccessPointChangeList, size, reserved)
 }
 
 func (d *Descriptor) NewResourceChangeList(size, reserved int) gotenresource.ResourceChangeList {
 	return make(AccessPointChangeList, size, reserved)
 }
 
-func (d *Descriptor) NewAccessPointNameList(size, reserved int) AccessPointNameList {
-	return make(AccessPointNameList, size, reserved)
-}
-
 func (d *Descriptor) NewNameList(size, reserved int) gotenresource.NameList {
 	return make(AccessPointNameList, size, reserved)
-}
-
-func (d *Descriptor) NewAccessPointReferenceList(size, reserved int) AccessPointReferenceList {
-	return make(AccessPointReferenceList, size, reserved)
 }
 
 func (d *Descriptor) NewReferenceList(size, reserved int) gotenresource.ReferenceList {
 	return make(AccessPointReferenceList, size, reserved)
 }
-func (d *Descriptor) NewAccessPointParentNameList(size, reserved int) AccessPointParentNameList {
-	return make(AccessPointParentNameList, size, reserved)
-}
 
 func (d *Descriptor) NewParentNameList(size, reserved int) gotenresource.ParentNameList {
 	return make(AccessPointParentNameList, size, reserved)
-}
-func (d *Descriptor) NewAccessPointParentReferenceList(size, reserved int) AccessPointParentReferenceList {
-	return make(AccessPointParentReferenceList, size, reserved)
 }
 
 func (d *Descriptor) NewParentReferenceList(size, reserved int) gotenresource.ParentReferenceList {
 	return make(AccessPointParentReferenceList, size, reserved)
 }
 
-func (d *Descriptor) NewAccessPointMap(reserved int) AccessPointMap {
-	return make(AccessPointMap, reserved)
-}
-
 func (d *Descriptor) NewResourceMap(reserved int) gotenresource.ResourceMap {
 	return make(AccessPointMap, reserved)
-}
-func (d *Descriptor) NewAccessPointChangeMap(reserved int) AccessPointChangeMap {
-	return make(AccessPointChangeMap, reserved)
 }
 
 func (d *Descriptor) NewResourceChangeMap(reserved int) gotenresource.ResourceChangeMap {
@@ -183,10 +138,23 @@ func (d *Descriptor) ParseFieldPath(raw string) (gotenobject.FieldPath, error) {
 	return ParseAccessPoint_FieldPath(raw)
 }
 
-func (d *Descriptor) ParseAccessPointName(nameStr string) (*Name, error) {
+func (d *Descriptor) ParseResourceName(nameStr string) (gotenresource.Name, error) {
 	return ParseName(nameStr)
 }
 
-func (d *Descriptor) ParseResourceName(nameStr string) (gotenresource.Name, error) {
-	return ParseName(nameStr)
+func initAccessPointDescriptor() {
+	descriptor = &Descriptor{
+		typeName: gotenresource.NewTypeName(
+			"AccessPoint", "AccessPoints", "ztna.edgelq.com", "v1alpha"),
+		nameDescriptor: gotenresource.NewNameDescriptor(
+			&AccessPoint_FieldTerminalPath{selector: AccessPoint_FieldPathSelectorName},
+			"pattern", "accessPointId",
+			[]string{"projectId"},
+			[]gotenresource.NamePattern{NamePattern_Project}),
+	}
+	gotenresource.GetRegistry().RegisterDescriptor(descriptor)
+}
+
+func init() {
+	initAccessPointDescriptor()
 }

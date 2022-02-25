@@ -8,9 +8,11 @@ import (
 	"context"
 	"fmt"
 
+	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
+	gotenaccess "github.com/cloudwan/goten-sdk/runtime/access"
 	"github.com/cloudwan/goten-sdk/runtime/api/watch_type"
 	gotenresource "github.com/cloudwan/goten-sdk/runtime/resource"
 
@@ -22,9 +24,11 @@ var (
 	_ = context.Context(nil)
 	_ = fmt.GoStringer(nil)
 
+	_ = grpc.ClientConnInterface(nil)
 	_ = codes.NotFound
 	_ = status.Status{}
 
+	_ = gotenaccess.Watcher(nil)
 	_ = watch_type.WatchType_STATEFUL
 	_ = gotenresource.ListQuery(nil)
 )
@@ -156,7 +160,7 @@ func (a *apiAccessPointAccess) SaveAccessPoint(ctx context.Context, res *access_
 	saveOpts := gotenresource.MakeSaveOptions(opts)
 	previousRes := saveOpts.GetPreviousResource()
 
-	if previousRes == nil {
+	if previousRes == nil && !saveOpts.OnlyUpdate() && !saveOpts.OnlyCreate() {
 		var err error
 		previousRes, err = a.GetAccessPoint(ctx, &access_point.GetQuery{Reference: res.Name.AsReference()})
 		if err != nil {
@@ -166,9 +170,18 @@ func (a *apiAccessPointAccess) SaveAccessPoint(ctx context.Context, res *access_
 		}
 	}
 
-	if previousRes != nil {
+	if saveOpts.OnlyUpdate() || previousRes != nil {
 		updateRequest := &access_point_client.UpdateAccessPointRequest{
 			AccessPoint: res,
+		}
+		if updateMask := saveOpts.GetUpdateMask(); updateMask != nil {
+			updateRequest.UpdateMask = updateMask.(*access_point.AccessPoint_FieldMask)
+		}
+		if mask, conditionalState := saveOpts.GetCAS(); mask != nil && conditionalState != nil {
+			updateRequest.Cas = &access_point_client.UpdateAccessPointRequest_CAS{
+				ConditionalState: conditionalState.(*access_point.AccessPoint),
+				FieldMask:        mask.(*access_point.AccessPoint_FieldMask),
+			}
 		}
 		_, err := a.client.UpdateAccessPoint(ctx, updateRequest)
 		if err != nil {
@@ -193,4 +206,10 @@ func (a *apiAccessPointAccess) DeleteAccessPoint(ctx context.Context, ref *acces
 	}
 	_, err := a.client.DeleteAccessPoint(ctx, request)
 	return err
+}
+
+func init() {
+	gotenaccess.GetRegistry().RegisterApiAccessConstructor(access_point.GetDescriptor(), func(cc grpc.ClientConnInterface) gotenresource.Access {
+		return access_point.AsAnyCastAccess(NewApiAccessPointAccess(access_point_client.NewAccessPointServiceClient(cc)))
+	})
 }

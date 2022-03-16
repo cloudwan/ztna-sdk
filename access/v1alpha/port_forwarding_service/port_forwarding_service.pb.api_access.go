@@ -46,7 +46,12 @@ func (a *apiPortForwardingServiceAccess) GetPortForwardingService(ctx context.Co
 		Name:      query.Reference,
 		FieldMask: query.Mask,
 	}
-	return a.client.GetPortForwardingService(ctx, request)
+	res, err := a.client.GetPortForwardingService(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+	query.Reference.Resolve(res)
+	return res, nil
 }
 
 func (a *apiPortForwardingServiceAccess) BatchGetPortForwardingServices(ctx context.Context, refs []*port_forwarding_service.Reference, opts ...gotenresource.BatchGetOption) error {

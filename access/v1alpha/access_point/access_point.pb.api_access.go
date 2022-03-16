@@ -46,7 +46,12 @@ func (a *apiAccessPointAccess) GetAccessPoint(ctx context.Context, query *access
 		Name:      query.Reference,
 		FieldMask: query.Mask,
 	}
-	return a.client.GetAccessPoint(ctx, request)
+	res, err := a.client.GetAccessPoint(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+	query.Reference.Resolve(res)
+	return res, nil
 }
 
 func (a *apiAccessPointAccess) BatchGetAccessPoints(ctx context.Context, refs []*access_point.Reference, opts ...gotenresource.BatchGetOption) error {

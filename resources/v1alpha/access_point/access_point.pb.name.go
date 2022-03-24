@@ -95,7 +95,7 @@ func ParseNameOrId(nameOrId string) (*Name, error) {
 		return name, err
 	}
 	if accessPoint_RegexpId.MatchString(nameOrId) {
-		return NewNameBuilder().SetId(nameOrId).Name(), nil
+		return &Name{AccessPointId: nameOrId}, nil
 	} else {
 		return nil, fmt.Errorf("unable to parse '%s' as AccessPoint name or id", name)
 	}

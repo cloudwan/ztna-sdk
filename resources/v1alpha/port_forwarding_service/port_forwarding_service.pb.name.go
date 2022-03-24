@@ -99,7 +99,7 @@ func ParseNameOrId(nameOrId string) (*Name, error) {
 		return name, err
 	}
 	if portForwardingService_RegexpId.MatchString(nameOrId) {
-		return NewNameBuilder().SetId(nameOrId).Name(), nil
+		return &Name{PortForwardingServiceId: nameOrId}, nil
 	} else {
 		return nil, fmt.Errorf("unable to parse '%s' as PortForwardingService name or id", name)
 	}

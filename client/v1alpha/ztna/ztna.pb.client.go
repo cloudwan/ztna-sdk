@@ -13,6 +13,8 @@ import (
 	access_point_client "github.com/cloudwan/ztna-sdk/client/v1alpha/access_point"
 	broker_client "github.com/cloudwan/ztna-sdk/client/v1alpha/broker"
 	port_forwarding_service_client "github.com/cloudwan/ztna-sdk/client/v1alpha/port_forwarding_service"
+	access_point "github.com/cloudwan/ztna-sdk/resources/v1alpha/access_point"
+	port_forwarding_service "github.com/cloudwan/ztna-sdk/resources/v1alpha/port_forwarding_service"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -22,7 +24,9 @@ var (
 
 // make sure we're using proto imports
 var (
+	_ = &access_point.AccessPoint{}
 	_ = &access_point_client.GetAccessPointRequest{}
+	_ = &port_forwarding_service.PortForwardingService{}
 	_ = &port_forwarding_service_client.GetPortForwardingServiceRequest{}
 )
 

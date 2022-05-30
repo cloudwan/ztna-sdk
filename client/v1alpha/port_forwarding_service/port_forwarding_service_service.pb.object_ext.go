@@ -152,9 +152,6 @@ func (o *BatchGetPortForwardingServicesRequest) MakeDiffFieldMask(other *BatchGe
 	}
 
 	res := &BatchGetPortForwardingServicesRequest_FieldMask{}
-	if o.GetParent().String() != other.GetParent().String() {
-		res.Paths = append(res.Paths, &BatchGetPortForwardingServicesRequest_FieldTerminalPath{selector: BatchGetPortForwardingServicesRequest_FieldPathSelectorParent})
-	}
 
 	if len(o.GetNames()) == len(other.GetNames()) {
 		for i, lValue := range o.GetNames() {
@@ -185,16 +182,6 @@ func (o *BatchGetPortForwardingServicesRequest) Clone() *BatchGetPortForwardingS
 		return nil
 	}
 	result := &BatchGetPortForwardingServicesRequest{}
-	if o.Parent == nil {
-		result.Parent = nil
-	} else if data, err := o.Parent.ProtoString(); err != nil {
-		panic(err)
-	} else {
-		result.Parent = &port_forwarding_service.Reference{}
-		if err := result.Parent.ParseProtoString(data); err != nil {
-			panic(err)
-		}
-	}
 	result.Names = make([]*port_forwarding_service.Reference, len(o.Names))
 	for i, sourceValue := range o.Names {
 		if sourceValue == nil {
@@ -218,18 +205,6 @@ func (o *BatchGetPortForwardingServicesRequest) CloneRaw() gotenobject.GotenObje
 }
 
 func (o *BatchGetPortForwardingServicesRequest) Merge(source *BatchGetPortForwardingServicesRequest) {
-	if source.GetParent() != nil {
-		if data, err := source.GetParent().ProtoString(); err != nil {
-			panic(err)
-		} else {
-			o.Parent = &port_forwarding_service.Reference{}
-			if err := o.Parent.ParseProtoString(data); err != nil {
-				panic(err)
-			}
-		}
-	} else {
-		o.Parent = nil
-	}
 	for _, sourceValue := range source.GetNames() {
 		exists := false
 		for _, currentValue := range o.Names {

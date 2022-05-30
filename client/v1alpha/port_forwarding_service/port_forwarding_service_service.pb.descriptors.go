@@ -69,15 +69,15 @@ func (d *GetPortForwardingServiceDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *GetPortForwardingServiceDescriptor) IsCollectionSubject() bool {
+func (d *GetPortForwardingServiceDescriptor) IsCollection() bool {
 	return false
 }
 
-func (d *GetPortForwardingServiceDescriptor) IsPluralSubject() bool {
+func (d *GetPortForwardingServiceDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *GetPortForwardingServiceDescriptor) HasSubjectResource() bool {
+func (d *GetPortForwardingServiceDescriptor) HasResource() bool {
 	return true
 }
 
@@ -117,7 +117,7 @@ func (d *GetPortForwardingServiceDescriptor) GetApiDescriptor() gotenclient.ApiD
 	return portForwardingServiceServiceDescriptor
 }
 
-func (d *GetPortForwardingServiceDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *GetPortForwardingServiceDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return port_forwarding_service.GetDescriptor()
 }
 
@@ -129,77 +129,84 @@ func (d *GetPortForwardingServiceDescriptor) GetServerMsgReflectHandle() gotencl
 	return &GetPortForwardingServiceDescriptorServerMsgHandle{}
 }
 
-func (h *GetPortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *GetPortForwardingServiceDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*GetPortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*GetPortForwardingServiceRequest) *port_forwarding_service.Name
+		OverrideExtractResourceName(*GetPortForwardingServiceRequest) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	if ref := typedMsg.GetName(); ref != nil {
-		return &ref.Name
+	{
+		if ref := typedMsg.GetName(); ref != nil {
+			return &ref.Name
+		}
 	}
 	return (*port_forwarding_service.Name)(nil)
 }
 
-func (h *GetPortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *GetPortForwardingServiceDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*GetPortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*GetPortForwardingServiceRequest) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*GetPortForwardingServiceRequest) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *GetPortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *GetPortForwardingServiceDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*GetPortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*GetPortForwardingServiceRequest) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*GetPortForwardingServiceRequest) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
 
-func (h *GetPortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *GetPortForwardingServiceDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*port_forwarding_service.PortForwardingService)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.Name
+		OverrideExtractResourceName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetName()
+	{
+		if name := typedMsg.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*port_forwarding_service.Name)(nil)
 }
 
-func (h *GetPortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *GetPortForwardingServiceDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*port_forwarding_service.PortForwardingService)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*port_forwarding_service.PortForwardingService) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*port_forwarding_service.PortForwardingService) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *GetPortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *GetPortForwardingServiceDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*port_forwarding_service.PortForwardingService)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -234,15 +241,15 @@ func (d *BatchGetPortForwardingServicesDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *BatchGetPortForwardingServicesDescriptor) IsCollectionSubject() bool {
+func (d *BatchGetPortForwardingServicesDescriptor) IsCollection() bool {
+	return false
+}
+
+func (d *BatchGetPortForwardingServicesDescriptor) IsPlural() bool {
 	return true
 }
 
-func (d *BatchGetPortForwardingServicesDescriptor) IsPluralSubject() bool {
-	return true
-}
-
-func (d *BatchGetPortForwardingServicesDescriptor) HasSubjectResource() bool {
+func (d *BatchGetPortForwardingServicesDescriptor) HasResource() bool {
 	return true
 }
 
@@ -282,7 +289,7 @@ func (d *BatchGetPortForwardingServicesDescriptor) GetApiDescriptor() gotenclien
 	return portForwardingServiceServiceDescriptor
 }
 
-func (d *BatchGetPortForwardingServicesDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *BatchGetPortForwardingServicesDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return port_forwarding_service.GetDescriptor()
 }
 
@@ -294,86 +301,92 @@ func (d *BatchGetPortForwardingServicesDescriptor) GetServerMsgReflectHandle() g
 	return &BatchGetPortForwardingServicesDescriptorServerMsgHandle{}
 }
 
-func (h *BatchGetPortForwardingServicesDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *BatchGetPortForwardingServicesDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*BatchGetPortForwardingServicesRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*BatchGetPortForwardingServicesRequest) *port_forwarding_service.Name
+		OverrideExtractResourceName(*BatchGetPortForwardingServicesRequest) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *BatchGetPortForwardingServicesDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *BatchGetPortForwardingServicesDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*BatchGetPortForwardingServicesRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*BatchGetPortForwardingServicesRequest) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*BatchGetPortForwardingServicesRequest) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
-	if refs := typedMsg.GetNames(); len(refs) > 0 {
-		list := make(port_forwarding_service.PortForwardingServiceNameList, 0, len(refs))
-		for _, ref := range refs {
-			list = append(list, &ref.Name)
+	{
+		if refs := typedMsg.GetNames(); len(refs) > 0 {
+			list := make(port_forwarding_service.PortForwardingServiceNameList, 0, len(refs))
+			for _, ref := range refs {
+				list = append(list, &ref.Name)
+			}
+			return list
 		}
-		return list
 	}
 	return (port_forwarding_service.PortForwardingServiceNameList)(nil)
 }
 
-func (h *BatchGetPortForwardingServicesDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *BatchGetPortForwardingServicesDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*BatchGetPortForwardingServicesRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*BatchGetPortForwardingServicesRequest) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*BatchGetPortForwardingServicesRequest) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
 
-func (h *BatchGetPortForwardingServicesDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *BatchGetPortForwardingServicesDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*BatchGetPortForwardingServicesResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*BatchGetPortForwardingServicesResponse) *port_forwarding_service.Name
+		OverrideExtractResourceName(*BatchGetPortForwardingServicesResponse) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *BatchGetPortForwardingServicesDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *BatchGetPortForwardingServicesDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*BatchGetPortForwardingServicesResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*BatchGetPortForwardingServicesResponse) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*BatchGetPortForwardingServicesResponse) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
-	resources := typedMsg.GetPortForwardingServices()
-	list := make(port_forwarding_service.PortForwardingServiceNameList, 0, len(resources))
-	for _, res := range resources {
-		list = append(list, res.GetName())
+	{
+		if resources := typedMsg.GetPortForwardingServices(); len(resources) > 0 {
+			list := make(port_forwarding_service.PortForwardingServiceNameList, 0, len(resources))
+			for _, res := range resources {
+				list = append(list, res.GetName())
+			}
+			return list
+		}
 	}
-	return list
+	return (port_forwarding_service.PortForwardingServiceNameList)(nil)
 }
 
-func (h *BatchGetPortForwardingServicesDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *BatchGetPortForwardingServicesDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*BatchGetPortForwardingServicesResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*BatchGetPortForwardingServicesResponse) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*BatchGetPortForwardingServicesResponse) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -408,15 +421,15 @@ func (d *ListPortForwardingServicesDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *ListPortForwardingServicesDescriptor) IsCollectionSubject() bool {
+func (d *ListPortForwardingServicesDescriptor) IsCollection() bool {
 	return true
 }
 
-func (d *ListPortForwardingServicesDescriptor) IsPluralSubject() bool {
+func (d *ListPortForwardingServicesDescriptor) IsPlural() bool {
 	return true
 }
 
-func (d *ListPortForwardingServicesDescriptor) HasSubjectResource() bool {
+func (d *ListPortForwardingServicesDescriptor) HasResource() bool {
 	return true
 }
 
@@ -456,7 +469,7 @@ func (d *ListPortForwardingServicesDescriptor) GetApiDescriptor() gotenclient.Ap
 	return portForwardingServiceServiceDescriptor
 }
 
-func (d *ListPortForwardingServicesDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *ListPortForwardingServicesDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return port_forwarding_service.GetDescriptor()
 }
 
@@ -468,79 +481,88 @@ func (d *ListPortForwardingServicesDescriptor) GetServerMsgReflectHandle() goten
 	return &ListPortForwardingServicesDescriptorServerMsgHandle{}
 }
 
-func (h *ListPortForwardingServicesDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *ListPortForwardingServicesDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*ListPortForwardingServicesRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*ListPortForwardingServicesRequest) *port_forwarding_service.Name
+		OverrideExtractResourceName(*ListPortForwardingServicesRequest) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *ListPortForwardingServicesDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *ListPortForwardingServicesDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*ListPortForwardingServicesRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*ListPortForwardingServicesRequest) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*ListPortForwardingServicesRequest) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *ListPortForwardingServicesDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *ListPortForwardingServicesDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*ListPortForwardingServicesRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*ListPortForwardingServicesRequest) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*ListPortForwardingServicesRequest) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
-	return typedMsg.GetParent()
+	{
+		if parentName := typedMsg.GetParent(); parentName != nil {
+			return parentName
+		}
+	}
+	return (*port_forwarding_service.ParentName)(nil)
 }
 
-func (h *ListPortForwardingServicesDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *ListPortForwardingServicesDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*ListPortForwardingServicesResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*ListPortForwardingServicesResponse) *port_forwarding_service.Name
+		OverrideExtractResourceName(*ListPortForwardingServicesResponse) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *ListPortForwardingServicesDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *ListPortForwardingServicesDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*ListPortForwardingServicesResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*ListPortForwardingServicesResponse) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*ListPortForwardingServicesResponse) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
-	resources := typedMsg.GetPortForwardingServices()
-	list := make(port_forwarding_service.PortForwardingServiceNameList, 0, len(resources))
-	for _, res := range resources {
-		list = append(list, res.GetName())
+	{
+		if resources := typedMsg.GetPortForwardingServices(); len(resources) > 0 {
+			list := make(port_forwarding_service.PortForwardingServiceNameList, 0, len(resources))
+			for _, res := range resources {
+				list = append(list, res.GetName())
+			}
+			return list
+		}
 	}
-	return list
+	return (port_forwarding_service.PortForwardingServiceNameList)(nil)
 }
 
-func (h *ListPortForwardingServicesDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *ListPortForwardingServicesDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*ListPortForwardingServicesResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*ListPortForwardingServicesResponse) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*ListPortForwardingServicesResponse) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -575,15 +597,15 @@ func (d *WatchPortForwardingServiceDescriptor) IsServerStream() bool {
 	return true
 }
 
-func (d *WatchPortForwardingServiceDescriptor) IsCollectionSubject() bool {
+func (d *WatchPortForwardingServiceDescriptor) IsCollection() bool {
 	return false
 }
 
-func (d *WatchPortForwardingServiceDescriptor) IsPluralSubject() bool {
+func (d *WatchPortForwardingServiceDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *WatchPortForwardingServiceDescriptor) HasSubjectResource() bool {
+func (d *WatchPortForwardingServiceDescriptor) HasResource() bool {
 	return true
 }
 
@@ -623,7 +645,7 @@ func (d *WatchPortForwardingServiceDescriptor) GetApiDescriptor() gotenclient.Ap
 	return portForwardingServiceServiceDescriptor
 }
 
-func (d *WatchPortForwardingServiceDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *WatchPortForwardingServiceDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return port_forwarding_service.GetDescriptor()
 }
 
@@ -635,89 +657,93 @@ func (d *WatchPortForwardingServiceDescriptor) GetServerMsgReflectHandle() goten
 	return &WatchPortForwardingServiceDescriptorServerMsgHandle{}
 }
 
-func (h *WatchPortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *WatchPortForwardingServiceDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchPortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*WatchPortForwardingServiceRequest) *port_forwarding_service.Name
+		OverrideExtractResourceName(*WatchPortForwardingServiceRequest) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	if ref := typedMsg.GetName(); ref != nil {
-		return &ref.Name
-	}
-	return (*port_forwarding_service.Name)(nil)
-}
-
-func (h *WatchPortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
-	typedMsg := msg.(*WatchPortForwardingServiceRequest)
-	var asInterface interface{} = h
-	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*WatchPortForwardingServiceRequest) []*port_forwarding_service.Name
-	})
-	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
-	}
-	return nil
-}
-
-func (h *WatchPortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
-	typedMsg := msg.(*WatchPortForwardingServiceRequest)
-	var asInterface interface{} = h
-	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*WatchPortForwardingServiceRequest) *port_forwarding_service.ParentName
-	})
-	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
-	}
-	return nil
-}
-
-func (h *WatchPortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
-	typedMsg := msg.(*WatchPortForwardingServiceResponse)
-	var asInterface interface{} = h
-	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*WatchPortForwardingServiceResponse) *port_forwarding_service.Name
-	})
-	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
-	}
-	if typedMsg.GetChange() != nil {
-		switch tResChange := typedMsg.GetChange().ChangeType.(type) {
-		case *port_forwarding_service.PortForwardingServiceChange_Added_:
-			return tResChange.Added.GetPortForwardingService().GetName()
-		case *port_forwarding_service.PortForwardingServiceChange_Modified_:
-			return tResChange.Modified.GetName()
-		case *port_forwarding_service.PortForwardingServiceChange_Removed_:
-			return tResChange.Removed.GetName()
-		case *port_forwarding_service.PortForwardingServiceChange_Current_:
-			return tResChange.Current.GetPortForwardingService().GetName()
+	{
+		if ref := typedMsg.GetName(); ref != nil {
+			return &ref.Name
 		}
 	}
 	return (*port_forwarding_service.Name)(nil)
 }
 
-func (h *WatchPortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
-	typedMsg := msg.(*WatchPortForwardingServiceResponse)
+func (h *WatchPortForwardingServiceDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
+	typedMsg := msg.(*WatchPortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*WatchPortForwardingServiceResponse) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*WatchPortForwardingServiceRequest) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *WatchPortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *WatchPortForwardingServiceDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
+	typedMsg := msg.(*WatchPortForwardingServiceRequest)
+	var asInterface interface{} = h
+	override, ok := asInterface.(interface {
+		OverrideExtractCollectionName(*WatchPortForwardingServiceRequest) *port_forwarding_service.ParentName
+	})
+	if ok {
+		return override.OverrideExtractCollectionName(typedMsg)
+	}
+	return nil
+}
+
+func (h *WatchPortForwardingServiceDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchPortForwardingServiceResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*WatchPortForwardingServiceResponse) *port_forwarding_service.ParentName
+		OverrideExtractResourceName(*WatchPortForwardingServiceResponse) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
+	}
+	{
+		if resChange := typedMsg.GetChange(); resChange != nil {
+			switch tResChange := resChange.ChangeType.(type) {
+			case *port_forwarding_service.PortForwardingServiceChange_Added_:
+				return tResChange.Added.GetPortForwardingService().GetName()
+			case *port_forwarding_service.PortForwardingServiceChange_Modified_:
+				return tResChange.Modified.GetName()
+			case *port_forwarding_service.PortForwardingServiceChange_Removed_:
+				return tResChange.Removed.GetName()
+			case *port_forwarding_service.PortForwardingServiceChange_Current_:
+				return tResChange.Current.GetPortForwardingService().GetName()
+			}
+		}
+	}
+	return (*port_forwarding_service.Name)(nil)
+}
+
+func (h *WatchPortForwardingServiceDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
+	typedMsg := msg.(*WatchPortForwardingServiceResponse)
+	var asInterface interface{} = h
+	override, ok := asInterface.(interface {
+		OverrideExtractResourceNames(*WatchPortForwardingServiceResponse) []*port_forwarding_service.Name
+	})
+	if ok {
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
+	}
+	return nil
+}
+
+func (h *WatchPortForwardingServiceDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
+	typedMsg := msg.(*WatchPortForwardingServiceResponse)
+	var asInterface interface{} = h
+	override, ok := asInterface.(interface {
+		OverrideExtractCollectionName(*WatchPortForwardingServiceResponse) *port_forwarding_service.ParentName
+	})
+	if ok {
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -752,15 +778,15 @@ func (d *WatchPortForwardingServicesDescriptor) IsServerStream() bool {
 	return true
 }
 
-func (d *WatchPortForwardingServicesDescriptor) IsCollectionSubject() bool {
+func (d *WatchPortForwardingServicesDescriptor) IsCollection() bool {
 	return true
 }
 
-func (d *WatchPortForwardingServicesDescriptor) IsPluralSubject() bool {
+func (d *WatchPortForwardingServicesDescriptor) IsPlural() bool {
 	return true
 }
 
-func (d *WatchPortForwardingServicesDescriptor) HasSubjectResource() bool {
+func (d *WatchPortForwardingServicesDescriptor) HasResource() bool {
 	return true
 }
 
@@ -800,7 +826,7 @@ func (d *WatchPortForwardingServicesDescriptor) GetApiDescriptor() gotenclient.A
 	return portForwardingServiceServiceDescriptor
 }
 
-func (d *WatchPortForwardingServicesDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *WatchPortForwardingServicesDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return port_forwarding_service.GetDescriptor()
 }
 
@@ -812,91 +838,97 @@ func (d *WatchPortForwardingServicesDescriptor) GetServerMsgReflectHandle() gote
 	return &WatchPortForwardingServicesDescriptorServerMsgHandle{}
 }
 
-func (h *WatchPortForwardingServicesDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *WatchPortForwardingServicesDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchPortForwardingServicesRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*WatchPortForwardingServicesRequest) *port_forwarding_service.Name
+		OverrideExtractResourceName(*WatchPortForwardingServicesRequest) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *WatchPortForwardingServicesDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *WatchPortForwardingServicesDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*WatchPortForwardingServicesRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*WatchPortForwardingServicesRequest) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*WatchPortForwardingServicesRequest) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *WatchPortForwardingServicesDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *WatchPortForwardingServicesDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchPortForwardingServicesRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*WatchPortForwardingServicesRequest) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*WatchPortForwardingServicesRequest) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
-	if ref := typedMsg.GetParent(); ref != nil {
-		return &ref.ParentName
+	{
+		if ref := typedMsg.GetParent(); ref != nil {
+			return &ref.ParentName
+		}
 	}
 	return (*port_forwarding_service.ParentName)(nil)
 }
 
-func (h *WatchPortForwardingServicesDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *WatchPortForwardingServicesDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchPortForwardingServicesResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*WatchPortForwardingServicesResponse) *port_forwarding_service.Name
+		OverrideExtractResourceName(*WatchPortForwardingServicesResponse) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *WatchPortForwardingServicesDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *WatchPortForwardingServicesDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*WatchPortForwardingServicesResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*WatchPortForwardingServicesResponse) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*WatchPortForwardingServicesResponse) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
-	resourceChanges := typedMsg.GetPortForwardingServiceChanges()
-	list := make(port_forwarding_service.PortForwardingServiceNameList, 0, len(resourceChanges))
-	for _, resChange := range resourceChanges {
-		switch tResChange := resChange.ChangeType.(type) {
-		case *port_forwarding_service.PortForwardingServiceChange_Added_:
-			list = append(list, tResChange.Added.GetPortForwardingService().GetName())
-		case *port_forwarding_service.PortForwardingServiceChange_Modified_:
-			list = append(list, tResChange.Modified.GetName())
-		case *port_forwarding_service.PortForwardingServiceChange_Removed_:
-			list = append(list, tResChange.Removed.GetName())
-		case *port_forwarding_service.PortForwardingServiceChange_Current_:
-			list = append(list, tResChange.Current.GetPortForwardingService().GetName())
+	{
+		if resChanges := typedMsg.GetPortForwardingServiceChanges(); len(resChanges) > 0 {
+			list := make(port_forwarding_service.PortForwardingServiceNameList, 0, len(resChanges))
+			for _, resChange := range resChanges {
+				switch tResChange := resChange.ChangeType.(type) {
+				case *port_forwarding_service.PortForwardingServiceChange_Added_:
+					list = append(list, tResChange.Added.GetPortForwardingService().GetName())
+				case *port_forwarding_service.PortForwardingServiceChange_Modified_:
+					list = append(list, tResChange.Modified.GetName())
+				case *port_forwarding_service.PortForwardingServiceChange_Removed_:
+					list = append(list, tResChange.Removed.GetName())
+				case *port_forwarding_service.PortForwardingServiceChange_Current_:
+					list = append(list, tResChange.Current.GetPortForwardingService().GetName())
+				}
+			}
+			return list
 		}
 	}
-	return list
+	return (port_forwarding_service.PortForwardingServiceNameList)(nil)
 }
 
-func (h *WatchPortForwardingServicesDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *WatchPortForwardingServicesDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchPortForwardingServicesResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*WatchPortForwardingServicesResponse) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*WatchPortForwardingServicesResponse) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -931,15 +963,15 @@ func (d *CreatePortForwardingServiceDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *CreatePortForwardingServiceDescriptor) IsCollectionSubject() bool {
+func (d *CreatePortForwardingServiceDescriptor) IsCollection() bool {
 	return true
 }
 
-func (d *CreatePortForwardingServiceDescriptor) IsPluralSubject() bool {
+func (d *CreatePortForwardingServiceDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *CreatePortForwardingServiceDescriptor) HasSubjectResource() bool {
+func (d *CreatePortForwardingServiceDescriptor) HasResource() bool {
 	return true
 }
 
@@ -979,7 +1011,7 @@ func (d *CreatePortForwardingServiceDescriptor) GetApiDescriptor() gotenclient.A
 	return portForwardingServiceServiceDescriptor
 }
 
-func (d *CreatePortForwardingServiceDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *CreatePortForwardingServiceDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return port_forwarding_service.GetDescriptor()
 }
 
@@ -991,77 +1023,90 @@ func (d *CreatePortForwardingServiceDescriptor) GetServerMsgReflectHandle() gote
 	return &CreatePortForwardingServiceDescriptorServerMsgHandle{}
 }
 
-func (h *CreatePortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *CreatePortForwardingServiceDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*CreatePortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*CreatePortForwardingServiceRequest) *port_forwarding_service.Name
+		OverrideExtractResourceName(*CreatePortForwardingServiceRequest) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetPortForwardingService().GetName()
+	{
+		res := typedMsg.GetPortForwardingService()
+		if name := res.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*port_forwarding_service.Name)(nil)
 }
 
-func (h *CreatePortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *CreatePortForwardingServiceDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*CreatePortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*CreatePortForwardingServiceRequest) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*CreatePortForwardingServiceRequest) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *CreatePortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *CreatePortForwardingServiceDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*CreatePortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*CreatePortForwardingServiceRequest) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*CreatePortForwardingServiceRequest) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
-	if ref := typedMsg.GetParent(); ref != nil {
-		return &ref.ParentName
+	{
+		if ref := typedMsg.GetParent(); ref != nil {
+			return &ref.ParentName
+		}
 	}
 	return (*port_forwarding_service.ParentName)(nil)
 }
 
-func (h *CreatePortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *CreatePortForwardingServiceDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*port_forwarding_service.PortForwardingService)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.Name
+		OverrideExtractResourceName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetName()
+	{
+		if name := typedMsg.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*port_forwarding_service.Name)(nil)
 }
 
-func (h *CreatePortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *CreatePortForwardingServiceDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*port_forwarding_service.PortForwardingService)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*port_forwarding_service.PortForwardingService) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*port_forwarding_service.PortForwardingService) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *CreatePortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *CreatePortForwardingServiceDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*port_forwarding_service.PortForwardingService)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -1096,15 +1141,15 @@ func (d *UpdatePortForwardingServiceDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *UpdatePortForwardingServiceDescriptor) IsCollectionSubject() bool {
+func (d *UpdatePortForwardingServiceDescriptor) IsCollection() bool {
 	return false
 }
 
-func (d *UpdatePortForwardingServiceDescriptor) IsPluralSubject() bool {
+func (d *UpdatePortForwardingServiceDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *UpdatePortForwardingServiceDescriptor) HasSubjectResource() bool {
+func (d *UpdatePortForwardingServiceDescriptor) HasResource() bool {
 	return true
 }
 
@@ -1144,7 +1189,7 @@ func (d *UpdatePortForwardingServiceDescriptor) GetApiDescriptor() gotenclient.A
 	return portForwardingServiceServiceDescriptor
 }
 
-func (d *UpdatePortForwardingServiceDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *UpdatePortForwardingServiceDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return port_forwarding_service.GetDescriptor()
 }
 
@@ -1156,74 +1201,85 @@ func (d *UpdatePortForwardingServiceDescriptor) GetServerMsgReflectHandle() gote
 	return &UpdatePortForwardingServiceDescriptorServerMsgHandle{}
 }
 
-func (h *UpdatePortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *UpdatePortForwardingServiceDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*UpdatePortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*UpdatePortForwardingServiceRequest) *port_forwarding_service.Name
+		OverrideExtractResourceName(*UpdatePortForwardingServiceRequest) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetPortForwardingService().GetName()
+	{
+		res := typedMsg.GetPortForwardingService()
+		if name := res.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*port_forwarding_service.Name)(nil)
 }
 
-func (h *UpdatePortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *UpdatePortForwardingServiceDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*UpdatePortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*UpdatePortForwardingServiceRequest) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*UpdatePortForwardingServiceRequest) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *UpdatePortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *UpdatePortForwardingServiceDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*UpdatePortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*UpdatePortForwardingServiceRequest) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*UpdatePortForwardingServiceRequest) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
 
-func (h *UpdatePortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *UpdatePortForwardingServiceDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*port_forwarding_service.PortForwardingService)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.Name
+		OverrideExtractResourceName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetName()
+	{
+		if name := typedMsg.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*port_forwarding_service.Name)(nil)
 }
 
-func (h *UpdatePortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *UpdatePortForwardingServiceDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*port_forwarding_service.PortForwardingService)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*port_forwarding_service.PortForwardingService) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*port_forwarding_service.PortForwardingService) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *UpdatePortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *UpdatePortForwardingServiceDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*port_forwarding_service.PortForwardingService)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*port_forwarding_service.PortForwardingService) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -1258,15 +1314,15 @@ func (d *DeletePortForwardingServiceDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *DeletePortForwardingServiceDescriptor) IsCollectionSubject() bool {
+func (d *DeletePortForwardingServiceDescriptor) IsCollection() bool {
 	return false
 }
 
-func (d *DeletePortForwardingServiceDescriptor) IsPluralSubject() bool {
+func (d *DeletePortForwardingServiceDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *DeletePortForwardingServiceDescriptor) HasSubjectResource() bool {
+func (d *DeletePortForwardingServiceDescriptor) HasResource() bool {
 	return true
 }
 
@@ -1306,7 +1362,7 @@ func (d *DeletePortForwardingServiceDescriptor) GetApiDescriptor() gotenclient.A
 	return portForwardingServiceServiceDescriptor
 }
 
-func (d *DeletePortForwardingServiceDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *DeletePortForwardingServiceDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return port_forwarding_service.GetDescriptor()
 }
 
@@ -1318,77 +1374,79 @@ func (d *DeletePortForwardingServiceDescriptor) GetServerMsgReflectHandle() gote
 	return &DeletePortForwardingServiceDescriptorServerMsgHandle{}
 }
 
-func (h *DeletePortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *DeletePortForwardingServiceDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*DeletePortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*DeletePortForwardingServiceRequest) *port_forwarding_service.Name
+		OverrideExtractResourceName(*DeletePortForwardingServiceRequest) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	if ref := typedMsg.GetName(); ref != nil {
-		return &ref.Name
+	{
+		if ref := typedMsg.GetName(); ref != nil {
+			return &ref.Name
+		}
 	}
 	return (*port_forwarding_service.Name)(nil)
 }
 
-func (h *DeletePortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *DeletePortForwardingServiceDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*DeletePortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*DeletePortForwardingServiceRequest) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*DeletePortForwardingServiceRequest) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *DeletePortForwardingServiceDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *DeletePortForwardingServiceDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*DeletePortForwardingServiceRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*DeletePortForwardingServiceRequest) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*DeletePortForwardingServiceRequest) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
 
-func (h *DeletePortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *DeletePortForwardingServiceDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*empty.Empty)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*empty.Empty) *port_forwarding_service.Name
+		OverrideExtractResourceName(*empty.Empty) *port_forwarding_service.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *DeletePortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *DeletePortForwardingServiceDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*empty.Empty)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*empty.Empty) []*port_forwarding_service.Name
+		OverrideExtractResourceNames(*empty.Empty) []*port_forwarding_service.Name
 	})
 	if ok {
-		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return port_forwarding_service.PortForwardingServiceNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *DeletePortForwardingServiceDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *DeletePortForwardingServiceDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*empty.Empty)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*empty.Empty) *port_forwarding_service.ParentName
+		OverrideExtractCollectionName(*empty.Empty) *port_forwarding_service.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }

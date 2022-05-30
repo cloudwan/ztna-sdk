@@ -542,16 +542,13 @@ type BatchGetAccessPointsRequest_FieldPath interface {
 type BatchGetAccessPointsRequest_FieldPathSelector int32
 
 const (
-	BatchGetAccessPointsRequest_FieldPathSelectorParent    BatchGetAccessPointsRequest_FieldPathSelector = 0
-	BatchGetAccessPointsRequest_FieldPathSelectorNames     BatchGetAccessPointsRequest_FieldPathSelector = 1
-	BatchGetAccessPointsRequest_FieldPathSelectorFieldMask BatchGetAccessPointsRequest_FieldPathSelector = 2
-	BatchGetAccessPointsRequest_FieldPathSelectorView      BatchGetAccessPointsRequest_FieldPathSelector = 3
+	BatchGetAccessPointsRequest_FieldPathSelectorNames     BatchGetAccessPointsRequest_FieldPathSelector = 0
+	BatchGetAccessPointsRequest_FieldPathSelectorFieldMask BatchGetAccessPointsRequest_FieldPathSelector = 1
+	BatchGetAccessPointsRequest_FieldPathSelectorView      BatchGetAccessPointsRequest_FieldPathSelector = 2
 )
 
 func (s BatchGetAccessPointsRequest_FieldPathSelector) String() string {
 	switch s {
-	case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-		return "parent"
 	case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 		return "names"
 	case BatchGetAccessPointsRequest_FieldPathSelectorFieldMask:
@@ -569,8 +566,6 @@ func BuildBatchGetAccessPointsRequest_FieldPath(fp gotenobject.RawFieldPath) (Ba
 	}
 	if len(fp) == 1 {
 		switch fp[0] {
-		case "parent":
-			return &BatchGetAccessPointsRequest_FieldTerminalPath{selector: BatchGetAccessPointsRequest_FieldPathSelectorParent}, nil
 		case "names":
 			return &BatchGetAccessPointsRequest_FieldTerminalPath{selector: BatchGetAccessPointsRequest_FieldPathSelectorNames}, nil
 		case "field_mask", "fieldMask", "field-mask":
@@ -622,10 +617,6 @@ func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) JSONString() string {
 func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) Get(source *BatchGetAccessPointsRequest) (values []interface{}) {
 	if source != nil {
 		switch fp.selector {
-		case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-			if source.Parent != nil {
-				values = append(values, source.Parent)
-			}
 		case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 			for _, value := range source.GetNames() {
 				values = append(values, value)
@@ -650,9 +641,6 @@ func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) GetRaw(source proto.Mes
 // GetSingle returns value pointed by specific field of from source BatchGetAccessPointsRequest
 func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) GetSingle(source *BatchGetAccessPointsRequest) (interface{}, bool) {
 	switch fp.selector {
-	case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-		res := source.GetParent()
-		return res, res != nil
 	case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 		res := source.GetNames()
 		return res, res != nil
@@ -673,8 +661,6 @@ func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) GetSingleRaw(source pro
 // GetDefault returns a default value of the field type
 func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) GetDefault() interface{} {
 	switch fp.selector {
-	case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-		return (*access_point.Reference)(nil)
 	case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 		return ([]*access_point.Reference)(nil)
 	case BatchGetAccessPointsRequest_FieldPathSelectorFieldMask:
@@ -689,8 +675,6 @@ func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) GetDefault() interface{
 func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) ClearValue(item *BatchGetAccessPointsRequest) {
 	if item != nil {
 		switch fp.selector {
-		case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-			item.Parent = nil
 		case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 			item.Names = nil
 		case BatchGetAccessPointsRequest_FieldPathSelectorFieldMask:
@@ -709,16 +693,13 @@ func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) ClearValueRaw(item prot
 
 // IsLeaf - whether field path is holds simple value
 func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) IsLeaf() bool {
-	return fp.selector == BatchGetAccessPointsRequest_FieldPathSelectorParent ||
-		fp.selector == BatchGetAccessPointsRequest_FieldPathSelectorNames ||
+	return fp.selector == BatchGetAccessPointsRequest_FieldPathSelectorNames ||
 		fp.selector == BatchGetAccessPointsRequest_FieldPathSelectorFieldMask ||
 		fp.selector == BatchGetAccessPointsRequest_FieldPathSelectorView
 }
 
 func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) WithIValue(value interface{}) BatchGetAccessPointsRequest_FieldPathValue {
 	switch fp.selector {
-	case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-		return &BatchGetAccessPointsRequest_FieldTerminalPathValue{BatchGetAccessPointsRequest_FieldTerminalPath: *fp, value: value.(*access_point.Reference)}
 	case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 		return &BatchGetAccessPointsRequest_FieldTerminalPathValue{BatchGetAccessPointsRequest_FieldTerminalPath: *fp, value: value.([]*access_point.Reference)}
 	case BatchGetAccessPointsRequest_FieldPathSelectorFieldMask:
@@ -737,8 +718,6 @@ func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) WithRawIValue(value int
 func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) WithIArrayOfValues(values interface{}) BatchGetAccessPointsRequest_FieldPathArrayOfValues {
 	fpaov := &BatchGetAccessPointsRequest_FieldTerminalPathArrayOfValues{BatchGetAccessPointsRequest_FieldTerminalPath: *fp}
 	switch fp.selector {
-	case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-		return &BatchGetAccessPointsRequest_FieldTerminalPathArrayOfValues{BatchGetAccessPointsRequest_FieldTerminalPath: *fp, values: values.([]*access_point.Reference)}
 	case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 		return &BatchGetAccessPointsRequest_FieldTerminalPathArrayOfValues{BatchGetAccessPointsRequest_FieldTerminalPath: *fp, values: values.([][]*access_point.Reference)}
 	case BatchGetAccessPointsRequest_FieldPathSelectorFieldMask:
@@ -807,10 +786,6 @@ var _ BatchGetAccessPointsRequest_FieldPathValue = (*BatchGetAccessPointsRequest
 func (fpv *BatchGetAccessPointsRequest_FieldTerminalPathValue) GetRawValue() interface{} {
 	return fpv.value
 }
-func (fpv *BatchGetAccessPointsRequest_FieldTerminalPathValue) AsParentValue() (*access_point.Reference, bool) {
-	res, ok := fpv.value.(*access_point.Reference)
-	return res, ok
-}
 func (fpv *BatchGetAccessPointsRequest_FieldTerminalPathValue) AsNamesValue() ([]*access_point.Reference, bool) {
 	res, ok := fpv.value.([]*access_point.Reference)
 	return res, ok
@@ -830,8 +805,6 @@ func (fpv *BatchGetAccessPointsRequest_FieldTerminalPathValue) SetTo(target **Ba
 		*target = new(BatchGetAccessPointsRequest)
 	}
 	switch fpv.selector {
-	case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-		(*target).Parent = fpv.value.(*access_point.Reference)
 	case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 		(*target).Names = fpv.value.([]*access_point.Reference)
 	case BatchGetAccessPointsRequest_FieldPathSelectorFieldMask:
@@ -851,25 +824,6 @@ func (fpv *BatchGetAccessPointsRequest_FieldTerminalPathValue) SetToRaw(target p
 // CompareWith compares value in the 'BatchGetAccessPointsRequest_FieldTerminalPathValue' with the value under path in 'BatchGetAccessPointsRequest'.
 func (fpv *BatchGetAccessPointsRequest_FieldTerminalPathValue) CompareWith(source *BatchGetAccessPointsRequest) (int, bool) {
 	switch fpv.selector {
-	case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-		leftValue := fpv.value.(*access_point.Reference)
-		rightValue := source.GetParent()
-		if leftValue == nil {
-			if rightValue != nil {
-				return -1, true
-			}
-			return 0, true
-		}
-		if rightValue == nil {
-			return 1, true
-		}
-		if leftValue.String() == rightValue.String() {
-			return 0, true
-		} else if leftValue.String() < rightValue.String() {
-			return -1, true
-		} else {
-			return 1, true
-		}
 	case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 		return 0, false
 	case BatchGetAccessPointsRequest_FieldPathSelectorFieldMask:
@@ -992,10 +946,6 @@ var _ BatchGetAccessPointsRequest_FieldPathArrayOfValues = (*BatchGetAccessPoint
 
 func (fpaov *BatchGetAccessPointsRequest_FieldTerminalPathArrayOfValues) GetRawValues() (values []interface{}) {
 	switch fpaov.selector {
-	case BatchGetAccessPointsRequest_FieldPathSelectorParent:
-		for _, v := range fpaov.values.([]*access_point.Reference) {
-			values = append(values, v)
-		}
 	case BatchGetAccessPointsRequest_FieldPathSelectorNames:
 		for _, v := range fpaov.values.([][]*access_point.Reference) {
 			values = append(values, v)
@@ -1010,10 +960,6 @@ func (fpaov *BatchGetAccessPointsRequest_FieldTerminalPathArrayOfValues) GetRawV
 		}
 	}
 	return
-}
-func (fpaov *BatchGetAccessPointsRequest_FieldTerminalPathArrayOfValues) AsParentArrayOfValues() ([]*access_point.Reference, bool) {
-	res, ok := fpaov.values.([]*access_point.Reference)
-	return res, ok
 }
 func (fpaov *BatchGetAccessPointsRequest_FieldTerminalPathArrayOfValues) AsNamesArrayOfValues() ([][]*access_point.Reference, bool) {
 	res, ok := fpaov.values.([][]*access_point.Reference)

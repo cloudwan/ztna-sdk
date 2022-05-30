@@ -69,15 +69,15 @@ func (d *GetAccessPointDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *GetAccessPointDescriptor) IsCollectionSubject() bool {
+func (d *GetAccessPointDescriptor) IsCollection() bool {
 	return false
 }
 
-func (d *GetAccessPointDescriptor) IsPluralSubject() bool {
+func (d *GetAccessPointDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *GetAccessPointDescriptor) HasSubjectResource() bool {
+func (d *GetAccessPointDescriptor) HasResource() bool {
 	return true
 }
 
@@ -117,7 +117,7 @@ func (d *GetAccessPointDescriptor) GetApiDescriptor() gotenclient.ApiDescriptor 
 	return accessPointServiceDescriptor
 }
 
-func (d *GetAccessPointDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *GetAccessPointDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return access_point.GetDescriptor()
 }
 
@@ -129,77 +129,84 @@ func (d *GetAccessPointDescriptor) GetServerMsgReflectHandle() gotenclient.Metho
 	return &GetAccessPointDescriptorServerMsgHandle{}
 }
 
-func (h *GetAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *GetAccessPointDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*GetAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*GetAccessPointRequest) *access_point.Name
+		OverrideExtractResourceName(*GetAccessPointRequest) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	if ref := typedMsg.GetName(); ref != nil {
-		return &ref.Name
+	{
+		if ref := typedMsg.GetName(); ref != nil {
+			return &ref.Name
+		}
 	}
 	return (*access_point.Name)(nil)
 }
 
-func (h *GetAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *GetAccessPointDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*GetAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*GetAccessPointRequest) []*access_point.Name
+		OverrideExtractResourceNames(*GetAccessPointRequest) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *GetAccessPointDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *GetAccessPointDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*GetAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*GetAccessPointRequest) *access_point.ParentName
+		OverrideExtractCollectionName(*GetAccessPointRequest) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
 
-func (h *GetAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *GetAccessPointDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*access_point.AccessPoint)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*access_point.AccessPoint) *access_point.Name
+		OverrideExtractResourceName(*access_point.AccessPoint) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetName()
+	{
+		if name := typedMsg.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*access_point.Name)(nil)
 }
 
-func (h *GetAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *GetAccessPointDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*access_point.AccessPoint)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*access_point.AccessPoint) []*access_point.Name
+		OverrideExtractResourceNames(*access_point.AccessPoint) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *GetAccessPointDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *GetAccessPointDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*access_point.AccessPoint)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*access_point.AccessPoint) *access_point.ParentName
+		OverrideExtractCollectionName(*access_point.AccessPoint) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -234,15 +241,15 @@ func (d *BatchGetAccessPointsDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *BatchGetAccessPointsDescriptor) IsCollectionSubject() bool {
+func (d *BatchGetAccessPointsDescriptor) IsCollection() bool {
+	return false
+}
+
+func (d *BatchGetAccessPointsDescriptor) IsPlural() bool {
 	return true
 }
 
-func (d *BatchGetAccessPointsDescriptor) IsPluralSubject() bool {
-	return true
-}
-
-func (d *BatchGetAccessPointsDescriptor) HasSubjectResource() bool {
+func (d *BatchGetAccessPointsDescriptor) HasResource() bool {
 	return true
 }
 
@@ -282,7 +289,7 @@ func (d *BatchGetAccessPointsDescriptor) GetApiDescriptor() gotenclient.ApiDescr
 	return accessPointServiceDescriptor
 }
 
-func (d *BatchGetAccessPointsDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *BatchGetAccessPointsDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return access_point.GetDescriptor()
 }
 
@@ -294,86 +301,92 @@ func (d *BatchGetAccessPointsDescriptor) GetServerMsgReflectHandle() gotenclient
 	return &BatchGetAccessPointsDescriptorServerMsgHandle{}
 }
 
-func (h *BatchGetAccessPointsDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *BatchGetAccessPointsDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*BatchGetAccessPointsRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*BatchGetAccessPointsRequest) *access_point.Name
+		OverrideExtractResourceName(*BatchGetAccessPointsRequest) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *BatchGetAccessPointsDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *BatchGetAccessPointsDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*BatchGetAccessPointsRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*BatchGetAccessPointsRequest) []*access_point.Name
+		OverrideExtractResourceNames(*BatchGetAccessPointsRequest) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
-	if refs := typedMsg.GetNames(); len(refs) > 0 {
-		list := make(access_point.AccessPointNameList, 0, len(refs))
-		for _, ref := range refs {
-			list = append(list, &ref.Name)
+	{
+		if refs := typedMsg.GetNames(); len(refs) > 0 {
+			list := make(access_point.AccessPointNameList, 0, len(refs))
+			for _, ref := range refs {
+				list = append(list, &ref.Name)
+			}
+			return list
 		}
-		return list
 	}
 	return (access_point.AccessPointNameList)(nil)
 }
 
-func (h *BatchGetAccessPointsDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *BatchGetAccessPointsDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*BatchGetAccessPointsRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*BatchGetAccessPointsRequest) *access_point.ParentName
+		OverrideExtractCollectionName(*BatchGetAccessPointsRequest) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
 
-func (h *BatchGetAccessPointsDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *BatchGetAccessPointsDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*BatchGetAccessPointsResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*BatchGetAccessPointsResponse) *access_point.Name
+		OverrideExtractResourceName(*BatchGetAccessPointsResponse) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *BatchGetAccessPointsDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *BatchGetAccessPointsDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*BatchGetAccessPointsResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*BatchGetAccessPointsResponse) []*access_point.Name
+		OverrideExtractResourceNames(*BatchGetAccessPointsResponse) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
-	resources := typedMsg.GetAccessPoints()
-	list := make(access_point.AccessPointNameList, 0, len(resources))
-	for _, res := range resources {
-		list = append(list, res.GetName())
+	{
+		if resources := typedMsg.GetAccessPoints(); len(resources) > 0 {
+			list := make(access_point.AccessPointNameList, 0, len(resources))
+			for _, res := range resources {
+				list = append(list, res.GetName())
+			}
+			return list
+		}
 	}
-	return list
+	return (access_point.AccessPointNameList)(nil)
 }
 
-func (h *BatchGetAccessPointsDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *BatchGetAccessPointsDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*BatchGetAccessPointsResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*BatchGetAccessPointsResponse) *access_point.ParentName
+		OverrideExtractCollectionName(*BatchGetAccessPointsResponse) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -408,15 +421,15 @@ func (d *ListAccessPointsDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *ListAccessPointsDescriptor) IsCollectionSubject() bool {
+func (d *ListAccessPointsDescriptor) IsCollection() bool {
 	return true
 }
 
-func (d *ListAccessPointsDescriptor) IsPluralSubject() bool {
+func (d *ListAccessPointsDescriptor) IsPlural() bool {
 	return true
 }
 
-func (d *ListAccessPointsDescriptor) HasSubjectResource() bool {
+func (d *ListAccessPointsDescriptor) HasResource() bool {
 	return true
 }
 
@@ -456,7 +469,7 @@ func (d *ListAccessPointsDescriptor) GetApiDescriptor() gotenclient.ApiDescripto
 	return accessPointServiceDescriptor
 }
 
-func (d *ListAccessPointsDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *ListAccessPointsDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return access_point.GetDescriptor()
 }
 
@@ -468,79 +481,88 @@ func (d *ListAccessPointsDescriptor) GetServerMsgReflectHandle() gotenclient.Met
 	return &ListAccessPointsDescriptorServerMsgHandle{}
 }
 
-func (h *ListAccessPointsDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *ListAccessPointsDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*ListAccessPointsRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*ListAccessPointsRequest) *access_point.Name
+		OverrideExtractResourceName(*ListAccessPointsRequest) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *ListAccessPointsDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *ListAccessPointsDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*ListAccessPointsRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*ListAccessPointsRequest) []*access_point.Name
+		OverrideExtractResourceNames(*ListAccessPointsRequest) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *ListAccessPointsDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *ListAccessPointsDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*ListAccessPointsRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*ListAccessPointsRequest) *access_point.ParentName
+		OverrideExtractCollectionName(*ListAccessPointsRequest) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
-	return typedMsg.GetParent()
+	{
+		if parentName := typedMsg.GetParent(); parentName != nil {
+			return parentName
+		}
+	}
+	return (*access_point.ParentName)(nil)
 }
 
-func (h *ListAccessPointsDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *ListAccessPointsDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*ListAccessPointsResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*ListAccessPointsResponse) *access_point.Name
+		OverrideExtractResourceName(*ListAccessPointsResponse) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *ListAccessPointsDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *ListAccessPointsDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*ListAccessPointsResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*ListAccessPointsResponse) []*access_point.Name
+		OverrideExtractResourceNames(*ListAccessPointsResponse) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
-	resources := typedMsg.GetAccessPoints()
-	list := make(access_point.AccessPointNameList, 0, len(resources))
-	for _, res := range resources {
-		list = append(list, res.GetName())
+	{
+		if resources := typedMsg.GetAccessPoints(); len(resources) > 0 {
+			list := make(access_point.AccessPointNameList, 0, len(resources))
+			for _, res := range resources {
+				list = append(list, res.GetName())
+			}
+			return list
+		}
 	}
-	return list
+	return (access_point.AccessPointNameList)(nil)
 }
 
-func (h *ListAccessPointsDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *ListAccessPointsDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*ListAccessPointsResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*ListAccessPointsResponse) *access_point.ParentName
+		OverrideExtractCollectionName(*ListAccessPointsResponse) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -575,15 +597,15 @@ func (d *WatchAccessPointDescriptor) IsServerStream() bool {
 	return true
 }
 
-func (d *WatchAccessPointDescriptor) IsCollectionSubject() bool {
+func (d *WatchAccessPointDescriptor) IsCollection() bool {
 	return false
 }
 
-func (d *WatchAccessPointDescriptor) IsPluralSubject() bool {
+func (d *WatchAccessPointDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *WatchAccessPointDescriptor) HasSubjectResource() bool {
+func (d *WatchAccessPointDescriptor) HasResource() bool {
 	return true
 }
 
@@ -623,7 +645,7 @@ func (d *WatchAccessPointDescriptor) GetApiDescriptor() gotenclient.ApiDescripto
 	return accessPointServiceDescriptor
 }
 
-func (d *WatchAccessPointDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *WatchAccessPointDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return access_point.GetDescriptor()
 }
 
@@ -635,89 +657,93 @@ func (d *WatchAccessPointDescriptor) GetServerMsgReflectHandle() gotenclient.Met
 	return &WatchAccessPointDescriptorServerMsgHandle{}
 }
 
-func (h *WatchAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *WatchAccessPointDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*WatchAccessPointRequest) *access_point.Name
+		OverrideExtractResourceName(*WatchAccessPointRequest) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	if ref := typedMsg.GetName(); ref != nil {
-		return &ref.Name
-	}
-	return (*access_point.Name)(nil)
-}
-
-func (h *WatchAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
-	typedMsg := msg.(*WatchAccessPointRequest)
-	var asInterface interface{} = h
-	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*WatchAccessPointRequest) []*access_point.Name
-	})
-	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
-	}
-	return nil
-}
-
-func (h *WatchAccessPointDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
-	typedMsg := msg.(*WatchAccessPointRequest)
-	var asInterface interface{} = h
-	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*WatchAccessPointRequest) *access_point.ParentName
-	})
-	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
-	}
-	return nil
-}
-
-func (h *WatchAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
-	typedMsg := msg.(*WatchAccessPointResponse)
-	var asInterface interface{} = h
-	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*WatchAccessPointResponse) *access_point.Name
-	})
-	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
-	}
-	if typedMsg.GetChange() != nil {
-		switch tResChange := typedMsg.GetChange().ChangeType.(type) {
-		case *access_point.AccessPointChange_Added_:
-			return tResChange.Added.GetAccessPoint().GetName()
-		case *access_point.AccessPointChange_Modified_:
-			return tResChange.Modified.GetName()
-		case *access_point.AccessPointChange_Removed_:
-			return tResChange.Removed.GetName()
-		case *access_point.AccessPointChange_Current_:
-			return tResChange.Current.GetAccessPoint().GetName()
+	{
+		if ref := typedMsg.GetName(); ref != nil {
+			return &ref.Name
 		}
 	}
 	return (*access_point.Name)(nil)
 }
 
-func (h *WatchAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
-	typedMsg := msg.(*WatchAccessPointResponse)
+func (h *WatchAccessPointDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
+	typedMsg := msg.(*WatchAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*WatchAccessPointResponse) []*access_point.Name
+		OverrideExtractResourceNames(*WatchAccessPointRequest) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *WatchAccessPointDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *WatchAccessPointDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
+	typedMsg := msg.(*WatchAccessPointRequest)
+	var asInterface interface{} = h
+	override, ok := asInterface.(interface {
+		OverrideExtractCollectionName(*WatchAccessPointRequest) *access_point.ParentName
+	})
+	if ok {
+		return override.OverrideExtractCollectionName(typedMsg)
+	}
+	return nil
+}
+
+func (h *WatchAccessPointDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchAccessPointResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*WatchAccessPointResponse) *access_point.ParentName
+		OverrideExtractResourceName(*WatchAccessPointResponse) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
+	}
+	{
+		if resChange := typedMsg.GetChange(); resChange != nil {
+			switch tResChange := resChange.ChangeType.(type) {
+			case *access_point.AccessPointChange_Added_:
+				return tResChange.Added.GetAccessPoint().GetName()
+			case *access_point.AccessPointChange_Modified_:
+				return tResChange.Modified.GetName()
+			case *access_point.AccessPointChange_Removed_:
+				return tResChange.Removed.GetName()
+			case *access_point.AccessPointChange_Current_:
+				return tResChange.Current.GetAccessPoint().GetName()
+			}
+		}
+	}
+	return (*access_point.Name)(nil)
+}
+
+func (h *WatchAccessPointDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
+	typedMsg := msg.(*WatchAccessPointResponse)
+	var asInterface interface{} = h
+	override, ok := asInterface.(interface {
+		OverrideExtractResourceNames(*WatchAccessPointResponse) []*access_point.Name
+	})
+	if ok {
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
+	}
+	return nil
+}
+
+func (h *WatchAccessPointDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
+	typedMsg := msg.(*WatchAccessPointResponse)
+	var asInterface interface{} = h
+	override, ok := asInterface.(interface {
+		OverrideExtractCollectionName(*WatchAccessPointResponse) *access_point.ParentName
+	})
+	if ok {
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -752,15 +778,15 @@ func (d *WatchAccessPointsDescriptor) IsServerStream() bool {
 	return true
 }
 
-func (d *WatchAccessPointsDescriptor) IsCollectionSubject() bool {
+func (d *WatchAccessPointsDescriptor) IsCollection() bool {
 	return true
 }
 
-func (d *WatchAccessPointsDescriptor) IsPluralSubject() bool {
+func (d *WatchAccessPointsDescriptor) IsPlural() bool {
 	return true
 }
 
-func (d *WatchAccessPointsDescriptor) HasSubjectResource() bool {
+func (d *WatchAccessPointsDescriptor) HasResource() bool {
 	return true
 }
 
@@ -800,7 +826,7 @@ func (d *WatchAccessPointsDescriptor) GetApiDescriptor() gotenclient.ApiDescript
 	return accessPointServiceDescriptor
 }
 
-func (d *WatchAccessPointsDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *WatchAccessPointsDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return access_point.GetDescriptor()
 }
 
@@ -812,91 +838,97 @@ func (d *WatchAccessPointsDescriptor) GetServerMsgReflectHandle() gotenclient.Me
 	return &WatchAccessPointsDescriptorServerMsgHandle{}
 }
 
-func (h *WatchAccessPointsDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *WatchAccessPointsDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchAccessPointsRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*WatchAccessPointsRequest) *access_point.Name
+		OverrideExtractResourceName(*WatchAccessPointsRequest) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *WatchAccessPointsDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *WatchAccessPointsDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*WatchAccessPointsRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*WatchAccessPointsRequest) []*access_point.Name
+		OverrideExtractResourceNames(*WatchAccessPointsRequest) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *WatchAccessPointsDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *WatchAccessPointsDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchAccessPointsRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*WatchAccessPointsRequest) *access_point.ParentName
+		OverrideExtractCollectionName(*WatchAccessPointsRequest) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
-	if ref := typedMsg.GetParent(); ref != nil {
-		return &ref.ParentName
+	{
+		if ref := typedMsg.GetParent(); ref != nil {
+			return &ref.ParentName
+		}
 	}
 	return (*access_point.ParentName)(nil)
 }
 
-func (h *WatchAccessPointsDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *WatchAccessPointsDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchAccessPointsResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*WatchAccessPointsResponse) *access_point.Name
+		OverrideExtractResourceName(*WatchAccessPointsResponse) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *WatchAccessPointsDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *WatchAccessPointsDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*WatchAccessPointsResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*WatchAccessPointsResponse) []*access_point.Name
+		OverrideExtractResourceNames(*WatchAccessPointsResponse) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
-	resourceChanges := typedMsg.GetAccessPointChanges()
-	list := make(access_point.AccessPointNameList, 0, len(resourceChanges))
-	for _, resChange := range resourceChanges {
-		switch tResChange := resChange.ChangeType.(type) {
-		case *access_point.AccessPointChange_Added_:
-			list = append(list, tResChange.Added.GetAccessPoint().GetName())
-		case *access_point.AccessPointChange_Modified_:
-			list = append(list, tResChange.Modified.GetName())
-		case *access_point.AccessPointChange_Removed_:
-			list = append(list, tResChange.Removed.GetName())
-		case *access_point.AccessPointChange_Current_:
-			list = append(list, tResChange.Current.GetAccessPoint().GetName())
+	{
+		if resChanges := typedMsg.GetAccessPointChanges(); len(resChanges) > 0 {
+			list := make(access_point.AccessPointNameList, 0, len(resChanges))
+			for _, resChange := range resChanges {
+				switch tResChange := resChange.ChangeType.(type) {
+				case *access_point.AccessPointChange_Added_:
+					list = append(list, tResChange.Added.GetAccessPoint().GetName())
+				case *access_point.AccessPointChange_Modified_:
+					list = append(list, tResChange.Modified.GetName())
+				case *access_point.AccessPointChange_Removed_:
+					list = append(list, tResChange.Removed.GetName())
+				case *access_point.AccessPointChange_Current_:
+					list = append(list, tResChange.Current.GetAccessPoint().GetName())
+				}
+			}
+			return list
 		}
 	}
-	return list
+	return (access_point.AccessPointNameList)(nil)
 }
 
-func (h *WatchAccessPointsDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *WatchAccessPointsDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*WatchAccessPointsResponse)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*WatchAccessPointsResponse) *access_point.ParentName
+		OverrideExtractCollectionName(*WatchAccessPointsResponse) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -931,15 +963,15 @@ func (d *CreateAccessPointDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *CreateAccessPointDescriptor) IsCollectionSubject() bool {
+func (d *CreateAccessPointDescriptor) IsCollection() bool {
 	return true
 }
 
-func (d *CreateAccessPointDescriptor) IsPluralSubject() bool {
+func (d *CreateAccessPointDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *CreateAccessPointDescriptor) HasSubjectResource() bool {
+func (d *CreateAccessPointDescriptor) HasResource() bool {
 	return true
 }
 
@@ -979,7 +1011,7 @@ func (d *CreateAccessPointDescriptor) GetApiDescriptor() gotenclient.ApiDescript
 	return accessPointServiceDescriptor
 }
 
-func (d *CreateAccessPointDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *CreateAccessPointDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return access_point.GetDescriptor()
 }
 
@@ -991,77 +1023,90 @@ func (d *CreateAccessPointDescriptor) GetServerMsgReflectHandle() gotenclient.Me
 	return &CreateAccessPointDescriptorServerMsgHandle{}
 }
 
-func (h *CreateAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *CreateAccessPointDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*CreateAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*CreateAccessPointRequest) *access_point.Name
+		OverrideExtractResourceName(*CreateAccessPointRequest) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetAccessPoint().GetName()
+	{
+		res := typedMsg.GetAccessPoint()
+		if name := res.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*access_point.Name)(nil)
 }
 
-func (h *CreateAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *CreateAccessPointDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*CreateAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*CreateAccessPointRequest) []*access_point.Name
+		OverrideExtractResourceNames(*CreateAccessPointRequest) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *CreateAccessPointDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *CreateAccessPointDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*CreateAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*CreateAccessPointRequest) *access_point.ParentName
+		OverrideExtractCollectionName(*CreateAccessPointRequest) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
-	if ref := typedMsg.GetParent(); ref != nil {
-		return &ref.ParentName
+	{
+		if ref := typedMsg.GetParent(); ref != nil {
+			return &ref.ParentName
+		}
 	}
 	return (*access_point.ParentName)(nil)
 }
 
-func (h *CreateAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *CreateAccessPointDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*access_point.AccessPoint)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*access_point.AccessPoint) *access_point.Name
+		OverrideExtractResourceName(*access_point.AccessPoint) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetName()
+	{
+		if name := typedMsg.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*access_point.Name)(nil)
 }
 
-func (h *CreateAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *CreateAccessPointDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*access_point.AccessPoint)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*access_point.AccessPoint) []*access_point.Name
+		OverrideExtractResourceNames(*access_point.AccessPoint) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *CreateAccessPointDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *CreateAccessPointDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*access_point.AccessPoint)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*access_point.AccessPoint) *access_point.ParentName
+		OverrideExtractCollectionName(*access_point.AccessPoint) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -1096,15 +1141,15 @@ func (d *UpdateAccessPointDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *UpdateAccessPointDescriptor) IsCollectionSubject() bool {
+func (d *UpdateAccessPointDescriptor) IsCollection() bool {
 	return false
 }
 
-func (d *UpdateAccessPointDescriptor) IsPluralSubject() bool {
+func (d *UpdateAccessPointDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *UpdateAccessPointDescriptor) HasSubjectResource() bool {
+func (d *UpdateAccessPointDescriptor) HasResource() bool {
 	return true
 }
 
@@ -1144,7 +1189,7 @@ func (d *UpdateAccessPointDescriptor) GetApiDescriptor() gotenclient.ApiDescript
 	return accessPointServiceDescriptor
 }
 
-func (d *UpdateAccessPointDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *UpdateAccessPointDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return access_point.GetDescriptor()
 }
 
@@ -1156,74 +1201,85 @@ func (d *UpdateAccessPointDescriptor) GetServerMsgReflectHandle() gotenclient.Me
 	return &UpdateAccessPointDescriptorServerMsgHandle{}
 }
 
-func (h *UpdateAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *UpdateAccessPointDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*UpdateAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*UpdateAccessPointRequest) *access_point.Name
+		OverrideExtractResourceName(*UpdateAccessPointRequest) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetAccessPoint().GetName()
+	{
+		res := typedMsg.GetAccessPoint()
+		if name := res.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*access_point.Name)(nil)
 }
 
-func (h *UpdateAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *UpdateAccessPointDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*UpdateAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*UpdateAccessPointRequest) []*access_point.Name
+		OverrideExtractResourceNames(*UpdateAccessPointRequest) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *UpdateAccessPointDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *UpdateAccessPointDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*UpdateAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*UpdateAccessPointRequest) *access_point.ParentName
+		OverrideExtractCollectionName(*UpdateAccessPointRequest) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
 
-func (h *UpdateAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *UpdateAccessPointDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*access_point.AccessPoint)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*access_point.AccessPoint) *access_point.Name
+		OverrideExtractResourceName(*access_point.AccessPoint) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	return typedMsg.GetName()
+	{
+		if name := typedMsg.GetName(); name != nil {
+			return name
+		}
+	}
+	return (*access_point.Name)(nil)
 }
 
-func (h *UpdateAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *UpdateAccessPointDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*access_point.AccessPoint)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*access_point.AccessPoint) []*access_point.Name
+		OverrideExtractResourceNames(*access_point.AccessPoint) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *UpdateAccessPointDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *UpdateAccessPointDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*access_point.AccessPoint)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*access_point.AccessPoint) *access_point.ParentName
+		OverrideExtractCollectionName(*access_point.AccessPoint) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
@@ -1258,15 +1314,15 @@ func (d *DeleteAccessPointDescriptor) IsServerStream() bool {
 	return false
 }
 
-func (d *DeleteAccessPointDescriptor) IsCollectionSubject() bool {
+func (d *DeleteAccessPointDescriptor) IsCollection() bool {
 	return false
 }
 
-func (d *DeleteAccessPointDescriptor) IsPluralSubject() bool {
+func (d *DeleteAccessPointDescriptor) IsPlural() bool {
 	return false
 }
 
-func (d *DeleteAccessPointDescriptor) HasSubjectResource() bool {
+func (d *DeleteAccessPointDescriptor) HasResource() bool {
 	return true
 }
 
@@ -1306,7 +1362,7 @@ func (d *DeleteAccessPointDescriptor) GetApiDescriptor() gotenclient.ApiDescript
 	return accessPointServiceDescriptor
 }
 
-func (d *DeleteAccessPointDescriptor) GetSubjectResourceDescriptor() gotenresource.Descriptor {
+func (d *DeleteAccessPointDescriptor) GetResourceDescriptor() gotenresource.Descriptor {
 	return access_point.GetDescriptor()
 }
 
@@ -1318,77 +1374,79 @@ func (d *DeleteAccessPointDescriptor) GetServerMsgReflectHandle() gotenclient.Me
 	return &DeleteAccessPointDescriptorServerMsgHandle{}
 }
 
-func (h *DeleteAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *DeleteAccessPointDescriptorClientMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*DeleteAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*DeleteAccessPointRequest) *access_point.Name
+		OverrideExtractResourceName(*DeleteAccessPointRequest) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
-	if ref := typedMsg.GetName(); ref != nil {
-		return &ref.Name
+	{
+		if ref := typedMsg.GetName(); ref != nil {
+			return &ref.Name
+		}
 	}
 	return (*access_point.Name)(nil)
 }
 
-func (h *DeleteAccessPointDescriptorClientMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *DeleteAccessPointDescriptorClientMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*DeleteAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*DeleteAccessPointRequest) []*access_point.Name
+		OverrideExtractResourceNames(*DeleteAccessPointRequest) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *DeleteAccessPointDescriptorClientMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *DeleteAccessPointDescriptorClientMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*DeleteAccessPointRequest)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*DeleteAccessPointRequest) *access_point.ParentName
+		OverrideExtractCollectionName(*DeleteAccessPointRequest) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }
 
-func (h *DeleteAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceName(msg proto.Message) gotenresource.Name {
+func (h *DeleteAccessPointDescriptorServerMsgHandle) ExtractResourceName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*empty.Empty)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceName(*empty.Empty) *access_point.Name
+		OverrideExtractResourceName(*empty.Empty) *access_point.Name
 	})
 	if ok {
-		return override.OverrideExtractSubjectResourceName(typedMsg)
+		return override.OverrideExtractResourceName(typedMsg)
 	}
 	return nil
 }
 
-func (h *DeleteAccessPointDescriptorServerMsgHandle) ExtractSubjectResourceNames(msg proto.Message) gotenresource.NameList {
+func (h *DeleteAccessPointDescriptorServerMsgHandle) ExtractResourceNames(msg proto.Message) gotenresource.NameList {
 	typedMsg := msg.(*empty.Empty)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectResourceNames(*empty.Empty) []*access_point.Name
+		OverrideExtractResourceNames(*empty.Empty) []*access_point.Name
 	})
 	if ok {
-		return access_point.AccessPointNameList(override.OverrideExtractSubjectResourceNames(typedMsg))
+		return access_point.AccessPointNameList(override.OverrideExtractResourceNames(typedMsg))
 	}
 	return nil
 }
 
-func (h *DeleteAccessPointDescriptorServerMsgHandle) ExtractSubjectCollectionName(msg proto.Message) gotenresource.Name {
+func (h *DeleteAccessPointDescriptorServerMsgHandle) ExtractCollectionName(msg proto.Message) gotenresource.Name {
 	typedMsg := msg.(*empty.Empty)
 	var asInterface interface{} = h
 	override, ok := asInterface.(interface {
-		OverrideExtractSubjectCollectionName(*empty.Empty) *access_point.ParentName
+		OverrideExtractCollectionName(*empty.Empty) *access_point.ParentName
 	})
 	if ok {
-		return override.OverrideExtractSubjectCollectionName(typedMsg)
+		return override.OverrideExtractCollectionName(typedMsg)
 	}
 	return nil
 }

@@ -94,9 +94,6 @@ type BatchGetAccessPointsRequestFieldPathBuilder struct{}
 func NewBatchGetAccessPointsRequestFieldPathBuilder() BatchGetAccessPointsRequestFieldPathBuilder {
 	return BatchGetAccessPointsRequestFieldPathBuilder{}
 }
-func (BatchGetAccessPointsRequestFieldPathBuilder) Parent() BatchGetAccessPointsRequestPathSelectorParent {
-	return BatchGetAccessPointsRequestPathSelectorParent{}
-}
 func (BatchGetAccessPointsRequestFieldPathBuilder) Names() BatchGetAccessPointsRequestPathSelectorNames {
 	return BatchGetAccessPointsRequestPathSelectorNames{}
 }
@@ -105,20 +102,6 @@ func (BatchGetAccessPointsRequestFieldPathBuilder) FieldMask() BatchGetAccessPoi
 }
 func (BatchGetAccessPointsRequestFieldPathBuilder) View() BatchGetAccessPointsRequestPathSelectorView {
 	return BatchGetAccessPointsRequestPathSelectorView{}
-}
-
-type BatchGetAccessPointsRequestPathSelectorParent struct{}
-
-func (BatchGetAccessPointsRequestPathSelectorParent) FieldPath() *BatchGetAccessPointsRequest_FieldTerminalPath {
-	return &BatchGetAccessPointsRequest_FieldTerminalPath{selector: BatchGetAccessPointsRequest_FieldPathSelectorParent}
-}
-
-func (s BatchGetAccessPointsRequestPathSelectorParent) WithValue(value *access_point.Reference) *BatchGetAccessPointsRequest_FieldTerminalPathValue {
-	return s.FieldPath().WithIValue(value).(*BatchGetAccessPointsRequest_FieldTerminalPathValue)
-}
-
-func (s BatchGetAccessPointsRequestPathSelectorParent) WithArrayOfValues(values []*access_point.Reference) *BatchGetAccessPointsRequest_FieldTerminalPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetAccessPointsRequest_FieldTerminalPathArrayOfValues)
 }
 
 type BatchGetAccessPointsRequestPathSelectorNames struct{}

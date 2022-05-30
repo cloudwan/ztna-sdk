@@ -542,16 +542,13 @@ type BatchGetPortForwardingServicesRequest_FieldPath interface {
 type BatchGetPortForwardingServicesRequest_FieldPathSelector int32
 
 const (
-	BatchGetPortForwardingServicesRequest_FieldPathSelectorParent    BatchGetPortForwardingServicesRequest_FieldPathSelector = 0
-	BatchGetPortForwardingServicesRequest_FieldPathSelectorNames     BatchGetPortForwardingServicesRequest_FieldPathSelector = 1
-	BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask BatchGetPortForwardingServicesRequest_FieldPathSelector = 2
-	BatchGetPortForwardingServicesRequest_FieldPathSelectorView      BatchGetPortForwardingServicesRequest_FieldPathSelector = 3
+	BatchGetPortForwardingServicesRequest_FieldPathSelectorNames     BatchGetPortForwardingServicesRequest_FieldPathSelector = 0
+	BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask BatchGetPortForwardingServicesRequest_FieldPathSelector = 1
+	BatchGetPortForwardingServicesRequest_FieldPathSelectorView      BatchGetPortForwardingServicesRequest_FieldPathSelector = 2
 )
 
 func (s BatchGetPortForwardingServicesRequest_FieldPathSelector) String() string {
 	switch s {
-	case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-		return "parent"
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 		return "names"
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -569,8 +566,6 @@ func BuildBatchGetPortForwardingServicesRequest_FieldPath(fp gotenobject.RawFiel
 	}
 	if len(fp) == 1 {
 		switch fp[0] {
-		case "parent":
-			return &BatchGetPortForwardingServicesRequest_FieldTerminalPath{selector: BatchGetPortForwardingServicesRequest_FieldPathSelectorParent}, nil
 		case "names":
 			return &BatchGetPortForwardingServicesRequest_FieldTerminalPath{selector: BatchGetPortForwardingServicesRequest_FieldPathSelectorNames}, nil
 		case "field_mask", "fieldMask", "field-mask":
@@ -622,10 +617,6 @@ func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) JSONString() 
 func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) Get(source *BatchGetPortForwardingServicesRequest) (values []interface{}) {
 	if source != nil {
 		switch fp.selector {
-		case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-			if source.Parent != nil {
-				values = append(values, source.Parent)
-			}
 		case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 			for _, value := range source.GetNames() {
 				values = append(values, value)
@@ -650,9 +641,6 @@ func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) GetRaw(source
 // GetSingle returns value pointed by specific field of from source BatchGetPortForwardingServicesRequest
 func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) GetSingle(source *BatchGetPortForwardingServicesRequest) (interface{}, bool) {
 	switch fp.selector {
-	case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-		res := source.GetParent()
-		return res, res != nil
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 		res := source.GetNames()
 		return res, res != nil
@@ -673,8 +661,6 @@ func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) GetSingleRaw(
 // GetDefault returns a default value of the field type
 func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) GetDefault() interface{} {
 	switch fp.selector {
-	case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-		return (*port_forwarding_service.Reference)(nil)
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 		return ([]*port_forwarding_service.Reference)(nil)
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -689,8 +675,6 @@ func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) GetDefault() 
 func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) ClearValue(item *BatchGetPortForwardingServicesRequest) {
 	if item != nil {
 		switch fp.selector {
-		case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-			item.Parent = nil
 		case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 			item.Names = nil
 		case BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -709,16 +693,13 @@ func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) ClearValueRaw
 
 // IsLeaf - whether field path is holds simple value
 func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) IsLeaf() bool {
-	return fp.selector == BatchGetPortForwardingServicesRequest_FieldPathSelectorParent ||
-		fp.selector == BatchGetPortForwardingServicesRequest_FieldPathSelectorNames ||
+	return fp.selector == BatchGetPortForwardingServicesRequest_FieldPathSelectorNames ||
 		fp.selector == BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask ||
 		fp.selector == BatchGetPortForwardingServicesRequest_FieldPathSelectorView
 }
 
 func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) WithIValue(value interface{}) BatchGetPortForwardingServicesRequest_FieldPathValue {
 	switch fp.selector {
-	case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-		return &BatchGetPortForwardingServicesRequest_FieldTerminalPathValue{BatchGetPortForwardingServicesRequest_FieldTerminalPath: *fp, value: value.(*port_forwarding_service.Reference)}
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 		return &BatchGetPortForwardingServicesRequest_FieldTerminalPathValue{BatchGetPortForwardingServicesRequest_FieldTerminalPath: *fp, value: value.([]*port_forwarding_service.Reference)}
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -737,8 +718,6 @@ func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) WithRawIValue
 func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) WithIArrayOfValues(values interface{}) BatchGetPortForwardingServicesRequest_FieldPathArrayOfValues {
 	fpaov := &BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayOfValues{BatchGetPortForwardingServicesRequest_FieldTerminalPath: *fp}
 	switch fp.selector {
-	case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-		return &BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayOfValues{BatchGetPortForwardingServicesRequest_FieldTerminalPath: *fp, values: values.([]*port_forwarding_service.Reference)}
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 		return &BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayOfValues{BatchGetPortForwardingServicesRequest_FieldTerminalPath: *fp, values: values.([][]*port_forwarding_service.Reference)}
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -807,10 +786,6 @@ var _ BatchGetPortForwardingServicesRequest_FieldPathValue = (*BatchGetPortForwa
 func (fpv *BatchGetPortForwardingServicesRequest_FieldTerminalPathValue) GetRawValue() interface{} {
 	return fpv.value
 }
-func (fpv *BatchGetPortForwardingServicesRequest_FieldTerminalPathValue) AsParentValue() (*port_forwarding_service.Reference, bool) {
-	res, ok := fpv.value.(*port_forwarding_service.Reference)
-	return res, ok
-}
 func (fpv *BatchGetPortForwardingServicesRequest_FieldTerminalPathValue) AsNamesValue() ([]*port_forwarding_service.Reference, bool) {
 	res, ok := fpv.value.([]*port_forwarding_service.Reference)
 	return res, ok
@@ -830,8 +805,6 @@ func (fpv *BatchGetPortForwardingServicesRequest_FieldTerminalPathValue) SetTo(t
 		*target = new(BatchGetPortForwardingServicesRequest)
 	}
 	switch fpv.selector {
-	case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-		(*target).Parent = fpv.value.(*port_forwarding_service.Reference)
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 		(*target).Names = fpv.value.([]*port_forwarding_service.Reference)
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -851,25 +824,6 @@ func (fpv *BatchGetPortForwardingServicesRequest_FieldTerminalPathValue) SetToRa
 // CompareWith compares value in the 'BatchGetPortForwardingServicesRequest_FieldTerminalPathValue' with the value under path in 'BatchGetPortForwardingServicesRequest'.
 func (fpv *BatchGetPortForwardingServicesRequest_FieldTerminalPathValue) CompareWith(source *BatchGetPortForwardingServicesRequest) (int, bool) {
 	switch fpv.selector {
-	case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-		leftValue := fpv.value.(*port_forwarding_service.Reference)
-		rightValue := source.GetParent()
-		if leftValue == nil {
-			if rightValue != nil {
-				return -1, true
-			}
-			return 0, true
-		}
-		if rightValue == nil {
-			return 1, true
-		}
-		if leftValue.String() == rightValue.String() {
-			return 0, true
-		} else if leftValue.String() < rightValue.String() {
-			return -1, true
-		} else {
-			return 1, true
-		}
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 		return 0, false
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -992,10 +946,6 @@ var _ BatchGetPortForwardingServicesRequest_FieldPathArrayOfValues = (*BatchGetP
 
 func (fpaov *BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayOfValues) GetRawValues() (values []interface{}) {
 	switch fpaov.selector {
-	case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-		for _, v := range fpaov.values.([]*port_forwarding_service.Reference) {
-			values = append(values, v)
-		}
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 		for _, v := range fpaov.values.([][]*port_forwarding_service.Reference) {
 			values = append(values, v)
@@ -1010,10 +960,6 @@ func (fpaov *BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayOfValue
 		}
 	}
 	return
-}
-func (fpaov *BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayOfValues) AsParentArrayOfValues() ([]*port_forwarding_service.Reference, bool) {
-	res, ok := fpaov.values.([]*port_forwarding_service.Reference)
-	return res, ok
 }
 func (fpaov *BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayOfValues) AsNamesArrayOfValues() ([][]*port_forwarding_service.Reference, bool) {
 	res, ok := fpaov.values.([][]*port_forwarding_service.Reference)

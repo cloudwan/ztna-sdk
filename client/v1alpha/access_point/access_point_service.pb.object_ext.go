@@ -152,9 +152,6 @@ func (o *BatchGetAccessPointsRequest) MakeDiffFieldMask(other *BatchGetAccessPoi
 	}
 
 	res := &BatchGetAccessPointsRequest_FieldMask{}
-	if o.GetParent().String() != other.GetParent().String() {
-		res.Paths = append(res.Paths, &BatchGetAccessPointsRequest_FieldTerminalPath{selector: BatchGetAccessPointsRequest_FieldPathSelectorParent})
-	}
 
 	if len(o.GetNames()) == len(other.GetNames()) {
 		for i, lValue := range o.GetNames() {
@@ -185,16 +182,6 @@ func (o *BatchGetAccessPointsRequest) Clone() *BatchGetAccessPointsRequest {
 		return nil
 	}
 	result := &BatchGetAccessPointsRequest{}
-	if o.Parent == nil {
-		result.Parent = nil
-	} else if data, err := o.Parent.ProtoString(); err != nil {
-		panic(err)
-	} else {
-		result.Parent = &access_point.Reference{}
-		if err := result.Parent.ParseProtoString(data); err != nil {
-			panic(err)
-		}
-	}
 	result.Names = make([]*access_point.Reference, len(o.Names))
 	for i, sourceValue := range o.Names {
 		if sourceValue == nil {
@@ -218,18 +205,6 @@ func (o *BatchGetAccessPointsRequest) CloneRaw() gotenobject.GotenObjectExt {
 }
 
 func (o *BatchGetAccessPointsRequest) Merge(source *BatchGetAccessPointsRequest) {
-	if source.GetParent() != nil {
-		if data, err := source.GetParent().ProtoString(); err != nil {
-			panic(err)
-		} else {
-			o.Parent = &access_point.Reference{}
-			if err := o.Parent.ParseProtoString(data); err != nil {
-				panic(err)
-			}
-		}
-	} else {
-		o.Parent = nil
-	}
 	for _, sourceValue := range source.GetNames() {
 		exists := false
 		for _, currentValue := range o.Names {

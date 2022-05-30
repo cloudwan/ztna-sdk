@@ -318,7 +318,6 @@ type BatchGetPortForwardingServicesRequest_FieldMask struct {
 
 func FullBatchGetPortForwardingServicesRequest_FieldMask() *BatchGetPortForwardingServicesRequest_FieldMask {
 	res := &BatchGetPortForwardingServicesRequest_FieldMask{}
-	res.Paths = append(res.Paths, &BatchGetPortForwardingServicesRequest_FieldTerminalPath{selector: BatchGetPortForwardingServicesRequest_FieldPathSelectorParent})
 	res.Paths = append(res.Paths, &BatchGetPortForwardingServicesRequest_FieldTerminalPath{selector: BatchGetPortForwardingServicesRequest_FieldPathSelectorNames})
 	res.Paths = append(res.Paths, &BatchGetPortForwardingServicesRequest_FieldTerminalPath{selector: BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask})
 	res.Paths = append(res.Paths, &BatchGetPortForwardingServicesRequest_FieldTerminalPath{selector: BatchGetPortForwardingServicesRequest_FieldPathSelectorView})
@@ -365,7 +364,7 @@ func (fieldMask *BatchGetPortForwardingServicesRequest_FieldMask) IsFull() bool 
 	if fieldMask == nil {
 		return false
 	}
-	presentSelectors := make([]bool, 4)
+	presentSelectors := make([]bool, 3)
 	for _, path := range fieldMask.Paths {
 		if asFinal, ok := path.(*BatchGetPortForwardingServicesRequest_FieldTerminalPath); ok {
 			presentSelectors[int(asFinal.selector)] = true
@@ -395,7 +394,7 @@ func (fieldMask *BatchGetPortForwardingServicesRequest_FieldMask) Reset() {
 
 func (fieldMask *BatchGetPortForwardingServicesRequest_FieldMask) Subtract(other *BatchGetPortForwardingServicesRequest_FieldMask) *BatchGetPortForwardingServicesRequest_FieldMask {
 	result := &BatchGetPortForwardingServicesRequest_FieldMask{}
-	removedSelectors := make([]bool, 4)
+	removedSelectors := make([]bool, 3)
 
 	for _, path := range other.GetPaths() {
 		switch tp := path.(type) {
@@ -549,8 +548,6 @@ func (fieldMask *BatchGetPortForwardingServicesRequest_FieldMask) Project(source
 		switch tp := p.(type) {
 		case *BatchGetPortForwardingServicesRequest_FieldTerminalPath:
 			switch tp.selector {
-			case BatchGetPortForwardingServicesRequest_FieldPathSelectorParent:
-				result.Parent = source.Parent
 			case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
 				result.Names = source.Names
 			case BatchGetPortForwardingServicesRequest_FieldPathSelectorFieldMask:

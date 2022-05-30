@@ -96,9 +96,6 @@ type BatchGetPortForwardingServicesRequestFieldPathBuilder struct{}
 func NewBatchGetPortForwardingServicesRequestFieldPathBuilder() BatchGetPortForwardingServicesRequestFieldPathBuilder {
 	return BatchGetPortForwardingServicesRequestFieldPathBuilder{}
 }
-func (BatchGetPortForwardingServicesRequestFieldPathBuilder) Parent() BatchGetPortForwardingServicesRequestPathSelectorParent {
-	return BatchGetPortForwardingServicesRequestPathSelectorParent{}
-}
 func (BatchGetPortForwardingServicesRequestFieldPathBuilder) Names() BatchGetPortForwardingServicesRequestPathSelectorNames {
 	return BatchGetPortForwardingServicesRequestPathSelectorNames{}
 }
@@ -107,20 +104,6 @@ func (BatchGetPortForwardingServicesRequestFieldPathBuilder) FieldMask() BatchGe
 }
 func (BatchGetPortForwardingServicesRequestFieldPathBuilder) View() BatchGetPortForwardingServicesRequestPathSelectorView {
 	return BatchGetPortForwardingServicesRequestPathSelectorView{}
-}
-
-type BatchGetPortForwardingServicesRequestPathSelectorParent struct{}
-
-func (BatchGetPortForwardingServicesRequestPathSelectorParent) FieldPath() *BatchGetPortForwardingServicesRequest_FieldTerminalPath {
-	return &BatchGetPortForwardingServicesRequest_FieldTerminalPath{selector: BatchGetPortForwardingServicesRequest_FieldPathSelectorParent}
-}
-
-func (s BatchGetPortForwardingServicesRequestPathSelectorParent) WithValue(value *port_forwarding_service.Reference) *BatchGetPortForwardingServicesRequest_FieldTerminalPathValue {
-	return s.FieldPath().WithIValue(value).(*BatchGetPortForwardingServicesRequest_FieldTerminalPathValue)
-}
-
-func (s BatchGetPortForwardingServicesRequestPathSelectorParent) WithArrayOfValues(values []*port_forwarding_service.Reference) *BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayOfValues)
 }
 
 type BatchGetPortForwardingServicesRequestPathSelectorNames struct{}

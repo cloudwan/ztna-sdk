@@ -9,7 +9,6 @@ import (
 	ntt_meta "github.com/cloudwan/edgelq-sdk/common/types/meta"
 	iam_organization "github.com/cloudwan/edgelq-sdk/iam/resources/v1alpha/organization"
 	iam_project "github.com/cloudwan/edgelq-sdk/iam/resources/v1alpha/project"
-	syncing_meta "github.com/cloudwan/edgelq-sdk/meta/multi_region/proto/syncing_meta"
 	view "github.com/cloudwan/goten-sdk/runtime/api/view"
 	watch_type "github.com/cloudwan/goten-sdk/runtime/api/watch_type"
 	access_point "github.com/cloudwan/ztna-sdk/resources/v1alpha/access_point"
@@ -24,7 +23,6 @@ var (
 	_ = &ntt_meta.Meta{}
 	_ = &iam_organization.Organization{}
 	_ = &iam_project.Project{}
-	_ = &syncing_meta.SyncingMeta{}
 	_ = &empty.Empty{}
 	_ = &field_mask.FieldMask{}
 	_ = &timestamp.Timestamp{}
@@ -694,11 +692,11 @@ func (BatchGetPortForwardingServicesResponsePathSelectorPortForwardingServicesMe
 	}
 }
 
-func (s BatchGetPortForwardingServicesResponsePathSelectorPortForwardingServicesMetadataSyncing) WithValue(value *syncing_meta.SyncingMeta) *BatchGetPortForwardingServicesResponse_FieldSubPathValue {
+func (s BatchGetPortForwardingServicesResponsePathSelectorPortForwardingServicesMetadataSyncing) WithValue(value *ntt_meta.SyncingMeta) *BatchGetPortForwardingServicesResponse_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*BatchGetPortForwardingServicesResponse_FieldSubPathValue)
 }
 
-func (s BatchGetPortForwardingServicesResponsePathSelectorPortForwardingServicesMetadataSyncing) WithArrayOfValues(values []*syncing_meta.SyncingMeta) *BatchGetPortForwardingServicesResponse_FieldSubPathArrayOfValues {
+func (s BatchGetPortForwardingServicesResponsePathSelectorPortForwardingServicesMetadataSyncing) WithArrayOfValues(values []*ntt_meta.SyncingMeta) *BatchGetPortForwardingServicesResponse_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetPortForwardingServicesResponse_FieldSubPathArrayOfValues)
 }
 
@@ -1583,11 +1581,11 @@ func (ListPortForwardingServicesResponsePathSelectorPortForwardingServicesMetada
 	}
 }
 
-func (s ListPortForwardingServicesResponsePathSelectorPortForwardingServicesMetadataSyncing) WithValue(value *syncing_meta.SyncingMeta) *ListPortForwardingServicesResponse_FieldSubPathValue {
+func (s ListPortForwardingServicesResponsePathSelectorPortForwardingServicesMetadataSyncing) WithValue(value *ntt_meta.SyncingMeta) *ListPortForwardingServicesResponse_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*ListPortForwardingServicesResponse_FieldSubPathValue)
 }
 
-func (s ListPortForwardingServicesResponsePathSelectorPortForwardingServicesMetadataSyncing) WithArrayOfValues(values []*syncing_meta.SyncingMeta) *ListPortForwardingServicesResponse_FieldSubPathArrayOfValues {
+func (s ListPortForwardingServicesResponsePathSelectorPortForwardingServicesMetadataSyncing) WithArrayOfValues(values []*ntt_meta.SyncingMeta) *ListPortForwardingServicesResponse_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*ListPortForwardingServicesResponse_FieldSubPathArrayOfValues)
 }
 
@@ -2848,11 +2846,11 @@ func (CreatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadat
 	}
 }
 
-func (s CreatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadataSyncing) WithValue(value *syncing_meta.SyncingMeta) *CreatePortForwardingServiceRequest_FieldSubPathValue {
+func (s CreatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadataSyncing) WithValue(value *ntt_meta.SyncingMeta) *CreatePortForwardingServiceRequest_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*CreatePortForwardingServiceRequest_FieldSubPathValue)
 }
 
-func (s CreatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadataSyncing) WithArrayOfValues(values []*syncing_meta.SyncingMeta) *CreatePortForwardingServiceRequest_FieldSubPathArrayOfValues {
+func (s CreatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadataSyncing) WithArrayOfValues(values []*ntt_meta.SyncingMeta) *CreatePortForwardingServiceRequest_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*CreatePortForwardingServiceRequest_FieldSubPathArrayOfValues)
 }
 
@@ -3591,11 +3589,11 @@ func (UpdatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadat
 	}
 }
 
-func (s UpdatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadataSyncing) WithValue(value *syncing_meta.SyncingMeta) *UpdatePortForwardingServiceRequest_FieldSubPathValue {
+func (s UpdatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadataSyncing) WithValue(value *ntt_meta.SyncingMeta) *UpdatePortForwardingServiceRequest_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*UpdatePortForwardingServiceRequest_FieldSubPathValue)
 }
 
-func (s UpdatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadataSyncing) WithArrayOfValues(values []*syncing_meta.SyncingMeta) *UpdatePortForwardingServiceRequest_FieldSubPathArrayOfValues {
+func (s UpdatePortForwardingServiceRequestPathSelectorPortForwardingServiceMetadataSyncing) WithArrayOfValues(values []*ntt_meta.SyncingMeta) *UpdatePortForwardingServiceRequest_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*UpdatePortForwardingServiceRequest_FieldSubPathArrayOfValues)
 }
 
@@ -4358,11 +4356,11 @@ func (UpdatePortForwardingServiceRequestPathSelectorCasConditionalStateMetadataS
 	}
 }
 
-func (s UpdatePortForwardingServiceRequestPathSelectorCasConditionalStateMetadataSyncing) WithValue(value *syncing_meta.SyncingMeta) *UpdatePortForwardingServiceRequest_FieldSubPathValue {
+func (s UpdatePortForwardingServiceRequestPathSelectorCasConditionalStateMetadataSyncing) WithValue(value *ntt_meta.SyncingMeta) *UpdatePortForwardingServiceRequest_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*UpdatePortForwardingServiceRequest_FieldSubPathValue)
 }
 
-func (s UpdatePortForwardingServiceRequestPathSelectorCasConditionalStateMetadataSyncing) WithArrayOfValues(values []*syncing_meta.SyncingMeta) *UpdatePortForwardingServiceRequest_FieldSubPathArrayOfValues {
+func (s UpdatePortForwardingServiceRequestPathSelectorCasConditionalStateMetadataSyncing) WithArrayOfValues(values []*ntt_meta.SyncingMeta) *UpdatePortForwardingServiceRequest_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*UpdatePortForwardingServiceRequest_FieldSubPathArrayOfValues)
 }
 
@@ -5115,11 +5113,11 @@ func (UpdatePortForwardingServiceRequest_CASPathSelectorConditionalStateMetadata
 	}
 }
 
-func (s UpdatePortForwardingServiceRequest_CASPathSelectorConditionalStateMetadataSyncing) WithValue(value *syncing_meta.SyncingMeta) *UpdatePortForwardingServiceRequestCAS_FieldSubPathValue {
+func (s UpdatePortForwardingServiceRequest_CASPathSelectorConditionalStateMetadataSyncing) WithValue(value *ntt_meta.SyncingMeta) *UpdatePortForwardingServiceRequestCAS_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*UpdatePortForwardingServiceRequestCAS_FieldSubPathValue)
 }
 
-func (s UpdatePortForwardingServiceRequest_CASPathSelectorConditionalStateMetadataSyncing) WithArrayOfValues(values []*syncing_meta.SyncingMeta) *UpdatePortForwardingServiceRequestCAS_FieldSubPathArrayOfValues {
+func (s UpdatePortForwardingServiceRequest_CASPathSelectorConditionalStateMetadataSyncing) WithArrayOfValues(values []*ntt_meta.SyncingMeta) *UpdatePortForwardingServiceRequestCAS_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*UpdatePortForwardingServiceRequestCAS_FieldSubPathArrayOfValues)
 }
 

@@ -9,7 +9,6 @@ import (
 	ntt_meta "github.com/cloudwan/edgelq-sdk/common/types/meta"
 	iam_organization "github.com/cloudwan/edgelq-sdk/iam/resources/v1alpha/organization"
 	iam_project "github.com/cloudwan/edgelq-sdk/iam/resources/v1alpha/project"
-	syncing_meta "github.com/cloudwan/edgelq-sdk/meta/multi_region/proto/syncing_meta"
 	access_point "github.com/cloudwan/ztna-sdk/resources/v1alpha/access_point"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 )
@@ -19,7 +18,6 @@ var (
 	_ = &ntt_meta.Meta{}
 	_ = &iam_organization.Organization{}
 	_ = &iam_project.Project{}
-	_ = &syncing_meta.SyncingMeta{}
 	_ = &timestamp.Timestamp{}
 	_ = &access_point.AccessPoint{}
 )
@@ -529,11 +527,11 @@ func (PortForwardingServicePathSelectorMetadataSyncing) FieldPath() *PortForward
 	}
 }
 
-func (s PortForwardingServicePathSelectorMetadataSyncing) WithValue(value *syncing_meta.SyncingMeta) *PortForwardingService_FieldSubPathValue {
+func (s PortForwardingServicePathSelectorMetadataSyncing) WithValue(value *ntt_meta.SyncingMeta) *PortForwardingService_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*PortForwardingService_FieldSubPathValue)
 }
 
-func (s PortForwardingServicePathSelectorMetadataSyncing) WithArrayOfValues(values []*syncing_meta.SyncingMeta) *PortForwardingService_FieldSubPathArrayOfValues {
+func (s PortForwardingServicePathSelectorMetadataSyncing) WithArrayOfValues(values []*ntt_meta.SyncingMeta) *PortForwardingService_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
 }
 

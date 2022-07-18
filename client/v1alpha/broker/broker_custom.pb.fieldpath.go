@@ -10625,9 +10625,10 @@ type ConnectRequestResumeRequest_FieldPathSelector int32
 const (
 	ConnectRequestResumeRequest_FieldPathSelectorPortForwardingService ConnectRequestResumeRequest_FieldPathSelector = 0
 	ConnectRequestResumeRequest_FieldPathSelectorName                  ConnectRequestResumeRequest_FieldPathSelector = 1
-	ConnectRequestResumeRequest_FieldPathSelectorSessionId             ConnectRequestResumeRequest_FieldPathSelector = 2
-	ConnectRequestResumeRequest_FieldPathSelectorChannelId             ConnectRequestResumeRequest_FieldPathSelector = 3
-	ConnectRequestResumeRequest_FieldPathSelectorLastMessageId         ConnectRequestResumeRequest_FieldPathSelector = 4
+	ConnectRequestResumeRequest_FieldPathSelectorProviderName          ConnectRequestResumeRequest_FieldPathSelector = 2
+	ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId     ConnectRequestResumeRequest_FieldPathSelector = 3
+	ConnectRequestResumeRequest_FieldPathSelectorChannelId             ConnectRequestResumeRequest_FieldPathSelector = 4
+	ConnectRequestResumeRequest_FieldPathSelectorLastMessageId         ConnectRequestResumeRequest_FieldPathSelector = 5
 )
 
 func (s ConnectRequestResumeRequest_FieldPathSelector) String() string {
@@ -10636,8 +10637,10 @@ func (s ConnectRequestResumeRequest_FieldPathSelector) String() string {
 		return "port_forwarding_service"
 	case ConnectRequestResumeRequest_FieldPathSelectorName:
 		return "name"
-	case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
-		return "session_id"
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+		return "provider_name"
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
+		return "provider_session_id"
 	case ConnectRequestResumeRequest_FieldPathSelectorChannelId:
 		return "channel_id"
 	case ConnectRequestResumeRequest_FieldPathSelectorLastMessageId:
@@ -10657,8 +10660,10 @@ func BuildConnectRequestResumeRequest_FieldPath(fp gotenobject.RawFieldPath) (Co
 			return &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorPortForwardingService}, nil
 		case "name":
 			return &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorName}, nil
-		case "session_id", "sessionId", "session-id":
-			return &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorSessionId}, nil
+		case "provider_name", "providerName", "provider-name":
+			return &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorProviderName}, nil
+		case "provider_session_id", "providerSessionId", "provider-session-id":
+			return &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId}, nil
 		case "channel_id", "channelId", "channel-id":
 			return &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorChannelId}, nil
 		case "last_message_id", "lastMessageId", "last-message-id":
@@ -10714,8 +10719,10 @@ func (fp *ConnectRequestResumeRequest_FieldTerminalPath) Get(source *ConnectRequ
 			}
 		case ConnectRequestResumeRequest_FieldPathSelectorName:
 			values = append(values, source.Name)
-		case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
-			values = append(values, source.SessionId)
+		case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+			values = append(values, source.ProviderName)
+		case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
+			values = append(values, source.ProviderSessionId)
 		case ConnectRequestResumeRequest_FieldPathSelectorChannelId:
 			values = append(values, source.ChannelId)
 		case ConnectRequestResumeRequest_FieldPathSelectorLastMessageId:
@@ -10739,8 +10746,10 @@ func (fp *ConnectRequestResumeRequest_FieldTerminalPath) GetSingle(source *Conne
 		return res, res != nil
 	case ConnectRequestResumeRequest_FieldPathSelectorName:
 		return source.GetName(), source != nil
-	case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
-		return source.GetSessionId(), source != nil
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+		return source.GetProviderName(), source != nil
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
+		return source.GetProviderSessionId(), source != nil
 	case ConnectRequestResumeRequest_FieldPathSelectorChannelId:
 		return source.GetChannelId(), source != nil
 	case ConnectRequestResumeRequest_FieldPathSelectorLastMessageId:
@@ -10761,7 +10770,9 @@ func (fp *ConnectRequestResumeRequest_FieldTerminalPath) GetDefault() interface{
 		return (*port_forwarding_service.Reference)(nil)
 	case ConnectRequestResumeRequest_FieldPathSelectorName:
 		return ""
-	case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+		return ""
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
 		return uint64(0)
 	case ConnectRequestResumeRequest_FieldPathSelectorChannelId:
 		return uint64(0)
@@ -10779,8 +10790,10 @@ func (fp *ConnectRequestResumeRequest_FieldTerminalPath) ClearValue(item *Connec
 			item.PortForwardingService = nil
 		case ConnectRequestResumeRequest_FieldPathSelectorName:
 			item.Name = ""
-		case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
-			item.SessionId = uint64(0)
+		case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+			item.ProviderName = ""
+		case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
+			item.ProviderSessionId = uint64(0)
 		case ConnectRequestResumeRequest_FieldPathSelectorChannelId:
 			item.ChannelId = uint64(0)
 		case ConnectRequestResumeRequest_FieldPathSelectorLastMessageId:
@@ -10799,7 +10812,8 @@ func (fp *ConnectRequestResumeRequest_FieldTerminalPath) ClearValueRaw(item prot
 func (fp *ConnectRequestResumeRequest_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == ConnectRequestResumeRequest_FieldPathSelectorPortForwardingService ||
 		fp.selector == ConnectRequestResumeRequest_FieldPathSelectorName ||
-		fp.selector == ConnectRequestResumeRequest_FieldPathSelectorSessionId ||
+		fp.selector == ConnectRequestResumeRequest_FieldPathSelectorProviderName ||
+		fp.selector == ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId ||
 		fp.selector == ConnectRequestResumeRequest_FieldPathSelectorChannelId ||
 		fp.selector == ConnectRequestResumeRequest_FieldPathSelectorLastMessageId
 }
@@ -10810,7 +10824,9 @@ func (fp *ConnectRequestResumeRequest_FieldTerminalPath) WithIValue(value interf
 		return &ConnectRequestResumeRequest_FieldTerminalPathValue{ConnectRequestResumeRequest_FieldTerminalPath: *fp, value: value.(*port_forwarding_service.Reference)}
 	case ConnectRequestResumeRequest_FieldPathSelectorName:
 		return &ConnectRequestResumeRequest_FieldTerminalPathValue{ConnectRequestResumeRequest_FieldTerminalPath: *fp, value: value.(string)}
-	case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+		return &ConnectRequestResumeRequest_FieldTerminalPathValue{ConnectRequestResumeRequest_FieldTerminalPath: *fp, value: value.(string)}
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
 		return &ConnectRequestResumeRequest_FieldTerminalPathValue{ConnectRequestResumeRequest_FieldTerminalPath: *fp, value: value.(uint64)}
 	case ConnectRequestResumeRequest_FieldPathSelectorChannelId:
 		return &ConnectRequestResumeRequest_FieldTerminalPathValue{ConnectRequestResumeRequest_FieldTerminalPath: *fp, value: value.(uint64)}
@@ -10832,7 +10848,9 @@ func (fp *ConnectRequestResumeRequest_FieldTerminalPath) WithIArrayOfValues(valu
 		return &ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues{ConnectRequestResumeRequest_FieldTerminalPath: *fp, values: values.([]*port_forwarding_service.Reference)}
 	case ConnectRequestResumeRequest_FieldPathSelectorName:
 		return &ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues{ConnectRequestResumeRequest_FieldTerminalPath: *fp, values: values.([]string)}
-	case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+		return &ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues{ConnectRequestResumeRequest_FieldTerminalPath: *fp, values: values.([]string)}
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
 		return &ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues{ConnectRequestResumeRequest_FieldTerminalPath: *fp, values: values.([]uint64)}
 	case ConnectRequestResumeRequest_FieldPathSelectorChannelId:
 		return &ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues{ConnectRequestResumeRequest_FieldTerminalPath: *fp, values: values.([]uint64)}
@@ -10906,7 +10924,11 @@ func (fpv *ConnectRequestResumeRequest_FieldTerminalPathValue) AsNameValue() (st
 	res, ok := fpv.value.(string)
 	return res, ok
 }
-func (fpv *ConnectRequestResumeRequest_FieldTerminalPathValue) AsSessionIdValue() (uint64, bool) {
+func (fpv *ConnectRequestResumeRequest_FieldTerminalPathValue) AsProviderNameValue() (string, bool) {
+	res, ok := fpv.value.(string)
+	return res, ok
+}
+func (fpv *ConnectRequestResumeRequest_FieldTerminalPathValue) AsProviderSessionIdValue() (uint64, bool) {
 	res, ok := fpv.value.(uint64)
 	return res, ok
 }
@@ -10929,8 +10951,10 @@ func (fpv *ConnectRequestResumeRequest_FieldTerminalPathValue) SetTo(target **Co
 		(*target).PortForwardingService = fpv.value.(*port_forwarding_service.Reference)
 	case ConnectRequestResumeRequest_FieldPathSelectorName:
 		(*target).Name = fpv.value.(string)
-	case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
-		(*target).SessionId = fpv.value.(uint64)
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+		(*target).ProviderName = fpv.value.(string)
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
+		(*target).ProviderSessionId = fpv.value.(uint64)
 	case ConnectRequestResumeRequest_FieldPathSelectorChannelId:
 		(*target).ChannelId = fpv.value.(uint64)
 	case ConnectRequestResumeRequest_FieldPathSelectorLastMessageId:
@@ -10977,9 +11001,19 @@ func (fpv *ConnectRequestResumeRequest_FieldTerminalPathValue) CompareWith(sourc
 		} else {
 			return 1, true
 		}
-	case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+		leftValue := fpv.value.(string)
+		rightValue := source.GetProviderName()
+		if (leftValue) == (rightValue) {
+			return 0, true
+		} else if (leftValue) < (rightValue) {
+			return -1, true
+		} else {
+			return 1, true
+		}
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
 		leftValue := fpv.value.(uint64)
-		rightValue := source.GetSessionId()
+		rightValue := source.GetProviderSessionId()
 		if (leftValue) == (rightValue) {
 			return 0, true
 		} else if (leftValue) < (rightValue) {
@@ -11119,7 +11153,11 @@ func (fpaov *ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues) GetRawV
 		for _, v := range fpaov.values.([]string) {
 			values = append(values, v)
 		}
-	case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+		for _, v := range fpaov.values.([]string) {
+			values = append(values, v)
+		}
+	case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
 		for _, v := range fpaov.values.([]uint64) {
 			values = append(values, v)
 		}
@@ -11142,7 +11180,11 @@ func (fpaov *ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues) AsNameA
 	res, ok := fpaov.values.([]string)
 	return res, ok
 }
-func (fpaov *ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues) AsSessionIdArrayOfValues() ([]uint64, bool) {
+func (fpaov *ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues) AsProviderNameArrayOfValues() ([]string, bool) {
+	res, ok := fpaov.values.([]string)
+	return res, ok
+}
+func (fpaov *ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues) AsProviderSessionIdArrayOfValues() ([]uint64, bool) {
 	res, ok := fpaov.values.([]uint64)
 	return res, ok
 }
@@ -12275,14 +12317,17 @@ type ConnectResponseOpenResponse_FieldPath interface {
 type ConnectResponseOpenResponse_FieldPathSelector int32
 
 const (
-	ConnectResponseOpenResponse_FieldPathSelectorSessionId ConnectResponseOpenResponse_FieldPathSelector = 0
-	ConnectResponseOpenResponse_FieldPathSelectorChannelId ConnectResponseOpenResponse_FieldPathSelector = 1
+	ConnectResponseOpenResponse_FieldPathSelectorProviderName      ConnectResponseOpenResponse_FieldPathSelector = 0
+	ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId ConnectResponseOpenResponse_FieldPathSelector = 1
+	ConnectResponseOpenResponse_FieldPathSelectorChannelId         ConnectResponseOpenResponse_FieldPathSelector = 2
 )
 
 func (s ConnectResponseOpenResponse_FieldPathSelector) String() string {
 	switch s {
-	case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
-		return "session_id"
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+		return "provider_name"
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
+		return "provider_session_id"
 	case ConnectResponseOpenResponse_FieldPathSelectorChannelId:
 		return "channel_id"
 	default:
@@ -12296,8 +12341,10 @@ func BuildConnectResponseOpenResponse_FieldPath(fp gotenobject.RawFieldPath) (Co
 	}
 	if len(fp) == 1 {
 		switch fp[0] {
-		case "session_id", "sessionId", "session-id":
-			return &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorSessionId}, nil
+		case "provider_name", "providerName", "provider-name":
+			return &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorProviderName}, nil
+		case "provider_session_id", "providerSessionId", "provider-session-id":
+			return &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId}, nil
 		case "channel_id", "channelId", "channel-id":
 			return &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorChannelId}, nil
 		}
@@ -12345,8 +12392,10 @@ func (fp *ConnectResponseOpenResponse_FieldTerminalPath) JSONString() string {
 func (fp *ConnectResponseOpenResponse_FieldTerminalPath) Get(source *ConnectResponse_OpenResponse) (values []interface{}) {
 	if source != nil {
 		switch fp.selector {
-		case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
-			values = append(values, source.SessionId)
+		case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+			values = append(values, source.ProviderName)
+		case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
+			values = append(values, source.ProviderSessionId)
 		case ConnectResponseOpenResponse_FieldPathSelectorChannelId:
 			values = append(values, source.ChannelId)
 		default:
@@ -12363,8 +12412,10 @@ func (fp *ConnectResponseOpenResponse_FieldTerminalPath) GetRaw(source proto.Mes
 // GetSingle returns value pointed by specific field of from source ConnectResponse_OpenResponse
 func (fp *ConnectResponseOpenResponse_FieldTerminalPath) GetSingle(source *ConnectResponse_OpenResponse) (interface{}, bool) {
 	switch fp.selector {
-	case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
-		return source.GetSessionId(), source != nil
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+		return source.GetProviderName(), source != nil
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
+		return source.GetProviderSessionId(), source != nil
 	case ConnectResponseOpenResponse_FieldPathSelectorChannelId:
 		return source.GetChannelId(), source != nil
 	default:
@@ -12379,7 +12430,9 @@ func (fp *ConnectResponseOpenResponse_FieldTerminalPath) GetSingleRaw(source pro
 // GetDefault returns a default value of the field type
 func (fp *ConnectResponseOpenResponse_FieldTerminalPath) GetDefault() interface{} {
 	switch fp.selector {
-	case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+		return ""
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
 		return uint64(0)
 	case ConnectResponseOpenResponse_FieldPathSelectorChannelId:
 		return uint64(0)
@@ -12391,8 +12444,10 @@ func (fp *ConnectResponseOpenResponse_FieldTerminalPath) GetDefault() interface{
 func (fp *ConnectResponseOpenResponse_FieldTerminalPath) ClearValue(item *ConnectResponse_OpenResponse) {
 	if item != nil {
 		switch fp.selector {
-		case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
-			item.SessionId = uint64(0)
+		case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+			item.ProviderName = ""
+		case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
+			item.ProviderSessionId = uint64(0)
 		case ConnectResponseOpenResponse_FieldPathSelectorChannelId:
 			item.ChannelId = uint64(0)
 		default:
@@ -12407,13 +12462,16 @@ func (fp *ConnectResponseOpenResponse_FieldTerminalPath) ClearValueRaw(item prot
 
 // IsLeaf - whether field path is holds simple value
 func (fp *ConnectResponseOpenResponse_FieldTerminalPath) IsLeaf() bool {
-	return fp.selector == ConnectResponseOpenResponse_FieldPathSelectorSessionId ||
+	return fp.selector == ConnectResponseOpenResponse_FieldPathSelectorProviderName ||
+		fp.selector == ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId ||
 		fp.selector == ConnectResponseOpenResponse_FieldPathSelectorChannelId
 }
 
 func (fp *ConnectResponseOpenResponse_FieldTerminalPath) WithIValue(value interface{}) ConnectResponseOpenResponse_FieldPathValue {
 	switch fp.selector {
-	case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+		return &ConnectResponseOpenResponse_FieldTerminalPathValue{ConnectResponseOpenResponse_FieldTerminalPath: *fp, value: value.(string)}
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
 		return &ConnectResponseOpenResponse_FieldTerminalPathValue{ConnectResponseOpenResponse_FieldTerminalPath: *fp, value: value.(uint64)}
 	case ConnectResponseOpenResponse_FieldPathSelectorChannelId:
 		return &ConnectResponseOpenResponse_FieldTerminalPathValue{ConnectResponseOpenResponse_FieldTerminalPath: *fp, value: value.(uint64)}
@@ -12429,7 +12487,9 @@ func (fp *ConnectResponseOpenResponse_FieldTerminalPath) WithRawIValue(value int
 func (fp *ConnectResponseOpenResponse_FieldTerminalPath) WithIArrayOfValues(values interface{}) ConnectResponseOpenResponse_FieldPathArrayOfValues {
 	fpaov := &ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues{ConnectResponseOpenResponse_FieldTerminalPath: *fp}
 	switch fp.selector {
-	case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+		return &ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues{ConnectResponseOpenResponse_FieldTerminalPath: *fp, values: values.([]string)}
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
 		return &ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues{ConnectResponseOpenResponse_FieldTerminalPath: *fp, values: values.([]uint64)}
 	case ConnectResponseOpenResponse_FieldPathSelectorChannelId:
 		return &ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues{ConnectResponseOpenResponse_FieldTerminalPath: *fp, values: values.([]uint64)}
@@ -12493,7 +12553,11 @@ var _ ConnectResponseOpenResponse_FieldPathValue = (*ConnectResponseOpenResponse
 func (fpv *ConnectResponseOpenResponse_FieldTerminalPathValue) GetRawValue() interface{} {
 	return fpv.value
 }
-func (fpv *ConnectResponseOpenResponse_FieldTerminalPathValue) AsSessionIdValue() (uint64, bool) {
+func (fpv *ConnectResponseOpenResponse_FieldTerminalPathValue) AsProviderNameValue() (string, bool) {
+	res, ok := fpv.value.(string)
+	return res, ok
+}
+func (fpv *ConnectResponseOpenResponse_FieldTerminalPathValue) AsProviderSessionIdValue() (uint64, bool) {
 	res, ok := fpv.value.(uint64)
 	return res, ok
 }
@@ -12508,8 +12572,10 @@ func (fpv *ConnectResponseOpenResponse_FieldTerminalPathValue) SetTo(target **Co
 		*target = new(ConnectResponse_OpenResponse)
 	}
 	switch fpv.selector {
-	case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
-		(*target).SessionId = fpv.value.(uint64)
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+		(*target).ProviderName = fpv.value.(string)
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
+		(*target).ProviderSessionId = fpv.value.(uint64)
 	case ConnectResponseOpenResponse_FieldPathSelectorChannelId:
 		(*target).ChannelId = fpv.value.(uint64)
 	default:
@@ -12525,9 +12591,19 @@ func (fpv *ConnectResponseOpenResponse_FieldTerminalPathValue) SetToRaw(target p
 // CompareWith compares value in the 'ConnectResponseOpenResponse_FieldTerminalPathValue' with the value under path in 'ConnectResponse_OpenResponse'.
 func (fpv *ConnectResponseOpenResponse_FieldTerminalPathValue) CompareWith(source *ConnectResponse_OpenResponse) (int, bool) {
 	switch fpv.selector {
-	case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+		leftValue := fpv.value.(string)
+		rightValue := source.GetProviderName()
+		if (leftValue) == (rightValue) {
+			return 0, true
+		} else if (leftValue) < (rightValue) {
+			return -1, true
+		} else {
+			return 1, true
+		}
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
 		leftValue := fpv.value.(uint64)
-		rightValue := source.GetSessionId()
+		rightValue := source.GetProviderSessionId()
 		if (leftValue) == (rightValue) {
 			return 0, true
 		} else if (leftValue) < (rightValue) {
@@ -12649,7 +12725,11 @@ var _ ConnectResponseOpenResponse_FieldPathArrayOfValues = (*ConnectResponseOpen
 
 func (fpaov *ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues) GetRawValues() (values []interface{}) {
 	switch fpaov.selector {
-	case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+		for _, v := range fpaov.values.([]string) {
+			values = append(values, v)
+		}
+	case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
 		for _, v := range fpaov.values.([]uint64) {
 			values = append(values, v)
 		}
@@ -12660,7 +12740,11 @@ func (fpaov *ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues) GetRawV
 	}
 	return
 }
-func (fpaov *ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues) AsSessionIdArrayOfValues() ([]uint64, bool) {
+func (fpaov *ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues) AsProviderNameArrayOfValues() ([]string, bool) {
+	res, ok := fpaov.values.([]string)
+	return res, ok
+}
+func (fpaov *ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues) AsProviderSessionIdArrayOfValues() ([]uint64, bool) {
 	res, ok := fpaov.values.([]uint64)
 	return res, ok
 }
@@ -12688,15 +12772,18 @@ type ConnectResponseResumeResponse_FieldPath interface {
 type ConnectResponseResumeResponse_FieldPathSelector int32
 
 const (
-	ConnectResponseResumeResponse_FieldPathSelectorSessionId     ConnectResponseResumeResponse_FieldPathSelector = 0
-	ConnectResponseResumeResponse_FieldPathSelectorChannelId     ConnectResponseResumeResponse_FieldPathSelector = 1
-	ConnectResponseResumeResponse_FieldPathSelectorLastMessageId ConnectResponseResumeResponse_FieldPathSelector = 2
+	ConnectResponseResumeResponse_FieldPathSelectorProviderName      ConnectResponseResumeResponse_FieldPathSelector = 0
+	ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId ConnectResponseResumeResponse_FieldPathSelector = 1
+	ConnectResponseResumeResponse_FieldPathSelectorChannelId         ConnectResponseResumeResponse_FieldPathSelector = 2
+	ConnectResponseResumeResponse_FieldPathSelectorLastMessageId     ConnectResponseResumeResponse_FieldPathSelector = 3
 )
 
 func (s ConnectResponseResumeResponse_FieldPathSelector) String() string {
 	switch s {
-	case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
-		return "session_id"
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+		return "provider_name"
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
+		return "provider_session_id"
 	case ConnectResponseResumeResponse_FieldPathSelectorChannelId:
 		return "channel_id"
 	case ConnectResponseResumeResponse_FieldPathSelectorLastMessageId:
@@ -12712,8 +12799,10 @@ func BuildConnectResponseResumeResponse_FieldPath(fp gotenobject.RawFieldPath) (
 	}
 	if len(fp) == 1 {
 		switch fp[0] {
-		case "session_id", "sessionId", "session-id":
-			return &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorSessionId}, nil
+		case "provider_name", "providerName", "provider-name":
+			return &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorProviderName}, nil
+		case "provider_session_id", "providerSessionId", "provider-session-id":
+			return &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId}, nil
 		case "channel_id", "channelId", "channel-id":
 			return &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorChannelId}, nil
 		case "last_message_id", "lastMessageId", "last-message-id":
@@ -12763,8 +12852,10 @@ func (fp *ConnectResponseResumeResponse_FieldTerminalPath) JSONString() string {
 func (fp *ConnectResponseResumeResponse_FieldTerminalPath) Get(source *ConnectResponse_ResumeResponse) (values []interface{}) {
 	if source != nil {
 		switch fp.selector {
-		case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
-			values = append(values, source.SessionId)
+		case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+			values = append(values, source.ProviderName)
+		case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
+			values = append(values, source.ProviderSessionId)
 		case ConnectResponseResumeResponse_FieldPathSelectorChannelId:
 			values = append(values, source.ChannelId)
 		case ConnectResponseResumeResponse_FieldPathSelectorLastMessageId:
@@ -12783,8 +12874,10 @@ func (fp *ConnectResponseResumeResponse_FieldTerminalPath) GetRaw(source proto.M
 // GetSingle returns value pointed by specific field of from source ConnectResponse_ResumeResponse
 func (fp *ConnectResponseResumeResponse_FieldTerminalPath) GetSingle(source *ConnectResponse_ResumeResponse) (interface{}, bool) {
 	switch fp.selector {
-	case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
-		return source.GetSessionId(), source != nil
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+		return source.GetProviderName(), source != nil
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
+		return source.GetProviderSessionId(), source != nil
 	case ConnectResponseResumeResponse_FieldPathSelectorChannelId:
 		return source.GetChannelId(), source != nil
 	case ConnectResponseResumeResponse_FieldPathSelectorLastMessageId:
@@ -12801,7 +12894,9 @@ func (fp *ConnectResponseResumeResponse_FieldTerminalPath) GetSingleRaw(source p
 // GetDefault returns a default value of the field type
 func (fp *ConnectResponseResumeResponse_FieldTerminalPath) GetDefault() interface{} {
 	switch fp.selector {
-	case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+		return ""
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
 		return uint64(0)
 	case ConnectResponseResumeResponse_FieldPathSelectorChannelId:
 		return uint64(0)
@@ -12815,8 +12910,10 @@ func (fp *ConnectResponseResumeResponse_FieldTerminalPath) GetDefault() interfac
 func (fp *ConnectResponseResumeResponse_FieldTerminalPath) ClearValue(item *ConnectResponse_ResumeResponse) {
 	if item != nil {
 		switch fp.selector {
-		case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
-			item.SessionId = uint64(0)
+		case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+			item.ProviderName = ""
+		case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
+			item.ProviderSessionId = uint64(0)
 		case ConnectResponseResumeResponse_FieldPathSelectorChannelId:
 			item.ChannelId = uint64(0)
 		case ConnectResponseResumeResponse_FieldPathSelectorLastMessageId:
@@ -12833,14 +12930,17 @@ func (fp *ConnectResponseResumeResponse_FieldTerminalPath) ClearValueRaw(item pr
 
 // IsLeaf - whether field path is holds simple value
 func (fp *ConnectResponseResumeResponse_FieldTerminalPath) IsLeaf() bool {
-	return fp.selector == ConnectResponseResumeResponse_FieldPathSelectorSessionId ||
+	return fp.selector == ConnectResponseResumeResponse_FieldPathSelectorProviderName ||
+		fp.selector == ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId ||
 		fp.selector == ConnectResponseResumeResponse_FieldPathSelectorChannelId ||
 		fp.selector == ConnectResponseResumeResponse_FieldPathSelectorLastMessageId
 }
 
 func (fp *ConnectResponseResumeResponse_FieldTerminalPath) WithIValue(value interface{}) ConnectResponseResumeResponse_FieldPathValue {
 	switch fp.selector {
-	case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+		return &ConnectResponseResumeResponse_FieldTerminalPathValue{ConnectResponseResumeResponse_FieldTerminalPath: *fp, value: value.(string)}
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
 		return &ConnectResponseResumeResponse_FieldTerminalPathValue{ConnectResponseResumeResponse_FieldTerminalPath: *fp, value: value.(uint64)}
 	case ConnectResponseResumeResponse_FieldPathSelectorChannelId:
 		return &ConnectResponseResumeResponse_FieldTerminalPathValue{ConnectResponseResumeResponse_FieldTerminalPath: *fp, value: value.(uint64)}
@@ -12858,7 +12958,9 @@ func (fp *ConnectResponseResumeResponse_FieldTerminalPath) WithRawIValue(value i
 func (fp *ConnectResponseResumeResponse_FieldTerminalPath) WithIArrayOfValues(values interface{}) ConnectResponseResumeResponse_FieldPathArrayOfValues {
 	fpaov := &ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues{ConnectResponseResumeResponse_FieldTerminalPath: *fp}
 	switch fp.selector {
-	case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+		return &ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues{ConnectResponseResumeResponse_FieldTerminalPath: *fp, values: values.([]string)}
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
 		return &ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues{ConnectResponseResumeResponse_FieldTerminalPath: *fp, values: values.([]uint64)}
 	case ConnectResponseResumeResponse_FieldPathSelectorChannelId:
 		return &ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues{ConnectResponseResumeResponse_FieldTerminalPath: *fp, values: values.([]uint64)}
@@ -12924,7 +13026,11 @@ var _ ConnectResponseResumeResponse_FieldPathValue = (*ConnectResponseResumeResp
 func (fpv *ConnectResponseResumeResponse_FieldTerminalPathValue) GetRawValue() interface{} {
 	return fpv.value
 }
-func (fpv *ConnectResponseResumeResponse_FieldTerminalPathValue) AsSessionIdValue() (uint64, bool) {
+func (fpv *ConnectResponseResumeResponse_FieldTerminalPathValue) AsProviderNameValue() (string, bool) {
+	res, ok := fpv.value.(string)
+	return res, ok
+}
+func (fpv *ConnectResponseResumeResponse_FieldTerminalPathValue) AsProviderSessionIdValue() (uint64, bool) {
 	res, ok := fpv.value.(uint64)
 	return res, ok
 }
@@ -12943,8 +13049,10 @@ func (fpv *ConnectResponseResumeResponse_FieldTerminalPathValue) SetTo(target **
 		*target = new(ConnectResponse_ResumeResponse)
 	}
 	switch fpv.selector {
-	case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
-		(*target).SessionId = fpv.value.(uint64)
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+		(*target).ProviderName = fpv.value.(string)
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
+		(*target).ProviderSessionId = fpv.value.(uint64)
 	case ConnectResponseResumeResponse_FieldPathSelectorChannelId:
 		(*target).ChannelId = fpv.value.(uint64)
 	case ConnectResponseResumeResponse_FieldPathSelectorLastMessageId:
@@ -12962,9 +13070,19 @@ func (fpv *ConnectResponseResumeResponse_FieldTerminalPathValue) SetToRaw(target
 // CompareWith compares value in the 'ConnectResponseResumeResponse_FieldTerminalPathValue' with the value under path in 'ConnectResponse_ResumeResponse'.
 func (fpv *ConnectResponseResumeResponse_FieldTerminalPathValue) CompareWith(source *ConnectResponse_ResumeResponse) (int, bool) {
 	switch fpv.selector {
-	case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+		leftValue := fpv.value.(string)
+		rightValue := source.GetProviderName()
+		if (leftValue) == (rightValue) {
+			return 0, true
+		} else if (leftValue) < (rightValue) {
+			return -1, true
+		} else {
+			return 1, true
+		}
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
 		leftValue := fpv.value.(uint64)
-		rightValue := source.GetSessionId()
+		rightValue := source.GetProviderSessionId()
 		if (leftValue) == (rightValue) {
 			return 0, true
 		} else if (leftValue) < (rightValue) {
@@ -13096,7 +13214,11 @@ var _ ConnectResponseResumeResponse_FieldPathArrayOfValues = (*ConnectResponseRe
 
 func (fpaov *ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues) GetRawValues() (values []interface{}) {
 	switch fpaov.selector {
-	case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+		for _, v := range fpaov.values.([]string) {
+			values = append(values, v)
+		}
+	case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
 		for _, v := range fpaov.values.([]uint64) {
 			values = append(values, v)
 		}
@@ -13111,7 +13233,11 @@ func (fpaov *ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues) GetRa
 	}
 	return
 }
-func (fpaov *ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues) AsSessionIdArrayOfValues() ([]uint64, bool) {
+func (fpaov *ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues) AsProviderNameArrayOfValues() ([]string, bool) {
+	res, ok := fpaov.values.([]string)
+	return res, ok
+}
+func (fpaov *ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues) AsProviderSessionIdArrayOfValues() ([]uint64, bool) {
 	res, ok := fpaov.values.([]uint64)
 	return res, ok
 }

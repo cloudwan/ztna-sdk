@@ -191,12 +191,14 @@ message ConnectRequest {
   }
 
   message ResumeRequest {
+    // Only for authentication
     string port_forwarding_service = 1;
 
     string name = 2;
 
-    // name to connect.
-    uint64 session_id = 4;
+    string provider_name = 3;
+
+    uint64 provider_session_id = 4;
 
     uint64 channel_id = 5;
 
@@ -226,13 +228,17 @@ message ConnectResponse {
   }
 
   message OpenResponse {
-    uint64 session_id = 1;
+    string provider_name = 3;
+
+    uint64 provider_session_id = 1;
 
     uint64 channel_id = 2;
   }
 
   message ResumeResponse {
-    uint64 session_id = 1;
+    string provider_name = 5;
+
+    uint64 provider_session_id = 1;
 
     uint64 channel_id = 2;
 

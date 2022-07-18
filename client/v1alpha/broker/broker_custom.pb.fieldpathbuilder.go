@@ -2076,8 +2076,12 @@ func (ConnectRequestPathSelectorResumeRequest) Name() ConnectRequestPathSelector
 	return ConnectRequestPathSelectorResumeRequestName{}
 }
 
-func (ConnectRequestPathSelectorResumeRequest) SessionId() ConnectRequestPathSelectorResumeRequestSessionId {
-	return ConnectRequestPathSelectorResumeRequestSessionId{}
+func (ConnectRequestPathSelectorResumeRequest) ProviderName() ConnectRequestPathSelectorResumeRequestProviderName {
+	return ConnectRequestPathSelectorResumeRequestProviderName{}
+}
+
+func (ConnectRequestPathSelectorResumeRequest) ProviderSessionId() ConnectRequestPathSelectorResumeRequestProviderSessionId {
+	return ConnectRequestPathSelectorResumeRequestProviderSessionId{}
 }
 
 func (ConnectRequestPathSelectorResumeRequest) ChannelId() ConnectRequestPathSelectorResumeRequestChannelId {
@@ -2122,20 +2126,37 @@ func (s ConnectRequestPathSelectorResumeRequestName) WithArrayOfValues(values []
 	return s.FieldPath().WithIArrayOfValues(values).(*ConnectRequest_FieldSubPathArrayOfValues)
 }
 
-type ConnectRequestPathSelectorResumeRequestSessionId struct{}
+type ConnectRequestPathSelectorResumeRequestProviderName struct{}
 
-func (ConnectRequestPathSelectorResumeRequestSessionId) FieldPath() *ConnectRequest_FieldSubPath {
+func (ConnectRequestPathSelectorResumeRequestProviderName) FieldPath() *ConnectRequest_FieldSubPath {
 	return &ConnectRequest_FieldSubPath{
 		selector: ConnectRequest_FieldPathSelectorResumeRequest,
-		subPath:  NewConnectRequestResumeRequestFieldPathBuilder().SessionId().FieldPath(),
+		subPath:  NewConnectRequestResumeRequestFieldPathBuilder().ProviderName().FieldPath(),
 	}
 }
 
-func (s ConnectRequestPathSelectorResumeRequestSessionId) WithValue(value uint64) *ConnectRequest_FieldSubPathValue {
+func (s ConnectRequestPathSelectorResumeRequestProviderName) WithValue(value string) *ConnectRequest_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*ConnectRequest_FieldSubPathValue)
 }
 
-func (s ConnectRequestPathSelectorResumeRequestSessionId) WithArrayOfValues(values []uint64) *ConnectRequest_FieldSubPathArrayOfValues {
+func (s ConnectRequestPathSelectorResumeRequestProviderName) WithArrayOfValues(values []string) *ConnectRequest_FieldSubPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*ConnectRequest_FieldSubPathArrayOfValues)
+}
+
+type ConnectRequestPathSelectorResumeRequestProviderSessionId struct{}
+
+func (ConnectRequestPathSelectorResumeRequestProviderSessionId) FieldPath() *ConnectRequest_FieldSubPath {
+	return &ConnectRequest_FieldSubPath{
+		selector: ConnectRequest_FieldPathSelectorResumeRequest,
+		subPath:  NewConnectRequestResumeRequestFieldPathBuilder().ProviderSessionId().FieldPath(),
+	}
+}
+
+func (s ConnectRequestPathSelectorResumeRequestProviderSessionId) WithValue(value uint64) *ConnectRequest_FieldSubPathValue {
+	return s.FieldPath().WithIValue(value).(*ConnectRequest_FieldSubPathValue)
+}
+
+func (s ConnectRequestPathSelectorResumeRequestProviderSessionId) WithArrayOfValues(values []uint64) *ConnectRequest_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*ConnectRequest_FieldSubPathArrayOfValues)
 }
 
@@ -2521,8 +2542,11 @@ func (ConnectRequestResumeRequestFieldPathBuilder) PortForwardingService() Conne
 func (ConnectRequestResumeRequestFieldPathBuilder) Name() ConnectRequest_ResumeRequestPathSelectorName {
 	return ConnectRequest_ResumeRequestPathSelectorName{}
 }
-func (ConnectRequestResumeRequestFieldPathBuilder) SessionId() ConnectRequest_ResumeRequestPathSelectorSessionId {
-	return ConnectRequest_ResumeRequestPathSelectorSessionId{}
+func (ConnectRequestResumeRequestFieldPathBuilder) ProviderName() ConnectRequest_ResumeRequestPathSelectorProviderName {
+	return ConnectRequest_ResumeRequestPathSelectorProviderName{}
+}
+func (ConnectRequestResumeRequestFieldPathBuilder) ProviderSessionId() ConnectRequest_ResumeRequestPathSelectorProviderSessionId {
+	return ConnectRequest_ResumeRequestPathSelectorProviderSessionId{}
 }
 func (ConnectRequestResumeRequestFieldPathBuilder) ChannelId() ConnectRequest_ResumeRequestPathSelectorChannelId {
 	return ConnectRequest_ResumeRequestPathSelectorChannelId{}
@@ -2559,17 +2583,31 @@ func (s ConnectRequest_ResumeRequestPathSelectorName) WithArrayOfValues(values [
 	return s.FieldPath().WithIArrayOfValues(values).(*ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues)
 }
 
-type ConnectRequest_ResumeRequestPathSelectorSessionId struct{}
+type ConnectRequest_ResumeRequestPathSelectorProviderName struct{}
 
-func (ConnectRequest_ResumeRequestPathSelectorSessionId) FieldPath() *ConnectRequestResumeRequest_FieldTerminalPath {
-	return &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorSessionId}
+func (ConnectRequest_ResumeRequestPathSelectorProviderName) FieldPath() *ConnectRequestResumeRequest_FieldTerminalPath {
+	return &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorProviderName}
 }
 
-func (s ConnectRequest_ResumeRequestPathSelectorSessionId) WithValue(value uint64) *ConnectRequestResumeRequest_FieldTerminalPathValue {
+func (s ConnectRequest_ResumeRequestPathSelectorProviderName) WithValue(value string) *ConnectRequestResumeRequest_FieldTerminalPathValue {
 	return s.FieldPath().WithIValue(value).(*ConnectRequestResumeRequest_FieldTerminalPathValue)
 }
 
-func (s ConnectRequest_ResumeRequestPathSelectorSessionId) WithArrayOfValues(values []uint64) *ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues {
+func (s ConnectRequest_ResumeRequestPathSelectorProviderName) WithArrayOfValues(values []string) *ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues)
+}
+
+type ConnectRequest_ResumeRequestPathSelectorProviderSessionId struct{}
+
+func (ConnectRequest_ResumeRequestPathSelectorProviderSessionId) FieldPath() *ConnectRequestResumeRequest_FieldTerminalPath {
+	return &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId}
+}
+
+func (s ConnectRequest_ResumeRequestPathSelectorProviderSessionId) WithValue(value uint64) *ConnectRequestResumeRequest_FieldTerminalPathValue {
+	return s.FieldPath().WithIValue(value).(*ConnectRequestResumeRequest_FieldTerminalPathValue)
+}
+
+func (s ConnectRequest_ResumeRequestPathSelectorProviderSessionId) WithArrayOfValues(values []uint64) *ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*ConnectRequestResumeRequest_FieldTerminalPathArrayOfValues)
 }
 
@@ -2658,28 +2696,49 @@ func (s ConnectResponsePathSelectorOpenResponse) WithSubArrayItemValue(subPathAr
 	return &ConnectResponse_FieldSubPathArrayItemValue{ConnectResponse_FieldPath: s.WithSubPath(subPathArrayItemValue), subPathItemValue: subPathArrayItemValue}
 }
 
-func (ConnectResponsePathSelectorOpenResponse) SessionId() ConnectResponsePathSelectorOpenResponseSessionId {
-	return ConnectResponsePathSelectorOpenResponseSessionId{}
+func (ConnectResponsePathSelectorOpenResponse) ProviderName() ConnectResponsePathSelectorOpenResponseProviderName {
+	return ConnectResponsePathSelectorOpenResponseProviderName{}
+}
+
+func (ConnectResponsePathSelectorOpenResponse) ProviderSessionId() ConnectResponsePathSelectorOpenResponseProviderSessionId {
+	return ConnectResponsePathSelectorOpenResponseProviderSessionId{}
 }
 
 func (ConnectResponsePathSelectorOpenResponse) ChannelId() ConnectResponsePathSelectorOpenResponseChannelId {
 	return ConnectResponsePathSelectorOpenResponseChannelId{}
 }
 
-type ConnectResponsePathSelectorOpenResponseSessionId struct{}
+type ConnectResponsePathSelectorOpenResponseProviderName struct{}
 
-func (ConnectResponsePathSelectorOpenResponseSessionId) FieldPath() *ConnectResponse_FieldSubPath {
+func (ConnectResponsePathSelectorOpenResponseProviderName) FieldPath() *ConnectResponse_FieldSubPath {
 	return &ConnectResponse_FieldSubPath{
 		selector: ConnectResponse_FieldPathSelectorOpenResponse,
-		subPath:  NewConnectResponseOpenResponseFieldPathBuilder().SessionId().FieldPath(),
+		subPath:  NewConnectResponseOpenResponseFieldPathBuilder().ProviderName().FieldPath(),
 	}
 }
 
-func (s ConnectResponsePathSelectorOpenResponseSessionId) WithValue(value uint64) *ConnectResponse_FieldSubPathValue {
+func (s ConnectResponsePathSelectorOpenResponseProviderName) WithValue(value string) *ConnectResponse_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*ConnectResponse_FieldSubPathValue)
 }
 
-func (s ConnectResponsePathSelectorOpenResponseSessionId) WithArrayOfValues(values []uint64) *ConnectResponse_FieldSubPathArrayOfValues {
+func (s ConnectResponsePathSelectorOpenResponseProviderName) WithArrayOfValues(values []string) *ConnectResponse_FieldSubPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*ConnectResponse_FieldSubPathArrayOfValues)
+}
+
+type ConnectResponsePathSelectorOpenResponseProviderSessionId struct{}
+
+func (ConnectResponsePathSelectorOpenResponseProviderSessionId) FieldPath() *ConnectResponse_FieldSubPath {
+	return &ConnectResponse_FieldSubPath{
+		selector: ConnectResponse_FieldPathSelectorOpenResponse,
+		subPath:  NewConnectResponseOpenResponseFieldPathBuilder().ProviderSessionId().FieldPath(),
+	}
+}
+
+func (s ConnectResponsePathSelectorOpenResponseProviderSessionId) WithValue(value uint64) *ConnectResponse_FieldSubPathValue {
+	return s.FieldPath().WithIValue(value).(*ConnectResponse_FieldSubPathValue)
+}
+
+func (s ConnectResponsePathSelectorOpenResponseProviderSessionId) WithArrayOfValues(values []uint64) *ConnectResponse_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*ConnectResponse_FieldSubPathArrayOfValues)
 }
 
@@ -2730,8 +2789,12 @@ func (s ConnectResponsePathSelectorResumeResponse) WithSubArrayItemValue(subPath
 	return &ConnectResponse_FieldSubPathArrayItemValue{ConnectResponse_FieldPath: s.WithSubPath(subPathArrayItemValue), subPathItemValue: subPathArrayItemValue}
 }
 
-func (ConnectResponsePathSelectorResumeResponse) SessionId() ConnectResponsePathSelectorResumeResponseSessionId {
-	return ConnectResponsePathSelectorResumeResponseSessionId{}
+func (ConnectResponsePathSelectorResumeResponse) ProviderName() ConnectResponsePathSelectorResumeResponseProviderName {
+	return ConnectResponsePathSelectorResumeResponseProviderName{}
+}
+
+func (ConnectResponsePathSelectorResumeResponse) ProviderSessionId() ConnectResponsePathSelectorResumeResponseProviderSessionId {
+	return ConnectResponsePathSelectorResumeResponseProviderSessionId{}
 }
 
 func (ConnectResponsePathSelectorResumeResponse) ChannelId() ConnectResponsePathSelectorResumeResponseChannelId {
@@ -2742,20 +2805,37 @@ func (ConnectResponsePathSelectorResumeResponse) LastMessageId() ConnectResponse
 	return ConnectResponsePathSelectorResumeResponseLastMessageId{}
 }
 
-type ConnectResponsePathSelectorResumeResponseSessionId struct{}
+type ConnectResponsePathSelectorResumeResponseProviderName struct{}
 
-func (ConnectResponsePathSelectorResumeResponseSessionId) FieldPath() *ConnectResponse_FieldSubPath {
+func (ConnectResponsePathSelectorResumeResponseProviderName) FieldPath() *ConnectResponse_FieldSubPath {
 	return &ConnectResponse_FieldSubPath{
 		selector: ConnectResponse_FieldPathSelectorResumeResponse,
-		subPath:  NewConnectResponseResumeResponseFieldPathBuilder().SessionId().FieldPath(),
+		subPath:  NewConnectResponseResumeResponseFieldPathBuilder().ProviderName().FieldPath(),
 	}
 }
 
-func (s ConnectResponsePathSelectorResumeResponseSessionId) WithValue(value uint64) *ConnectResponse_FieldSubPathValue {
+func (s ConnectResponsePathSelectorResumeResponseProviderName) WithValue(value string) *ConnectResponse_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*ConnectResponse_FieldSubPathValue)
 }
 
-func (s ConnectResponsePathSelectorResumeResponseSessionId) WithArrayOfValues(values []uint64) *ConnectResponse_FieldSubPathArrayOfValues {
+func (s ConnectResponsePathSelectorResumeResponseProviderName) WithArrayOfValues(values []string) *ConnectResponse_FieldSubPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*ConnectResponse_FieldSubPathArrayOfValues)
+}
+
+type ConnectResponsePathSelectorResumeResponseProviderSessionId struct{}
+
+func (ConnectResponsePathSelectorResumeResponseProviderSessionId) FieldPath() *ConnectResponse_FieldSubPath {
+	return &ConnectResponse_FieldSubPath{
+		selector: ConnectResponse_FieldPathSelectorResumeResponse,
+		subPath:  NewConnectResponseResumeResponseFieldPathBuilder().ProviderSessionId().FieldPath(),
+	}
+}
+
+func (s ConnectResponsePathSelectorResumeResponseProviderSessionId) WithValue(value uint64) *ConnectResponse_FieldSubPathValue {
+	return s.FieldPath().WithIValue(value).(*ConnectResponse_FieldSubPathValue)
+}
+
+func (s ConnectResponsePathSelectorResumeResponseProviderSessionId) WithArrayOfValues(values []uint64) *ConnectResponse_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*ConnectResponse_FieldSubPathArrayOfValues)
 }
 
@@ -3137,24 +3217,41 @@ type ConnectResponseOpenResponseFieldPathBuilder struct{}
 func NewConnectResponseOpenResponseFieldPathBuilder() ConnectResponseOpenResponseFieldPathBuilder {
 	return ConnectResponseOpenResponseFieldPathBuilder{}
 }
-func (ConnectResponseOpenResponseFieldPathBuilder) SessionId() ConnectResponse_OpenResponsePathSelectorSessionId {
-	return ConnectResponse_OpenResponsePathSelectorSessionId{}
+func (ConnectResponseOpenResponseFieldPathBuilder) ProviderName() ConnectResponse_OpenResponsePathSelectorProviderName {
+	return ConnectResponse_OpenResponsePathSelectorProviderName{}
+}
+func (ConnectResponseOpenResponseFieldPathBuilder) ProviderSessionId() ConnectResponse_OpenResponsePathSelectorProviderSessionId {
+	return ConnectResponse_OpenResponsePathSelectorProviderSessionId{}
 }
 func (ConnectResponseOpenResponseFieldPathBuilder) ChannelId() ConnectResponse_OpenResponsePathSelectorChannelId {
 	return ConnectResponse_OpenResponsePathSelectorChannelId{}
 }
 
-type ConnectResponse_OpenResponsePathSelectorSessionId struct{}
+type ConnectResponse_OpenResponsePathSelectorProviderName struct{}
 
-func (ConnectResponse_OpenResponsePathSelectorSessionId) FieldPath() *ConnectResponseOpenResponse_FieldTerminalPath {
-	return &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorSessionId}
+func (ConnectResponse_OpenResponsePathSelectorProviderName) FieldPath() *ConnectResponseOpenResponse_FieldTerminalPath {
+	return &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorProviderName}
 }
 
-func (s ConnectResponse_OpenResponsePathSelectorSessionId) WithValue(value uint64) *ConnectResponseOpenResponse_FieldTerminalPathValue {
+func (s ConnectResponse_OpenResponsePathSelectorProviderName) WithValue(value string) *ConnectResponseOpenResponse_FieldTerminalPathValue {
 	return s.FieldPath().WithIValue(value).(*ConnectResponseOpenResponse_FieldTerminalPathValue)
 }
 
-func (s ConnectResponse_OpenResponsePathSelectorSessionId) WithArrayOfValues(values []uint64) *ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues {
+func (s ConnectResponse_OpenResponsePathSelectorProviderName) WithArrayOfValues(values []string) *ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues)
+}
+
+type ConnectResponse_OpenResponsePathSelectorProviderSessionId struct{}
+
+func (ConnectResponse_OpenResponsePathSelectorProviderSessionId) FieldPath() *ConnectResponseOpenResponse_FieldTerminalPath {
+	return &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId}
+}
+
+func (s ConnectResponse_OpenResponsePathSelectorProviderSessionId) WithValue(value uint64) *ConnectResponseOpenResponse_FieldTerminalPathValue {
+	return s.FieldPath().WithIValue(value).(*ConnectResponseOpenResponse_FieldTerminalPathValue)
+}
+
+func (s ConnectResponse_OpenResponsePathSelectorProviderSessionId) WithArrayOfValues(values []uint64) *ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*ConnectResponseOpenResponse_FieldTerminalPathArrayOfValues)
 }
 
@@ -3177,8 +3274,11 @@ type ConnectResponseResumeResponseFieldPathBuilder struct{}
 func NewConnectResponseResumeResponseFieldPathBuilder() ConnectResponseResumeResponseFieldPathBuilder {
 	return ConnectResponseResumeResponseFieldPathBuilder{}
 }
-func (ConnectResponseResumeResponseFieldPathBuilder) SessionId() ConnectResponse_ResumeResponsePathSelectorSessionId {
-	return ConnectResponse_ResumeResponsePathSelectorSessionId{}
+func (ConnectResponseResumeResponseFieldPathBuilder) ProviderName() ConnectResponse_ResumeResponsePathSelectorProviderName {
+	return ConnectResponse_ResumeResponsePathSelectorProviderName{}
+}
+func (ConnectResponseResumeResponseFieldPathBuilder) ProviderSessionId() ConnectResponse_ResumeResponsePathSelectorProviderSessionId {
+	return ConnectResponse_ResumeResponsePathSelectorProviderSessionId{}
 }
 func (ConnectResponseResumeResponseFieldPathBuilder) ChannelId() ConnectResponse_ResumeResponsePathSelectorChannelId {
 	return ConnectResponse_ResumeResponsePathSelectorChannelId{}
@@ -3187,17 +3287,31 @@ func (ConnectResponseResumeResponseFieldPathBuilder) LastMessageId() ConnectResp
 	return ConnectResponse_ResumeResponsePathSelectorLastMessageId{}
 }
 
-type ConnectResponse_ResumeResponsePathSelectorSessionId struct{}
+type ConnectResponse_ResumeResponsePathSelectorProviderName struct{}
 
-func (ConnectResponse_ResumeResponsePathSelectorSessionId) FieldPath() *ConnectResponseResumeResponse_FieldTerminalPath {
-	return &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorSessionId}
+func (ConnectResponse_ResumeResponsePathSelectorProviderName) FieldPath() *ConnectResponseResumeResponse_FieldTerminalPath {
+	return &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorProviderName}
 }
 
-func (s ConnectResponse_ResumeResponsePathSelectorSessionId) WithValue(value uint64) *ConnectResponseResumeResponse_FieldTerminalPathValue {
+func (s ConnectResponse_ResumeResponsePathSelectorProviderName) WithValue(value string) *ConnectResponseResumeResponse_FieldTerminalPathValue {
 	return s.FieldPath().WithIValue(value).(*ConnectResponseResumeResponse_FieldTerminalPathValue)
 }
 
-func (s ConnectResponse_ResumeResponsePathSelectorSessionId) WithArrayOfValues(values []uint64) *ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues {
+func (s ConnectResponse_ResumeResponsePathSelectorProviderName) WithArrayOfValues(values []string) *ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues)
+}
+
+type ConnectResponse_ResumeResponsePathSelectorProviderSessionId struct{}
+
+func (ConnectResponse_ResumeResponsePathSelectorProviderSessionId) FieldPath() *ConnectResponseResumeResponse_FieldTerminalPath {
+	return &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId}
+}
+
+func (s ConnectResponse_ResumeResponsePathSelectorProviderSessionId) WithValue(value uint64) *ConnectResponseResumeResponse_FieldTerminalPathValue {
+	return s.FieldPath().WithIValue(value).(*ConnectResponseResumeResponse_FieldTerminalPathValue)
+}
+
+func (s ConnectResponse_ResumeResponsePathSelectorProviderSessionId) WithArrayOfValues(values []uint64) *ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*ConnectResponseResumeResponse_FieldTerminalPathArrayOfValues)
 }
 

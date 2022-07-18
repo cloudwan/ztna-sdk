@@ -94,7 +94,7 @@ func (c *PortForwardingServiceChange) GetPortForwardingService() *PortForwarding
 	return nil
 }
 
-func (c *PortForwardingServiceChange) GetRawResource() gotenresource.Resource {
+func (c *PortForwardingServiceChange) GetResource() gotenresource.Resource {
 	return c.GetPortForwardingService()
 }
 

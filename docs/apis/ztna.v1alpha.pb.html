@@ -1193,7 +1193,8 @@ forwarding sessions.</p>
 <td class="type"><pre>repeated string</pre></td>
 </tr>
 <tr><td class="description"><p>Custom access points for clients to connect to.
-When not set, clients will use default access points.</p>
+When not set, clients will use default access points.
+PLACEHOLDER: NOT IMPLEMENTED</p>
 </td></tr>
  
 </tbody>
@@ -1309,7 +1310,8 @@ When not set, clients will use default access points.</p>
 <th rowspan="2">port_forwarding_service</th>
 <td class="type"><pre>string</pre></td>
 </tr>
-<tr><td class="description"></td></tr>
+<tr><td class="description"><p>Only for authentication</p>
+</td></tr>
 
 <tr>
 <th rowspan="2">name</th>
@@ -1318,11 +1320,16 @@ When not set, clients will use default access points.</p>
 <tr><td class="description"></td></tr>
 
 <tr>
-<th rowspan="2">session_id</th>
+<th rowspan="2">provider_name</th>
+<td class="type"><pre>string</pre></td>
+</tr>
+<tr><td class="description"></td></tr>
+
+<tr>
+<th rowspan="2">provider_session_id</th>
 <td class="type"><pre>uint64</pre></td>
 </tr>
-<tr><td class="description"><p>name to connect.</p>
-</td></tr>
+<tr><td class="description"></td></tr>
 
 <tr>
 <th rowspan="2">channel_id</th>
@@ -1407,7 +1414,13 @@ When not set, clients will use default access points.</p>
 <thead><tr><th colspan="2">Fields</th></tr></thead>
 <tbody>
 <tr>
-<th rowspan="2">session_id</th>
+<th rowspan="2">provider_name</th>
+<td class="type"><pre>string</pre></td>
+</tr>
+<tr><td class="description"></td></tr>
+
+<tr>
+<th rowspan="2">provider_session_id</th>
 <td class="type"><pre>uint64</pre></td>
 </tr>
 <tr><td class="description"></td></tr>
@@ -1431,7 +1444,13 @@ When not set, clients will use default access points.</p>
 <thead><tr><th colspan="2">Fields</th></tr></thead>
 <tbody>
 <tr>
-<th rowspan="2">session_id</th>
+<th rowspan="2">provider_name</th>
+<td class="type"><pre>string</pre></td>
+</tr>
+<tr><td class="description"></td></tr>
+
+<tr>
+<th rowspan="2">provider_session_id</th>
 <td class="type"><pre>uint64</pre></td>
 </tr>
 <tr><td class="description"></td></tr>
@@ -2509,19 +2528,37 @@ compare.</p>
 <tbody>
 <tr>
 <th>PROVIDER_LOAD_BALANCING_MODE_UNSPECIFIED</th>
-<td class="description"></td>
+<td class="description"><p>Same as ROUND_ROBIN</p>
+</td>
+</tr>
+<tr></tr>
+
+<tr>
+<th>FAIL_FAST</th>
+<td class="description"><p>No load balancing happens. Returns an error immediately when the first
+candidate fails.</p>
+</td>
 </tr>
 <tr></tr>
 
 <tr>
 <th>ROUND_ROBIN</th>
-<td class="description"></td>
+<td class="description"><p>Picks up candidate one by one in order.</p>
+</td>
 </tr>
 <tr></tr>
 
 <tr>
-<th>RANDOM</th>
-<td class="description"></td>
+<th>LEAST_SESSIONS</th>
+<td class="description"><p>Picks up the candidate that has least sessions.</p>
+</td>
+</tr>
+<tr></tr>
+
+<tr>
+<th>HASH</th>
+<td class="description"><p>Picks up a candidate based on the consumer's parameters.</p>
+</td>
 </tr>
 <tr></tr>
  

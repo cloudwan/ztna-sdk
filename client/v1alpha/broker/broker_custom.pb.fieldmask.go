@@ -5666,7 +5666,8 @@ func FullConnectRequest_ResumeRequest_FieldMask() *ConnectRequest_ResumeRequest_
 	res := &ConnectRequest_ResumeRequest_FieldMask{}
 	res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorPortForwardingService})
 	res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorName})
-	res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorSessionId})
+	res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorProviderName})
+	res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId})
 	res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorChannelId})
 	res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorLastMessageId})
 	return res
@@ -5712,7 +5713,7 @@ func (fieldMask *ConnectRequest_ResumeRequest_FieldMask) IsFull() bool {
 	if fieldMask == nil {
 		return false
 	}
-	presentSelectors := make([]bool, 5)
+	presentSelectors := make([]bool, 6)
 	for _, path := range fieldMask.Paths {
 		if asFinal, ok := path.(*ConnectRequestResumeRequest_FieldTerminalPath); ok {
 			presentSelectors[int(asFinal.selector)] = true
@@ -5742,7 +5743,7 @@ func (fieldMask *ConnectRequest_ResumeRequest_FieldMask) Reset() {
 
 func (fieldMask *ConnectRequest_ResumeRequest_FieldMask) Subtract(other *ConnectRequest_ResumeRequest_FieldMask) *ConnectRequest_ResumeRequest_FieldMask {
 	result := &ConnectRequest_ResumeRequest_FieldMask{}
-	removedSelectors := make([]bool, 5)
+	removedSelectors := make([]bool, 6)
 
 	for _, path := range other.GetPaths() {
 		switch tp := path.(type) {
@@ -5900,8 +5901,10 @@ func (fieldMask *ConnectRequest_ResumeRequest_FieldMask) Project(source *Connect
 				result.PortForwardingService = source.PortForwardingService
 			case ConnectRequestResumeRequest_FieldPathSelectorName:
 				result.Name = source.Name
-			case ConnectRequestResumeRequest_FieldPathSelectorSessionId:
-				result.SessionId = source.SessionId
+			case ConnectRequestResumeRequest_FieldPathSelectorProviderName:
+				result.ProviderName = source.ProviderName
+			case ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId:
+				result.ProviderSessionId = source.ProviderSessionId
 			case ConnectRequestResumeRequest_FieldPathSelectorChannelId:
 				result.ChannelId = source.ChannelId
 			case ConnectRequestResumeRequest_FieldPathSelectorLastMessageId:
@@ -6386,7 +6389,8 @@ type ConnectResponse_OpenResponse_FieldMask struct {
 
 func FullConnectResponse_OpenResponse_FieldMask() *ConnectResponse_OpenResponse_FieldMask {
 	res := &ConnectResponse_OpenResponse_FieldMask{}
-	res.Paths = append(res.Paths, &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorSessionId})
+	res.Paths = append(res.Paths, &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorProviderName})
+	res.Paths = append(res.Paths, &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId})
 	res.Paths = append(res.Paths, &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorChannelId})
 	return res
 }
@@ -6431,7 +6435,7 @@ func (fieldMask *ConnectResponse_OpenResponse_FieldMask) IsFull() bool {
 	if fieldMask == nil {
 		return false
 	}
-	presentSelectors := make([]bool, 2)
+	presentSelectors := make([]bool, 3)
 	for _, path := range fieldMask.Paths {
 		if asFinal, ok := path.(*ConnectResponseOpenResponse_FieldTerminalPath); ok {
 			presentSelectors[int(asFinal.selector)] = true
@@ -6461,7 +6465,7 @@ func (fieldMask *ConnectResponse_OpenResponse_FieldMask) Reset() {
 
 func (fieldMask *ConnectResponse_OpenResponse_FieldMask) Subtract(other *ConnectResponse_OpenResponse_FieldMask) *ConnectResponse_OpenResponse_FieldMask {
 	result := &ConnectResponse_OpenResponse_FieldMask{}
-	removedSelectors := make([]bool, 2)
+	removedSelectors := make([]bool, 3)
 
 	for _, path := range other.GetPaths() {
 		switch tp := path.(type) {
@@ -6615,8 +6619,10 @@ func (fieldMask *ConnectResponse_OpenResponse_FieldMask) Project(source *Connect
 		switch tp := p.(type) {
 		case *ConnectResponseOpenResponse_FieldTerminalPath:
 			switch tp.selector {
-			case ConnectResponseOpenResponse_FieldPathSelectorSessionId:
-				result.SessionId = source.SessionId
+			case ConnectResponseOpenResponse_FieldPathSelectorProviderName:
+				result.ProviderName = source.ProviderName
+			case ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId:
+				result.ProviderSessionId = source.ProviderSessionId
 			case ConnectResponseOpenResponse_FieldPathSelectorChannelId:
 				result.ChannelId = source.ChannelId
 			}
@@ -6642,7 +6648,8 @@ type ConnectResponse_ResumeResponse_FieldMask struct {
 
 func FullConnectResponse_ResumeResponse_FieldMask() *ConnectResponse_ResumeResponse_FieldMask {
 	res := &ConnectResponse_ResumeResponse_FieldMask{}
-	res.Paths = append(res.Paths, &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorSessionId})
+	res.Paths = append(res.Paths, &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorProviderName})
+	res.Paths = append(res.Paths, &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId})
 	res.Paths = append(res.Paths, &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorChannelId})
 	res.Paths = append(res.Paths, &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorLastMessageId})
 	return res
@@ -6688,7 +6695,7 @@ func (fieldMask *ConnectResponse_ResumeResponse_FieldMask) IsFull() bool {
 	if fieldMask == nil {
 		return false
 	}
-	presentSelectors := make([]bool, 3)
+	presentSelectors := make([]bool, 4)
 	for _, path := range fieldMask.Paths {
 		if asFinal, ok := path.(*ConnectResponseResumeResponse_FieldTerminalPath); ok {
 			presentSelectors[int(asFinal.selector)] = true
@@ -6718,7 +6725,7 @@ func (fieldMask *ConnectResponse_ResumeResponse_FieldMask) Reset() {
 
 func (fieldMask *ConnectResponse_ResumeResponse_FieldMask) Subtract(other *ConnectResponse_ResumeResponse_FieldMask) *ConnectResponse_ResumeResponse_FieldMask {
 	result := &ConnectResponse_ResumeResponse_FieldMask{}
-	removedSelectors := make([]bool, 3)
+	removedSelectors := make([]bool, 4)
 
 	for _, path := range other.GetPaths() {
 		switch tp := path.(type) {
@@ -6872,8 +6879,10 @@ func (fieldMask *ConnectResponse_ResumeResponse_FieldMask) Project(source *Conne
 		switch tp := p.(type) {
 		case *ConnectResponseResumeResponse_FieldTerminalPath:
 			switch tp.selector {
-			case ConnectResponseResumeResponse_FieldPathSelectorSessionId:
-				result.SessionId = source.SessionId
+			case ConnectResponseResumeResponse_FieldPathSelectorProviderName:
+				result.ProviderName = source.ProviderName
+			case ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId:
+				result.ProviderSessionId = source.ProviderSessionId
 			case ConnectResponseResumeResponse_FieldPathSelectorChannelId:
 				result.ChannelId = source.ChannelId
 			case ConnectResponseResumeResponse_FieldPathSelectorLastMessageId:

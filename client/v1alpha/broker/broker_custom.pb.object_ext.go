@@ -1997,8 +1997,11 @@ func (o *ConnectRequest_ResumeRequest) MakeDiffFieldMask(other *ConnectRequest_R
 	if o.GetName() != other.GetName() {
 		res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorName})
 	}
-	if o.GetSessionId() != other.GetSessionId() {
-		res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorSessionId})
+	if o.GetProviderName() != other.GetProviderName() {
+		res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorProviderName})
+	}
+	if o.GetProviderSessionId() != other.GetProviderSessionId() {
+		res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorProviderSessionId})
 	}
 	if o.GetChannelId() != other.GetChannelId() {
 		res.Paths = append(res.Paths, &ConnectRequestResumeRequest_FieldTerminalPath{selector: ConnectRequestResumeRequest_FieldPathSelectorChannelId})
@@ -2029,7 +2032,8 @@ func (o *ConnectRequest_ResumeRequest) Clone() *ConnectRequest_ResumeRequest {
 		}
 	}
 	result.Name = o.Name
-	result.SessionId = o.SessionId
+	result.ProviderName = o.ProviderName
+	result.ProviderSessionId = o.ProviderSessionId
 	result.ChannelId = o.ChannelId
 	result.LastMessageId = o.LastMessageId
 	return result
@@ -2053,7 +2057,8 @@ func (o *ConnectRequest_ResumeRequest) Merge(source *ConnectRequest_ResumeReques
 		o.PortForwardingService = nil
 	}
 	o.Name = source.GetName()
-	o.SessionId = source.GetSessionId()
+	o.ProviderName = source.GetProviderName()
+	o.ProviderSessionId = source.GetProviderSessionId()
 	o.ChannelId = source.GetChannelId()
 	o.LastMessageId = source.GetLastMessageId()
 }
@@ -2350,8 +2355,11 @@ func (o *ConnectResponse_OpenResponse) MakeDiffFieldMask(other *ConnectResponse_
 	}
 
 	res := &ConnectResponse_OpenResponse_FieldMask{}
-	if o.GetSessionId() != other.GetSessionId() {
-		res.Paths = append(res.Paths, &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorSessionId})
+	if o.GetProviderName() != other.GetProviderName() {
+		res.Paths = append(res.Paths, &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorProviderName})
+	}
+	if o.GetProviderSessionId() != other.GetProviderSessionId() {
+		res.Paths = append(res.Paths, &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorProviderSessionId})
 	}
 	if o.GetChannelId() != other.GetChannelId() {
 		res.Paths = append(res.Paths, &ConnectResponseOpenResponse_FieldTerminalPath{selector: ConnectResponseOpenResponse_FieldPathSelectorChannelId})
@@ -2368,7 +2376,8 @@ func (o *ConnectResponse_OpenResponse) Clone() *ConnectResponse_OpenResponse {
 		return nil
 	}
 	result := &ConnectResponse_OpenResponse{}
-	result.SessionId = o.SessionId
+	result.ProviderName = o.ProviderName
+	result.ProviderSessionId = o.ProviderSessionId
 	result.ChannelId = o.ChannelId
 	return result
 }
@@ -2378,7 +2387,8 @@ func (o *ConnectResponse_OpenResponse) CloneRaw() gotenobject.GotenObjectExt {
 }
 
 func (o *ConnectResponse_OpenResponse) Merge(source *ConnectResponse_OpenResponse) {
-	o.SessionId = source.GetSessionId()
+	o.ProviderName = source.GetProviderName()
+	o.ProviderSessionId = source.GetProviderSessionId()
 	o.ChannelId = source.GetChannelId()
 }
 
@@ -2405,8 +2415,11 @@ func (o *ConnectResponse_ResumeResponse) MakeDiffFieldMask(other *ConnectRespons
 	}
 
 	res := &ConnectResponse_ResumeResponse_FieldMask{}
-	if o.GetSessionId() != other.GetSessionId() {
-		res.Paths = append(res.Paths, &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorSessionId})
+	if o.GetProviderName() != other.GetProviderName() {
+		res.Paths = append(res.Paths, &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorProviderName})
+	}
+	if o.GetProviderSessionId() != other.GetProviderSessionId() {
+		res.Paths = append(res.Paths, &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorProviderSessionId})
 	}
 	if o.GetChannelId() != other.GetChannelId() {
 		res.Paths = append(res.Paths, &ConnectResponseResumeResponse_FieldTerminalPath{selector: ConnectResponseResumeResponse_FieldPathSelectorChannelId})
@@ -2426,7 +2439,8 @@ func (o *ConnectResponse_ResumeResponse) Clone() *ConnectResponse_ResumeResponse
 		return nil
 	}
 	result := &ConnectResponse_ResumeResponse{}
-	result.SessionId = o.SessionId
+	result.ProviderName = o.ProviderName
+	result.ProviderSessionId = o.ProviderSessionId
 	result.ChannelId = o.ChannelId
 	result.LastMessageId = o.LastMessageId
 	return result
@@ -2437,7 +2451,8 @@ func (o *ConnectResponse_ResumeResponse) CloneRaw() gotenobject.GotenObjectExt {
 }
 
 func (o *ConnectResponse_ResumeResponse) Merge(source *ConnectResponse_ResumeResponse) {
-	o.SessionId = source.GetSessionId()
+	o.ProviderName = source.GetProviderName()
+	o.ProviderSessionId = source.GetProviderSessionId()
 	o.ChannelId = source.GetChannelId()
 	o.LastMessageId = source.GetLastMessageId()
 }

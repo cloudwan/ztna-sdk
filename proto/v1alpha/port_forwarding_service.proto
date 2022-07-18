@@ -54,14 +54,25 @@ message PortForwardingService {
 
     // Custom access points for clients to connect to.
     // When not set, clients will use default access points.
+    // PLACEHOLDER: NOT IMPLEMENTED
     repeated string access_points = 6;
 
     enum LoadBalancingMode {
+      // Same as ROUND_ROBIN
       PROVIDER_LOAD_BALANCING_MODE_UNSPECIFIED = 0;
 
+      // No load balancing happens. Returns an error immediately when the first
+      // candidate fails.
+      FAIL_FAST = 1;
+
+      // Picks up candidate one by one in order.
       ROUND_ROBIN = 2;
 
-      RANDOM = 3;
+      // Picks up the candidate that has least sessions.
+      LEAST_SESSIONS = 3;
+
+      // Picks up a candidate based on the consumer's parameters.
+      HASH = 4;
     }
   }
 

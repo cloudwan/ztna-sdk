@@ -57,26 +57,6 @@ func (o *AccessPoint) MakeDiffFieldMask(other *AccessPoint) *AccessPoint_FieldMa
 	if o.GetName().String() != other.GetName().String() {
 		res.Paths = append(res.Paths, &AccessPoint_FieldTerminalPath{selector: AccessPoint_FieldPathSelectorName})
 	}
-	{
-		subMask := o.GetSpec().MakeDiffFieldMask(other.GetSpec())
-		if subMask.IsFull() {
-			res.Paths = append(res.Paths, &AccessPoint_FieldTerminalPath{selector: AccessPoint_FieldPathSelectorSpec})
-		} else {
-			for _, subpath := range subMask.Paths {
-				res.Paths = append(res.Paths, &AccessPoint_FieldSubPath{selector: AccessPoint_FieldPathSelectorSpec, subPath: subpath})
-			}
-		}
-	}
-	{
-		subMask := o.GetStaus().MakeDiffFieldMask(other.GetStaus())
-		if subMask.IsFull() {
-			res.Paths = append(res.Paths, &AccessPoint_FieldTerminalPath{selector: AccessPoint_FieldPathSelectorStaus})
-		} else {
-			for _, subpath := range subMask.Paths {
-				res.Paths = append(res.Paths, &AccessPoint_FieldSubPath{selector: AccessPoint_FieldPathSelectorStaus, subPath: subpath})
-			}
-		}
-	}
 	return res
 }
 
@@ -99,8 +79,6 @@ func (o *AccessPoint) Clone() *AccessPoint {
 			panic(err)
 		}
 	}
-	result.Spec = o.Spec.Clone()
-	result.Staus = o.Staus.Clone()
 	return result
 }
 
@@ -121,130 +99,8 @@ func (o *AccessPoint) Merge(source *AccessPoint) {
 	} else {
 		o.Name = nil
 	}
-	if source.GetSpec() != nil {
-		if o.Spec == nil {
-			o.Spec = new(AccessPoint_Status)
-		}
-		o.Spec.Merge(source.GetSpec())
-	}
-	if source.GetStaus() != nil {
-		if o.Staus == nil {
-			o.Staus = new(AccessPoint_Status)
-		}
-		o.Staus.Merge(source.GetStaus())
-	}
 }
 
 func (o *AccessPoint) MergeRaw(source gotenobject.GotenObjectExt) {
 	o.Merge(source.(*AccessPoint))
-}
-
-func (o *AccessPoint_Spec) GotenObjectExt() {}
-
-func (o *AccessPoint_Spec) MakeFullFieldMask() *AccessPoint_Spec_FieldMask {
-	return FullAccessPoint_Spec_FieldMask()
-}
-
-func (o *AccessPoint_Spec) MakeRawFullFieldMask() gotenobject.FieldMask {
-	return FullAccessPoint_Spec_FieldMask()
-}
-
-func (o *AccessPoint_Spec) MakeDiffFieldMask(other *AccessPoint_Spec) *AccessPoint_Spec_FieldMask {
-	if o == nil && other == nil {
-		return &AccessPoint_Spec_FieldMask{}
-	}
-	if o == nil || other == nil {
-		return FullAccessPoint_Spec_FieldMask()
-	}
-
-	res := &AccessPoint_Spec_FieldMask{}
-	if o.GetAddressingMode() != other.GetAddressingMode() {
-		res.Paths = append(res.Paths, &AccessPointSpec_FieldTerminalPath{selector: AccessPointSpec_FieldPathSelectorAddressingMode})
-	}
-	if o.GetAddress() != other.GetAddress() {
-		res.Paths = append(res.Paths, &AccessPointSpec_FieldTerminalPath{selector: AccessPointSpec_FieldPathSelectorAddress})
-	}
-	return res
-}
-
-func (o *AccessPoint_Spec) MakeRawDiffFieldMask(other gotenobject.GotenObjectExt) gotenobject.FieldMask {
-	return o.MakeDiffFieldMask(other.(*AccessPoint_Spec))
-}
-
-func (o *AccessPoint_Spec) Clone() *AccessPoint_Spec {
-	if o == nil {
-		return nil
-	}
-	result := &AccessPoint_Spec{}
-	result.AddressingMode = o.AddressingMode
-	result.Address = o.Address
-	return result
-}
-
-func (o *AccessPoint_Spec) CloneRaw() gotenobject.GotenObjectExt {
-	return o.Clone()
-}
-
-func (o *AccessPoint_Spec) Merge(source *AccessPoint_Spec) {
-	o.AddressingMode = source.GetAddressingMode()
-	o.Address = source.GetAddress()
-}
-
-func (o *AccessPoint_Spec) MergeRaw(source gotenobject.GotenObjectExt) {
-	o.Merge(source.(*AccessPoint_Spec))
-}
-
-func (o *AccessPoint_Status) GotenObjectExt() {}
-
-func (o *AccessPoint_Status) MakeFullFieldMask() *AccessPoint_Status_FieldMask {
-	return FullAccessPoint_Status_FieldMask()
-}
-
-func (o *AccessPoint_Status) MakeRawFullFieldMask() gotenobject.FieldMask {
-	return FullAccessPoint_Status_FieldMask()
-}
-
-func (o *AccessPoint_Status) MakeDiffFieldMask(other *AccessPoint_Status) *AccessPoint_Status_FieldMask {
-	if o == nil && other == nil {
-		return &AccessPoint_Status_FieldMask{}
-	}
-	if o == nil || other == nil {
-		return FullAccessPoint_Status_FieldMask()
-	}
-
-	res := &AccessPoint_Status_FieldMask{}
-	if o.GetIpAddressV4() != other.GetIpAddressV4() {
-		res.Paths = append(res.Paths, &AccessPointStatus_FieldTerminalPath{selector: AccessPointStatus_FieldPathSelectorIpAddressV4})
-	}
-	if o.GetIpAddressV6() != other.GetIpAddressV6() {
-		res.Paths = append(res.Paths, &AccessPointStatus_FieldTerminalPath{selector: AccessPointStatus_FieldPathSelectorIpAddressV6})
-	}
-	return res
-}
-
-func (o *AccessPoint_Status) MakeRawDiffFieldMask(other gotenobject.GotenObjectExt) gotenobject.FieldMask {
-	return o.MakeDiffFieldMask(other.(*AccessPoint_Status))
-}
-
-func (o *AccessPoint_Status) Clone() *AccessPoint_Status {
-	if o == nil {
-		return nil
-	}
-	result := &AccessPoint_Status{}
-	result.IpAddressV4 = o.IpAddressV4
-	result.IpAddressV6 = o.IpAddressV6
-	return result
-}
-
-func (o *AccessPoint_Status) CloneRaw() gotenobject.GotenObjectExt {
-	return o.Clone()
-}
-
-func (o *AccessPoint_Status) Merge(source *AccessPoint_Status) {
-	o.IpAddressV4 = source.GetIpAddressV4()
-	o.IpAddressV6 = source.GetIpAddressV6()
-}
-
-func (o *AccessPoint_Status) MergeRaw(source gotenobject.GotenObjectExt) {
-	o.Merge(source.(*AccessPoint_Status))
 }

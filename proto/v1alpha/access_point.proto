@@ -9,6 +9,7 @@ option java_multiple_files = true;
 option java_outer_classname = "AccessPointProto";
 option java_package = "com.ntt.ztna.pb.v1alpha";
 
+// AccessPoint Resource
 message AccessPoint {
   option (google.api.resource) = {
     type : "ztna.edgelq.com/AccessPoint"
@@ -17,39 +18,4 @@ message AccessPoint {
 
   // Name of AccessPoint
   string name = 1;
-
-  Status spec = 2;
-
-  Status staus = 3;
-
-  message Spec {
-    // AddressingMode of AccessPoint.
-    // When STATIC is set, clients will use the address in spec.address.
-    // When DYNAMIC is set, clients will use the self reported address in
-    // status.ip_address_v4 or status.ip_address_v6. ADDRESSING_MODE_UNSPECIFIED
-    // is same as STATIC.
-    AddressingMode addressing_mode = 1;
-
-    // Address of the AccessPoint.
-    // One of a FQDN, IPv4 address or IPv6 address
-    // Ignored when addressing_mode is DYNAMIC
-    string address = 2;
-
-    enum AddressingMode {
-      // Same as Static
-      ADDRESSING_MODE_UNSPECIFIED = 0;
-
-      STATIC = 1;
-
-      DYNAMIC = 2;
-    }
-  }
-
-  message Status {
-    // Self reported IPv4 address.
-    string ip_address_v4 = 1;
-
-    // Self reported IPv6 address.
-    string ip_address_v6 = 2;
-  }
 }

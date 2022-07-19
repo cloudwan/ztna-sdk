@@ -197,14 +197,6 @@ func (BatchGetAccessPointsResponsePathSelectorAccessPoints) Name() BatchGetAcces
 	return BatchGetAccessPointsResponsePathSelectorAccessPointsName{}
 }
 
-func (BatchGetAccessPointsResponsePathSelectorAccessPoints) Spec() BatchGetAccessPointsResponsePathSelectorAccessPointsSpec {
-	return BatchGetAccessPointsResponsePathSelectorAccessPointsSpec{}
-}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPoints) Staus() BatchGetAccessPointsResponsePathSelectorAccessPointsStaus {
-	return BatchGetAccessPointsResponsePathSelectorAccessPointsStaus{}
-}
-
 type BatchGetAccessPointsResponsePathSelectorAccessPointsName struct{}
 
 func (BatchGetAccessPointsResponsePathSelectorAccessPointsName) FieldPath() *BatchGetAccessPointsResponse_FieldSubPath {
@@ -219,124 +211,6 @@ func (s BatchGetAccessPointsResponsePathSelectorAccessPointsName) WithValue(valu
 }
 
 func (s BatchGetAccessPointsResponsePathSelectorAccessPointsName) WithArrayOfValues(values []*access_point.Name) *BatchGetAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-type BatchGetAccessPointsResponsePathSelectorAccessPointsSpec struct{}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsSpec) FieldPath() *BatchGetAccessPointsResponse_FieldSubPath {
-	return &BatchGetAccessPointsResponse_FieldSubPath{
-		selector: BatchGetAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().FieldPath(),
-	}
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsSpec) WithValue(value *access_point.AccessPoint_Status) *BatchGetAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*BatchGetAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsSpec) WithArrayOfValues(values []*access_point.AccessPoint_Status) *BatchGetAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsSpec) IpAddressV4() BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4 {
-	return BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4{}
-}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsSpec) IpAddressV6() BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6 {
-	return BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6{}
-}
-
-type BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4 struct{}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4) FieldPath() *BatchGetAccessPointsResponse_FieldSubPath {
-	return &BatchGetAccessPointsResponse_FieldSubPath{
-		selector: BatchGetAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4) WithValue(value string) *BatchGetAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*BatchGetAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4) WithArrayOfValues(values []string) *BatchGetAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-type BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6 struct{}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6) FieldPath() *BatchGetAccessPointsResponse_FieldSubPath {
-	return &BatchGetAccessPointsResponse_FieldSubPath{
-		selector: BatchGetAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6) WithValue(value string) *BatchGetAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*BatchGetAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6) WithArrayOfValues(values []string) *BatchGetAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-type BatchGetAccessPointsResponsePathSelectorAccessPointsStaus struct{}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsStaus) FieldPath() *BatchGetAccessPointsResponse_FieldSubPath {
-	return &BatchGetAccessPointsResponse_FieldSubPath{
-		selector: BatchGetAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().FieldPath(),
-	}
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsStaus) WithValue(value *access_point.AccessPoint_Status) *BatchGetAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*BatchGetAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsStaus) WithArrayOfValues(values []*access_point.AccessPoint_Status) *BatchGetAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsStaus) IpAddressV4() BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4 {
-	return BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4{}
-}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsStaus) IpAddressV6() BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6 {
-	return BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6{}
-}
-
-type BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4 struct{}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4) FieldPath() *BatchGetAccessPointsResponse_FieldSubPath {
-	return &BatchGetAccessPointsResponse_FieldSubPath{
-		selector: BatchGetAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4) WithValue(value string) *BatchGetAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*BatchGetAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4) WithArrayOfValues(values []string) *BatchGetAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-type BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6 struct{}
-
-func (BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6) FieldPath() *BatchGetAccessPointsResponse_FieldSubPath {
-	return &BatchGetAccessPointsResponse_FieldSubPath{
-		selector: BatchGetAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6) WithValue(value string) *BatchGetAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*BatchGetAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s BatchGetAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6) WithArrayOfValues(values []string) *BatchGetAccessPointsResponse_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*BatchGetAccessPointsResponse_FieldSubPathArrayOfValues)
 }
 
@@ -535,14 +409,6 @@ func (ListAccessPointsResponsePathSelectorAccessPoints) Name() ListAccessPointsR
 	return ListAccessPointsResponsePathSelectorAccessPointsName{}
 }
 
-func (ListAccessPointsResponsePathSelectorAccessPoints) Spec() ListAccessPointsResponsePathSelectorAccessPointsSpec {
-	return ListAccessPointsResponsePathSelectorAccessPointsSpec{}
-}
-
-func (ListAccessPointsResponsePathSelectorAccessPoints) Staus() ListAccessPointsResponsePathSelectorAccessPointsStaus {
-	return ListAccessPointsResponsePathSelectorAccessPointsStaus{}
-}
-
 type ListAccessPointsResponsePathSelectorAccessPointsName struct{}
 
 func (ListAccessPointsResponsePathSelectorAccessPointsName) FieldPath() *ListAccessPointsResponse_FieldSubPath {
@@ -557,124 +423,6 @@ func (s ListAccessPointsResponsePathSelectorAccessPointsName) WithValue(value *a
 }
 
 func (s ListAccessPointsResponsePathSelectorAccessPointsName) WithArrayOfValues(values []*access_point.Name) *ListAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*ListAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-type ListAccessPointsResponsePathSelectorAccessPointsSpec struct{}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsSpec) FieldPath() *ListAccessPointsResponse_FieldSubPath {
-	return &ListAccessPointsResponse_FieldSubPath{
-		selector: ListAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().FieldPath(),
-	}
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsSpec) WithValue(value *access_point.AccessPoint_Status) *ListAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*ListAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsSpec) WithArrayOfValues(values []*access_point.AccessPoint_Status) *ListAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*ListAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsSpec) IpAddressV4() ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4 {
-	return ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4{}
-}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsSpec) IpAddressV6() ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6 {
-	return ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6{}
-}
-
-type ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4 struct{}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4) FieldPath() *ListAccessPointsResponse_FieldSubPath {
-	return &ListAccessPointsResponse_FieldSubPath{
-		selector: ListAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4) WithValue(value string) *ListAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*ListAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV4) WithArrayOfValues(values []string) *ListAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*ListAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-type ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6 struct{}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6) FieldPath() *ListAccessPointsResponse_FieldSubPath {
-	return &ListAccessPointsResponse_FieldSubPath{
-		selector: ListAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6) WithValue(value string) *ListAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*ListAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsSpecIpAddressV6) WithArrayOfValues(values []string) *ListAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*ListAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-type ListAccessPointsResponsePathSelectorAccessPointsStaus struct{}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsStaus) FieldPath() *ListAccessPointsResponse_FieldSubPath {
-	return &ListAccessPointsResponse_FieldSubPath{
-		selector: ListAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().FieldPath(),
-	}
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsStaus) WithValue(value *access_point.AccessPoint_Status) *ListAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*ListAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsStaus) WithArrayOfValues(values []*access_point.AccessPoint_Status) *ListAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*ListAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsStaus) IpAddressV4() ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4 {
-	return ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4{}
-}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsStaus) IpAddressV6() ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6 {
-	return ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6{}
-}
-
-type ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4 struct{}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4) FieldPath() *ListAccessPointsResponse_FieldSubPath {
-	return &ListAccessPointsResponse_FieldSubPath{
-		selector: ListAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4) WithValue(value string) *ListAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*ListAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV4) WithArrayOfValues(values []string) *ListAccessPointsResponse_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*ListAccessPointsResponse_FieldSubPathArrayOfValues)
-}
-
-type ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6 struct{}
-
-func (ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6) FieldPath() *ListAccessPointsResponse_FieldSubPath {
-	return &ListAccessPointsResponse_FieldSubPath{
-		selector: ListAccessPointsResponse_FieldPathSelectorAccessPoints,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6) WithValue(value string) *ListAccessPointsResponse_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*ListAccessPointsResponse_FieldSubPathValue)
-}
-
-func (s ListAccessPointsResponsePathSelectorAccessPointsStausIpAddressV6) WithArrayOfValues(values []string) *ListAccessPointsResponse_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*ListAccessPointsResponse_FieldSubPathArrayOfValues)
 }
 
@@ -1249,14 +997,6 @@ func (CreateAccessPointRequestPathSelectorAccessPoint) Name() CreateAccessPointR
 	return CreateAccessPointRequestPathSelectorAccessPointName{}
 }
 
-func (CreateAccessPointRequestPathSelectorAccessPoint) Spec() CreateAccessPointRequestPathSelectorAccessPointSpec {
-	return CreateAccessPointRequestPathSelectorAccessPointSpec{}
-}
-
-func (CreateAccessPointRequestPathSelectorAccessPoint) Staus() CreateAccessPointRequestPathSelectorAccessPointStaus {
-	return CreateAccessPointRequestPathSelectorAccessPointStaus{}
-}
-
 type CreateAccessPointRequestPathSelectorAccessPointName struct{}
 
 func (CreateAccessPointRequestPathSelectorAccessPointName) FieldPath() *CreateAccessPointRequest_FieldSubPath {
@@ -1271,124 +1011,6 @@ func (s CreateAccessPointRequestPathSelectorAccessPointName) WithValue(value *ac
 }
 
 func (s CreateAccessPointRequestPathSelectorAccessPointName) WithArrayOfValues(values []*access_point.Name) *CreateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*CreateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type CreateAccessPointRequestPathSelectorAccessPointSpec struct{}
-
-func (CreateAccessPointRequestPathSelectorAccessPointSpec) FieldPath() *CreateAccessPointRequest_FieldSubPath {
-	return &CreateAccessPointRequest_FieldSubPath{
-		selector: CreateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().FieldPath(),
-	}
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointSpec) WithValue(value *access_point.AccessPoint_Status) *CreateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*CreateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointSpec) WithArrayOfValues(values []*access_point.AccessPoint_Status) *CreateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*CreateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-func (CreateAccessPointRequestPathSelectorAccessPointSpec) IpAddressV4() CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4 {
-	return CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4{}
-}
-
-func (CreateAccessPointRequestPathSelectorAccessPointSpec) IpAddressV6() CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6 {
-	return CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6{}
-}
-
-type CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4 struct{}
-
-func (CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4) FieldPath() *CreateAccessPointRequest_FieldSubPath {
-	return &CreateAccessPointRequest_FieldSubPath{
-		selector: CreateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4) WithValue(value string) *CreateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*CreateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4) WithArrayOfValues(values []string) *CreateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*CreateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6 struct{}
-
-func (CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6) FieldPath() *CreateAccessPointRequest_FieldSubPath {
-	return &CreateAccessPointRequest_FieldSubPath{
-		selector: CreateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6) WithValue(value string) *CreateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*CreateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6) WithArrayOfValues(values []string) *CreateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*CreateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type CreateAccessPointRequestPathSelectorAccessPointStaus struct{}
-
-func (CreateAccessPointRequestPathSelectorAccessPointStaus) FieldPath() *CreateAccessPointRequest_FieldSubPath {
-	return &CreateAccessPointRequest_FieldSubPath{
-		selector: CreateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().FieldPath(),
-	}
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointStaus) WithValue(value *access_point.AccessPoint_Status) *CreateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*CreateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointStaus) WithArrayOfValues(values []*access_point.AccessPoint_Status) *CreateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*CreateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-func (CreateAccessPointRequestPathSelectorAccessPointStaus) IpAddressV4() CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV4 {
-	return CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV4{}
-}
-
-func (CreateAccessPointRequestPathSelectorAccessPointStaus) IpAddressV6() CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV6 {
-	return CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV6{}
-}
-
-type CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV4 struct{}
-
-func (CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV4) FieldPath() *CreateAccessPointRequest_FieldSubPath {
-	return &CreateAccessPointRequest_FieldSubPath{
-		selector: CreateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV4) WithValue(value string) *CreateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*CreateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV4) WithArrayOfValues(values []string) *CreateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*CreateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV6 struct{}
-
-func (CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV6) FieldPath() *CreateAccessPointRequest_FieldSubPath {
-	return &CreateAccessPointRequest_FieldSubPath{
-		selector: CreateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV6) WithValue(value string) *CreateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*CreateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s CreateAccessPointRequestPathSelectorAccessPointStausIpAddressV6) WithArrayOfValues(values []string) *CreateAccessPointRequest_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*CreateAccessPointRequest_FieldSubPathArrayOfValues)
 }
 
@@ -1441,14 +1063,6 @@ func (UpdateAccessPointRequestPathSelectorAccessPoint) Name() UpdateAccessPointR
 	return UpdateAccessPointRequestPathSelectorAccessPointName{}
 }
 
-func (UpdateAccessPointRequestPathSelectorAccessPoint) Spec() UpdateAccessPointRequestPathSelectorAccessPointSpec {
-	return UpdateAccessPointRequestPathSelectorAccessPointSpec{}
-}
-
-func (UpdateAccessPointRequestPathSelectorAccessPoint) Staus() UpdateAccessPointRequestPathSelectorAccessPointStaus {
-	return UpdateAccessPointRequestPathSelectorAccessPointStaus{}
-}
-
 type UpdateAccessPointRequestPathSelectorAccessPointName struct{}
 
 func (UpdateAccessPointRequestPathSelectorAccessPointName) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
@@ -1463,124 +1077,6 @@ func (s UpdateAccessPointRequestPathSelectorAccessPointName) WithValue(value *ac
 }
 
 func (s UpdateAccessPointRequestPathSelectorAccessPointName) WithArrayOfValues(values []*access_point.Name) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequestPathSelectorAccessPointSpec struct{}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointSpec) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointSpec) WithValue(value *access_point.AccessPoint_Status) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointSpec) WithArrayOfValues(values []*access_point.AccessPoint_Status) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointSpec) IpAddressV4() UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4 {
-	return UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4{}
-}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointSpec) IpAddressV6() UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6 {
-	return UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6{}
-}
-
-type UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4 struct{}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4) WithValue(value string) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV4) WithArrayOfValues(values []string) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6 struct{}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6) WithValue(value string) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointSpecIpAddressV6) WithArrayOfValues(values []string) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequestPathSelectorAccessPointStaus struct{}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointStaus) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointStaus) WithValue(value *access_point.AccessPoint_Status) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointStaus) WithArrayOfValues(values []*access_point.AccessPoint_Status) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointStaus) IpAddressV4() UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV4 {
-	return UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV4{}
-}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointStaus) IpAddressV6() UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV6 {
-	return UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV6{}
-}
-
-type UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV4 struct{}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV4) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV4) WithValue(value string) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV4) WithArrayOfValues(values []string) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV6 struct{}
-
-func (UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV6) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorAccessPoint,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV6) WithValue(value string) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorAccessPointStausIpAddressV6) WithArrayOfValues(values []string) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
 }
 
@@ -1657,14 +1153,6 @@ func (UpdateAccessPointRequestPathSelectorCasConditionalState) Name() UpdateAcce
 	return UpdateAccessPointRequestPathSelectorCasConditionalStateName{}
 }
 
-func (UpdateAccessPointRequestPathSelectorCasConditionalState) Spec() UpdateAccessPointRequestPathSelectorCasConditionalStateSpec {
-	return UpdateAccessPointRequestPathSelectorCasConditionalStateSpec{}
-}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalState) Staus() UpdateAccessPointRequestPathSelectorCasConditionalStateStaus {
-	return UpdateAccessPointRequestPathSelectorCasConditionalStateStaus{}
-}
-
 type UpdateAccessPointRequestPathSelectorCasConditionalStateName struct{}
 
 func (UpdateAccessPointRequestPathSelectorCasConditionalStateName) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
@@ -1679,124 +1167,6 @@ func (s UpdateAccessPointRequestPathSelectorCasConditionalStateName) WithValue(v
 }
 
 func (s UpdateAccessPointRequestPathSelectorCasConditionalStateName) WithArrayOfValues(values []*access_point.Name) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequestPathSelectorCasConditionalStateSpec struct{}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateSpec) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorCas,
-		subPath:  NewUpdateAccessPointRequestCASFieldPathBuilder().ConditionalState().Spec().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateSpec) WithValue(value *access_point.AccessPoint_Status) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateSpec) WithArrayOfValues(values []*access_point.AccessPoint_Status) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateSpec) IpAddressV4() UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV4 {
-	return UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV4{}
-}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateSpec) IpAddressV6() UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV6 {
-	return UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV6{}
-}
-
-type UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV4 struct{}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV4) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorCas,
-		subPath:  NewUpdateAccessPointRequestCASFieldPathBuilder().ConditionalState().Spec().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV4) WithValue(value string) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV4) WithArrayOfValues(values []string) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV6 struct{}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV6) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorCas,
-		subPath:  NewUpdateAccessPointRequestCASFieldPathBuilder().ConditionalState().Spec().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV6) WithValue(value string) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateSpecIpAddressV6) WithArrayOfValues(values []string) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequestPathSelectorCasConditionalStateStaus struct{}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateStaus) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorCas,
-		subPath:  NewUpdateAccessPointRequestCASFieldPathBuilder().ConditionalState().Staus().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateStaus) WithValue(value *access_point.AccessPoint_Status) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateStaus) WithArrayOfValues(values []*access_point.AccessPoint_Status) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateStaus) IpAddressV4() UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV4 {
-	return UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV4{}
-}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateStaus) IpAddressV6() UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV6 {
-	return UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV6{}
-}
-
-type UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV4 struct{}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV4) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorCas,
-		subPath:  NewUpdateAccessPointRequestCASFieldPathBuilder().ConditionalState().Staus().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV4) WithValue(value string) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV4) WithArrayOfValues(values []string) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV6 struct{}
-
-func (UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV6) FieldPath() *UpdateAccessPointRequest_FieldSubPath {
-	return &UpdateAccessPointRequest_FieldSubPath{
-		selector: UpdateAccessPointRequest_FieldPathSelectorCas,
-		subPath:  NewUpdateAccessPointRequestCASFieldPathBuilder().ConditionalState().Staus().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV6) WithValue(value string) *UpdateAccessPointRequest_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequest_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequestPathSelectorCasConditionalStateStausIpAddressV6) WithArrayOfValues(values []string) *UpdateAccessPointRequest_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequest_FieldSubPathArrayOfValues)
 }
 
@@ -1863,14 +1233,6 @@ func (UpdateAccessPointRequest_CASPathSelectorConditionalState) Name() UpdateAcc
 	return UpdateAccessPointRequest_CASPathSelectorConditionalStateName{}
 }
 
-func (UpdateAccessPointRequest_CASPathSelectorConditionalState) Spec() UpdateAccessPointRequest_CASPathSelectorConditionalStateSpec {
-	return UpdateAccessPointRequest_CASPathSelectorConditionalStateSpec{}
-}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalState) Staus() UpdateAccessPointRequest_CASPathSelectorConditionalStateStaus {
-	return UpdateAccessPointRequest_CASPathSelectorConditionalStateStaus{}
-}
-
 type UpdateAccessPointRequest_CASPathSelectorConditionalStateName struct{}
 
 func (UpdateAccessPointRequest_CASPathSelectorConditionalStateName) FieldPath() *UpdateAccessPointRequestCAS_FieldSubPath {
@@ -1885,124 +1247,6 @@ func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateName) WithValue(
 }
 
 func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateName) WithArrayOfValues(values []*access_point.Name) *UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequest_CASPathSelectorConditionalStateSpec struct{}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateSpec) FieldPath() *UpdateAccessPointRequestCAS_FieldSubPath {
-	return &UpdateAccessPointRequestCAS_FieldSubPath{
-		selector: UpdateAccessPointRequestCAS_FieldPathSelectorConditionalState,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateSpec) WithValue(value *access_point.AccessPoint_Status) *UpdateAccessPointRequestCAS_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequestCAS_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateSpec) WithArrayOfValues(values []*access_point.AccessPoint_Status) *UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues)
-}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateSpec) IpAddressV4() UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV4 {
-	return UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV4{}
-}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateSpec) IpAddressV6() UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV6 {
-	return UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV6{}
-}
-
-type UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV4 struct{}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV4) FieldPath() *UpdateAccessPointRequestCAS_FieldSubPath {
-	return &UpdateAccessPointRequestCAS_FieldSubPath{
-		selector: UpdateAccessPointRequestCAS_FieldPathSelectorConditionalState,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV4) WithValue(value string) *UpdateAccessPointRequestCAS_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequestCAS_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV4) WithArrayOfValues(values []string) *UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV6 struct{}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV6) FieldPath() *UpdateAccessPointRequestCAS_FieldSubPath {
-	return &UpdateAccessPointRequestCAS_FieldSubPath{
-		selector: UpdateAccessPointRequestCAS_FieldPathSelectorConditionalState,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Spec().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV6) WithValue(value string) *UpdateAccessPointRequestCAS_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequestCAS_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateSpecIpAddressV6) WithArrayOfValues(values []string) *UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequest_CASPathSelectorConditionalStateStaus struct{}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateStaus) FieldPath() *UpdateAccessPointRequestCAS_FieldSubPath {
-	return &UpdateAccessPointRequestCAS_FieldSubPath{
-		selector: UpdateAccessPointRequestCAS_FieldPathSelectorConditionalState,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateStaus) WithValue(value *access_point.AccessPoint_Status) *UpdateAccessPointRequestCAS_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequestCAS_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateStaus) WithArrayOfValues(values []*access_point.AccessPoint_Status) *UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues)
-}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateStaus) IpAddressV4() UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV4 {
-	return UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV4{}
-}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateStaus) IpAddressV6() UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV6 {
-	return UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV6{}
-}
-
-type UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV4 struct{}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV4) FieldPath() *UpdateAccessPointRequestCAS_FieldSubPath {
-	return &UpdateAccessPointRequestCAS_FieldSubPath{
-		selector: UpdateAccessPointRequestCAS_FieldPathSelectorConditionalState,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV4().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV4) WithValue(value string) *UpdateAccessPointRequestCAS_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequestCAS_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV4) WithArrayOfValues(values []string) *UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues)
-}
-
-type UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV6 struct{}
-
-func (UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV6) FieldPath() *UpdateAccessPointRequestCAS_FieldSubPath {
-	return &UpdateAccessPointRequestCAS_FieldSubPath{
-		selector: UpdateAccessPointRequestCAS_FieldPathSelectorConditionalState,
-		subPath:  access_point.NewAccessPointFieldPathBuilder().Staus().IpAddressV6().FieldPath(),
-	}
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV6) WithValue(value string) *UpdateAccessPointRequestCAS_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*UpdateAccessPointRequestCAS_FieldSubPathValue)
-}
-
-func (s UpdateAccessPointRequest_CASPathSelectorConditionalStateStausIpAddressV6) WithArrayOfValues(values []string) *UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*UpdateAccessPointRequestCAS_FieldSubPathArrayOfValues)
 }
 

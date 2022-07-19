@@ -50,34 +50,6 @@ func (obj *AccessPoint) GotenValidate() error {
 	if obj == nil {
 		return nil
 	}
-	if subobj, ok := interface{}(obj.Spec).(gotenvalidate.Validator); ok {
-		if err := subobj.GotenValidate(); err != nil {
-			return gotenvalidate.NewValidationError("AccessPoint", "spec", obj.Spec, "nested object validation failed", err)
-		}
-	}
-	if subobj, ok := interface{}(obj.Staus).(gotenvalidate.Validator); ok {
-		if err := subobj.GotenValidate(); err != nil {
-			return gotenvalidate.NewValidationError("AccessPoint", "staus", obj.Staus, "nested object validation failed", err)
-		}
-	}
-	if cvobj, ok := interface{}(obj).(gotenvalidate.CustomValidator); ok {
-		return cvobj.GotenCustomValidate()
-	}
-	return nil
-}
-func (obj *AccessPoint_Spec) GotenValidate() error {
-	if obj == nil {
-		return nil
-	}
-	if cvobj, ok := interface{}(obj).(gotenvalidate.CustomValidator); ok {
-		return cvobj.GotenCustomValidate()
-	}
-	return nil
-}
-func (obj *AccessPoint_Status) GotenValidate() error {
-	if obj == nil {
-		return nil
-	}
 	if cvobj, ok := interface{}(obj).(gotenvalidate.CustomValidator); ok {
 		return cvobj.GotenCustomValidate()
 	}

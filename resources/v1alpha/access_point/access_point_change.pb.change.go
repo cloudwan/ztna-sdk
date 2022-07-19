@@ -94,7 +94,7 @@ func (c *AccessPointChange) GetAccessPoint() *AccessPoint {
 	return nil
 }
 
-func (c *AccessPointChange) GetResource() gotenresource.Resource {
+func (c *AccessPointChange) GetRawResource() gotenresource.Resource {
 	return c.GetAccessPoint()
 }
 

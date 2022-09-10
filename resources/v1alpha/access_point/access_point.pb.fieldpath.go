@@ -195,6 +195,10 @@ func (fp *AccessPoint_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == AccessPoint_FieldPathSelectorName
 }
 
+func (fp *AccessPoint_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *AccessPoint_FieldTerminalPath) WithIValue(value interface{}) AccessPoint_FieldPathValue {
 	switch fp.selector {
 	case AccessPoint_FieldPathSelectorName:
@@ -380,7 +384,11 @@ func (fpaiv *AccessPoint_FieldTerminalPathArrayItemValue) GetSingleRaw(source pr
 func (fpaiv *AccessPoint_FieldTerminalPathArrayItemValue) ContainsValue(source *AccessPoint) bool {
 	slice := fpaiv.AccessPoint_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}

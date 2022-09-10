@@ -71,6 +71,15 @@ func (d *ZTNADescriptor) AllApiDescriptors() []gotenclient.ApiDescriptor {
 	}
 }
 
+func (d *ZTNADescriptor) AllImportedServiceInfos() []gotenclient.ServiceImportInfo {
+	return []gotenclient.ServiceImportInfo{
+		{
+			Domain:  "iam.edgelq.com",
+			Version: "v1alpha",
+		},
+	}
+}
+
 func GetZTNADescriptor() *ZTNADescriptor {
 	return ztnaDescriptor
 }

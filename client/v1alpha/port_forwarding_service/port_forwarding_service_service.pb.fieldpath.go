@@ -236,6 +236,10 @@ func (fp *GetPortForwardingServiceRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == GetPortForwardingServiceRequest_FieldPathSelectorView
 }
 
+func (fp *GetPortForwardingServiceRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *GetPortForwardingServiceRequest_FieldTerminalPath) WithIValue(value interface{}) GetPortForwardingServiceRequest_FieldPathValue {
 	switch fp.selector {
 	case GetPortForwardingServiceRequest_FieldPathSelectorName:
@@ -453,7 +457,11 @@ func (fpaiv *GetPortForwardingServiceRequest_FieldTerminalPathArrayItemValue) Ge
 func (fpaiv *GetPortForwardingServiceRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *GetPortForwardingServiceRequest) bool {
 	slice := fpaiv.GetPortForwardingServiceRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -698,6 +706,10 @@ func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) IsLeaf() bool
 		fp.selector == BatchGetPortForwardingServicesRequest_FieldPathSelectorView
 }
 
+func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *BatchGetPortForwardingServicesRequest_FieldTerminalPath) WithIValue(value interface{}) BatchGetPortForwardingServicesRequest_FieldPathValue {
 	switch fp.selector {
 	case BatchGetPortForwardingServicesRequest_FieldPathSelectorNames:
@@ -904,7 +916,11 @@ func (fpaiv *BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayItemVal
 func (fpaiv *BatchGetPortForwardingServicesRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *BatchGetPortForwardingServicesRequest) bool {
 	slice := fpaiv.BatchGetPortForwardingServicesRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -1143,6 +1159,10 @@ func (fp *BatchGetPortForwardingServicesResponse_FieldTerminalPath) IsLeaf() boo
 	return fp.selector == BatchGetPortForwardingServicesResponse_FieldPathSelectorMissing
 }
 
+func (fp *BatchGetPortForwardingServicesResponse_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *BatchGetPortForwardingServicesResponse_FieldTerminalPath) WithIValue(value interface{}) BatchGetPortForwardingServicesResponse_FieldPathValue {
 	switch fp.selector {
 	case BatchGetPortForwardingServicesResponse_FieldPathSelectorPortForwardingServices:
@@ -1273,6 +1293,12 @@ func (fps *BatchGetPortForwardingServicesResponse_FieldSubPath) ClearValueRaw(it
 // IsLeaf - whether field path is holds simple value
 func (fps *BatchGetPortForwardingServicesResponse_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *BatchGetPortForwardingServicesResponse_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&BatchGetPortForwardingServicesResponse_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *BatchGetPortForwardingServicesResponse_FieldSubPath) WithIValue(value interface{}) BatchGetPortForwardingServicesResponse_FieldPathValue {
@@ -1490,7 +1516,11 @@ func (fpaiv *BatchGetPortForwardingServicesResponse_FieldTerminalPathArrayItemVa
 func (fpaiv *BatchGetPortForwardingServicesResponse_FieldTerminalPathArrayItemValue) ContainsValue(source *BatchGetPortForwardingServicesResponse) bool {
 	slice := fpaiv.BatchGetPortForwardingServicesResponse_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -1831,6 +1861,10 @@ func (fp *ListPortForwardingServicesRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == ListPortForwardingServicesRequest_FieldPathSelectorView
 }
 
+func (fp *ListPortForwardingServicesRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *ListPortForwardingServicesRequest_FieldTerminalPath) WithIValue(value interface{}) ListPortForwardingServicesRequest_FieldPathValue {
 	switch fp.selector {
 	case ListPortForwardingServicesRequest_FieldPathSelectorParent:
@@ -2104,7 +2138,11 @@ func (fpaiv *ListPortForwardingServicesRequest_FieldTerminalPathArrayItemValue) 
 func (fpaiv *ListPortForwardingServicesRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *ListPortForwardingServicesRequest) bool {
 	slice := fpaiv.ListPortForwardingServicesRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -2392,6 +2430,10 @@ func (fp *ListPortForwardingServicesResponse_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == ListPortForwardingServicesResponse_FieldPathSelectorNextPageToken
 }
 
+func (fp *ListPortForwardingServicesResponse_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *ListPortForwardingServicesResponse_FieldTerminalPath) WithIValue(value interface{}) ListPortForwardingServicesResponse_FieldPathValue {
 	switch fp.selector {
 	case ListPortForwardingServicesResponse_FieldPathSelectorPortForwardingServices:
@@ -2524,6 +2566,12 @@ func (fps *ListPortForwardingServicesResponse_FieldSubPath) ClearValueRaw(item p
 // IsLeaf - whether field path is holds simple value
 func (fps *ListPortForwardingServicesResponse_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *ListPortForwardingServicesResponse_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&ListPortForwardingServicesResponse_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *ListPortForwardingServicesResponse_FieldSubPath) WithIValue(value interface{}) ListPortForwardingServicesResponse_FieldPathValue {
@@ -2745,7 +2793,11 @@ func (fpaiv *ListPortForwardingServicesResponse_FieldTerminalPathArrayItemValue)
 func (fpaiv *ListPortForwardingServicesResponse_FieldTerminalPathArrayItemValue) ContainsValue(source *ListPortForwardingServicesResponse) bool {
 	slice := fpaiv.ListPortForwardingServicesResponse_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -3029,6 +3081,10 @@ func (fp *WatchPortForwardingServiceRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == WatchPortForwardingServiceRequest_FieldPathSelectorView
 }
 
+func (fp *WatchPortForwardingServiceRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchPortForwardingServiceRequest_FieldTerminalPath) WithIValue(value interface{}) WatchPortForwardingServiceRequest_FieldPathValue {
 	switch fp.selector {
 	case WatchPortForwardingServiceRequest_FieldPathSelectorName:
@@ -3246,7 +3302,11 @@ func (fpaiv *WatchPortForwardingServiceRequest_FieldTerminalPathArrayItemValue) 
 func (fpaiv *WatchPortForwardingServiceRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchPortForwardingServiceRequest) bool {
 	slice := fpaiv.WatchPortForwardingServiceRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -3460,6 +3520,10 @@ func (fp *WatchPortForwardingServiceResponse_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == WatchPortForwardingServiceResponse_FieldPathSelectorChange
 }
 
+func (fp *WatchPortForwardingServiceResponse_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchPortForwardingServiceResponse_FieldTerminalPath) WithIValue(value interface{}) WatchPortForwardingServiceResponse_FieldPathValue {
 	switch fp.selector {
 	case WatchPortForwardingServiceResponse_FieldPathSelectorChange:
@@ -3628,7 +3692,11 @@ func (fpaiv *WatchPortForwardingServiceResponse_FieldTerminalPathArrayItemValue)
 func (fpaiv *WatchPortForwardingServiceResponse_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchPortForwardingServiceResponse) bool {
 	slice := fpaiv.WatchPortForwardingServiceResponse_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -3964,6 +4032,10 @@ func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == WatchPortForwardingServicesRequest_FieldPathSelectorMaxChunkSize
 }
 
+func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) WithIValue(value interface{}) WatchPortForwardingServicesRequest_FieldPathValue {
 	switch fp.selector {
 	case WatchPortForwardingServicesRequest_FieldPathSelectorType:
@@ -4297,7 +4369,11 @@ func (fpaiv *WatchPortForwardingServicesRequest_FieldTerminalPathArrayItemValue)
 func (fpaiv *WatchPortForwardingServicesRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchPortForwardingServicesRequest) bool {
 	slice := fpaiv.WatchPortForwardingServicesRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -4662,6 +4738,10 @@ func (fp *WatchPortForwardingServicesResponse_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == WatchPortForwardingServicesResponse_FieldPathSelectorIsHardReset
 }
 
+func (fp *WatchPortForwardingServicesResponse_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchPortForwardingServicesResponse_FieldTerminalPath) WithIValue(value interface{}) WatchPortForwardingServicesResponse_FieldPathValue {
 	switch fp.selector {
 	case WatchPortForwardingServicesResponse_FieldPathSelectorPortForwardingServiceChanges:
@@ -4806,6 +4886,12 @@ func (fps *WatchPortForwardingServicesResponse_FieldSubPath) ClearValueRaw(item 
 // IsLeaf - whether field path is holds simple value
 func (fps *WatchPortForwardingServicesResponse_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *WatchPortForwardingServicesResponse_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&WatchPortForwardingServicesResponse_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *WatchPortForwardingServicesResponse_FieldSubPath) WithIValue(value interface{}) WatchPortForwardingServicesResponse_FieldPathValue {
@@ -5099,7 +5185,11 @@ func (fpaiv *WatchPortForwardingServicesResponse_FieldTerminalPathArrayItemValue
 func (fpaiv *WatchPortForwardingServicesResponse_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchPortForwardingServicesResponse) bool {
 	slice := fpaiv.WatchPortForwardingServicesResponse_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -5401,6 +5491,10 @@ func (fp *WatchPortForwardingServicesResponsePageTokenChange_FieldTerminalPath) 
 		fp.selector == WatchPortForwardingServicesResponsePageTokenChange_FieldPathSelectorNextPageToken
 }
 
+func (fp *WatchPortForwardingServicesResponsePageTokenChange_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchPortForwardingServicesResponsePageTokenChange_FieldTerminalPath) WithIValue(value interface{}) WatchPortForwardingServicesResponsePageTokenChange_FieldPathValue {
 	switch fp.selector {
 	case WatchPortForwardingServicesResponsePageTokenChange_FieldPathSelectorPrevPageToken:
@@ -5581,7 +5675,11 @@ func (fpaiv *WatchPortForwardingServicesResponsePageTokenChange_FieldTerminalPat
 func (fpaiv *WatchPortForwardingServicesResponsePageTokenChange_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchPortForwardingServicesResponse_PageTokenChange) bool {
 	slice := fpaiv.WatchPortForwardingServicesResponsePageTokenChange_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -5812,6 +5910,10 @@ func (fp *CreatePortForwardingServiceRequest_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == CreatePortForwardingServiceRequest_FieldPathSelectorParent
 }
 
+func (fp *CreatePortForwardingServiceRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *CreatePortForwardingServiceRequest_FieldTerminalPath) WithIValue(value interface{}) CreatePortForwardingServiceRequest_FieldPathValue {
 	switch fp.selector {
 	case CreatePortForwardingServiceRequest_FieldPathSelectorParent:
@@ -5934,6 +6036,12 @@ func (fps *CreatePortForwardingServiceRequest_FieldSubPath) ClearValueRaw(item p
 // IsLeaf - whether field path is holds simple value
 func (fps *CreatePortForwardingServiceRequest_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *CreatePortForwardingServiceRequest_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&CreatePortForwardingServiceRequest_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *CreatePortForwardingServiceRequest_FieldSubPath) WithIValue(value interface{}) CreatePortForwardingServiceRequest_FieldPathValue {
@@ -6160,7 +6268,11 @@ func (fpaiv *CreatePortForwardingServiceRequest_FieldTerminalPathArrayItemValue)
 func (fpaiv *CreatePortForwardingServiceRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *CreatePortForwardingServiceRequest) bool {
 	slice := fpaiv.CreatePortForwardingServiceRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -6452,6 +6564,10 @@ func (fp *UpdatePortForwardingServiceRequest_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == UpdatePortForwardingServiceRequest_FieldPathSelectorUpdateMask
 }
 
+func (fp *UpdatePortForwardingServiceRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *UpdatePortForwardingServiceRequest_FieldTerminalPath) WithIValue(value interface{}) UpdatePortForwardingServiceRequest_FieldPathValue {
 	switch fp.selector {
 	case UpdatePortForwardingServiceRequest_FieldPathSelectorPortForwardingService:
@@ -6591,6 +6707,12 @@ func (fps *UpdatePortForwardingServiceRequest_FieldSubPath) ClearValueRaw(item p
 // IsLeaf - whether field path is holds simple value
 func (fps *UpdatePortForwardingServiceRequest_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *UpdatePortForwardingServiceRequest_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&UpdatePortForwardingServiceRequest_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *UpdatePortForwardingServiceRequest_FieldSubPath) WithIValue(value interface{}) UpdatePortForwardingServiceRequest_FieldPathValue {
@@ -6816,7 +6938,11 @@ func (fpaiv *UpdatePortForwardingServiceRequest_FieldTerminalPathArrayItemValue)
 func (fpaiv *UpdatePortForwardingServiceRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *UpdatePortForwardingServiceRequest) bool {
 	slice := fpaiv.UpdatePortForwardingServiceRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -7104,6 +7230,10 @@ func (fp *UpdatePortForwardingServiceRequestCAS_FieldTerminalPath) IsLeaf() bool
 	return fp.selector == UpdatePortForwardingServiceRequestCAS_FieldPathSelectorFieldMask
 }
 
+func (fp *UpdatePortForwardingServiceRequestCAS_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *UpdatePortForwardingServiceRequestCAS_FieldTerminalPath) WithIValue(value interface{}) UpdatePortForwardingServiceRequestCAS_FieldPathValue {
 	switch fp.selector {
 	case UpdatePortForwardingServiceRequestCAS_FieldPathSelectorConditionalState:
@@ -7226,6 +7356,12 @@ func (fps *UpdatePortForwardingServiceRequestCAS_FieldSubPath) ClearValueRaw(ite
 // IsLeaf - whether field path is holds simple value
 func (fps *UpdatePortForwardingServiceRequestCAS_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *UpdatePortForwardingServiceRequestCAS_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&UpdatePortForwardingServiceRequestCAS_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *UpdatePortForwardingServiceRequestCAS_FieldSubPath) WithIValue(value interface{}) UpdatePortForwardingServiceRequestCAS_FieldPathValue {
@@ -7435,7 +7571,11 @@ func (fpaiv *UpdatePortForwardingServiceRequestCAS_FieldTerminalPathArrayItemVal
 func (fpaiv *UpdatePortForwardingServiceRequestCAS_FieldTerminalPathArrayItemValue) ContainsValue(source *UpdatePortForwardingServiceRequest_CAS) bool {
 	slice := fpaiv.UpdatePortForwardingServiceRequestCAS_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -7680,6 +7820,10 @@ func (fp *DeletePortForwardingServiceRequest_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == DeletePortForwardingServiceRequest_FieldPathSelectorName
 }
 
+func (fp *DeletePortForwardingServiceRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *DeletePortForwardingServiceRequest_FieldTerminalPath) WithIValue(value interface{}) DeletePortForwardingServiceRequest_FieldPathValue {
 	switch fp.selector {
 	case DeletePortForwardingServiceRequest_FieldPathSelectorName:
@@ -7865,7 +8009,11 @@ func (fpaiv *DeletePortForwardingServiceRequest_FieldTerminalPathArrayItemValue)
 func (fpaiv *DeletePortForwardingServiceRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *DeletePortForwardingServiceRequest) bool {
 	slice := fpaiv.DeletePortForwardingServiceRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}

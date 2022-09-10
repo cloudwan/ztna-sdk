@@ -236,6 +236,10 @@ func (fp *GetAccessPointRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == GetAccessPointRequest_FieldPathSelectorView
 }
 
+func (fp *GetAccessPointRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *GetAccessPointRequest_FieldTerminalPath) WithIValue(value interface{}) GetAccessPointRequest_FieldPathValue {
 	switch fp.selector {
 	case GetAccessPointRequest_FieldPathSelectorName:
@@ -453,7 +457,11 @@ func (fpaiv *GetAccessPointRequest_FieldTerminalPathArrayItemValue) GetSingleRaw
 func (fpaiv *GetAccessPointRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *GetAccessPointRequest) bool {
 	slice := fpaiv.GetAccessPointRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -698,6 +706,10 @@ func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == BatchGetAccessPointsRequest_FieldPathSelectorView
 }
 
+func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *BatchGetAccessPointsRequest_FieldTerminalPath) WithIValue(value interface{}) BatchGetAccessPointsRequest_FieldPathValue {
 	switch fp.selector {
 	case BatchGetAccessPointsRequest_FieldPathSelectorNames:
@@ -904,7 +916,11 @@ func (fpaiv *BatchGetAccessPointsRequest_FieldTerminalPathArrayItemValue) GetSin
 func (fpaiv *BatchGetAccessPointsRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *BatchGetAccessPointsRequest) bool {
 	slice := fpaiv.BatchGetAccessPointsRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -1143,6 +1159,10 @@ func (fp *BatchGetAccessPointsResponse_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == BatchGetAccessPointsResponse_FieldPathSelectorMissing
 }
 
+func (fp *BatchGetAccessPointsResponse_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *BatchGetAccessPointsResponse_FieldTerminalPath) WithIValue(value interface{}) BatchGetAccessPointsResponse_FieldPathValue {
 	switch fp.selector {
 	case BatchGetAccessPointsResponse_FieldPathSelectorAccessPoints:
@@ -1273,6 +1293,12 @@ func (fps *BatchGetAccessPointsResponse_FieldSubPath) ClearValueRaw(item proto.M
 // IsLeaf - whether field path is holds simple value
 func (fps *BatchGetAccessPointsResponse_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *BatchGetAccessPointsResponse_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&BatchGetAccessPointsResponse_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *BatchGetAccessPointsResponse_FieldSubPath) WithIValue(value interface{}) BatchGetAccessPointsResponse_FieldPathValue {
@@ -1490,7 +1516,11 @@ func (fpaiv *BatchGetAccessPointsResponse_FieldTerminalPathArrayItemValue) GetSi
 func (fpaiv *BatchGetAccessPointsResponse_FieldTerminalPathArrayItemValue) ContainsValue(source *BatchGetAccessPointsResponse) bool {
 	slice := fpaiv.BatchGetAccessPointsResponse_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -1831,6 +1861,10 @@ func (fp *ListAccessPointsRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == ListAccessPointsRequest_FieldPathSelectorView
 }
 
+func (fp *ListAccessPointsRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *ListAccessPointsRequest_FieldTerminalPath) WithIValue(value interface{}) ListAccessPointsRequest_FieldPathValue {
 	switch fp.selector {
 	case ListAccessPointsRequest_FieldPathSelectorParent:
@@ -2104,7 +2138,11 @@ func (fpaiv *ListAccessPointsRequest_FieldTerminalPathArrayItemValue) GetSingleR
 func (fpaiv *ListAccessPointsRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *ListAccessPointsRequest) bool {
 	slice := fpaiv.ListAccessPointsRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -2392,6 +2430,10 @@ func (fp *ListAccessPointsResponse_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == ListAccessPointsResponse_FieldPathSelectorNextPageToken
 }
 
+func (fp *ListAccessPointsResponse_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *ListAccessPointsResponse_FieldTerminalPath) WithIValue(value interface{}) ListAccessPointsResponse_FieldPathValue {
 	switch fp.selector {
 	case ListAccessPointsResponse_FieldPathSelectorAccessPoints:
@@ -2524,6 +2566,12 @@ func (fps *ListAccessPointsResponse_FieldSubPath) ClearValueRaw(item proto.Messa
 // IsLeaf - whether field path is holds simple value
 func (fps *ListAccessPointsResponse_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *ListAccessPointsResponse_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&ListAccessPointsResponse_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *ListAccessPointsResponse_FieldSubPath) WithIValue(value interface{}) ListAccessPointsResponse_FieldPathValue {
@@ -2745,7 +2793,11 @@ func (fpaiv *ListAccessPointsResponse_FieldTerminalPathArrayItemValue) GetSingle
 func (fpaiv *ListAccessPointsResponse_FieldTerminalPathArrayItemValue) ContainsValue(source *ListAccessPointsResponse) bool {
 	slice := fpaiv.ListAccessPointsResponse_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -3029,6 +3081,10 @@ func (fp *WatchAccessPointRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == WatchAccessPointRequest_FieldPathSelectorView
 }
 
+func (fp *WatchAccessPointRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchAccessPointRequest_FieldTerminalPath) WithIValue(value interface{}) WatchAccessPointRequest_FieldPathValue {
 	switch fp.selector {
 	case WatchAccessPointRequest_FieldPathSelectorName:
@@ -3246,7 +3302,11 @@ func (fpaiv *WatchAccessPointRequest_FieldTerminalPathArrayItemValue) GetSingleR
 func (fpaiv *WatchAccessPointRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchAccessPointRequest) bool {
 	slice := fpaiv.WatchAccessPointRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -3460,6 +3520,10 @@ func (fp *WatchAccessPointResponse_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == WatchAccessPointResponse_FieldPathSelectorChange
 }
 
+func (fp *WatchAccessPointResponse_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchAccessPointResponse_FieldTerminalPath) WithIValue(value interface{}) WatchAccessPointResponse_FieldPathValue {
 	switch fp.selector {
 	case WatchAccessPointResponse_FieldPathSelectorChange:
@@ -3628,7 +3692,11 @@ func (fpaiv *WatchAccessPointResponse_FieldTerminalPathArrayItemValue) GetSingle
 func (fpaiv *WatchAccessPointResponse_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchAccessPointResponse) bool {
 	slice := fpaiv.WatchAccessPointResponse_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -3964,6 +4032,10 @@ func (fp *WatchAccessPointsRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == WatchAccessPointsRequest_FieldPathSelectorMaxChunkSize
 }
 
+func (fp *WatchAccessPointsRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchAccessPointsRequest_FieldTerminalPath) WithIValue(value interface{}) WatchAccessPointsRequest_FieldPathValue {
 	switch fp.selector {
 	case WatchAccessPointsRequest_FieldPathSelectorType:
@@ -4297,7 +4369,11 @@ func (fpaiv *WatchAccessPointsRequest_FieldTerminalPathArrayItemValue) GetSingle
 func (fpaiv *WatchAccessPointsRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchAccessPointsRequest) bool {
 	slice := fpaiv.WatchAccessPointsRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -4662,6 +4738,10 @@ func (fp *WatchAccessPointsResponse_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == WatchAccessPointsResponse_FieldPathSelectorIsHardReset
 }
 
+func (fp *WatchAccessPointsResponse_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchAccessPointsResponse_FieldTerminalPath) WithIValue(value interface{}) WatchAccessPointsResponse_FieldPathValue {
 	switch fp.selector {
 	case WatchAccessPointsResponse_FieldPathSelectorAccessPointChanges:
@@ -4806,6 +4886,12 @@ func (fps *WatchAccessPointsResponse_FieldSubPath) ClearValueRaw(item proto.Mess
 // IsLeaf - whether field path is holds simple value
 func (fps *WatchAccessPointsResponse_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *WatchAccessPointsResponse_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&WatchAccessPointsResponse_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *WatchAccessPointsResponse_FieldSubPath) WithIValue(value interface{}) WatchAccessPointsResponse_FieldPathValue {
@@ -5099,7 +5185,11 @@ func (fpaiv *WatchAccessPointsResponse_FieldTerminalPathArrayItemValue) GetSingl
 func (fpaiv *WatchAccessPointsResponse_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchAccessPointsResponse) bool {
 	slice := fpaiv.WatchAccessPointsResponse_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -5401,6 +5491,10 @@ func (fp *WatchAccessPointsResponsePageTokenChange_FieldTerminalPath) IsLeaf() b
 		fp.selector == WatchAccessPointsResponsePageTokenChange_FieldPathSelectorNextPageToken
 }
 
+func (fp *WatchAccessPointsResponsePageTokenChange_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *WatchAccessPointsResponsePageTokenChange_FieldTerminalPath) WithIValue(value interface{}) WatchAccessPointsResponsePageTokenChange_FieldPathValue {
 	switch fp.selector {
 	case WatchAccessPointsResponsePageTokenChange_FieldPathSelectorPrevPageToken:
@@ -5581,7 +5675,11 @@ func (fpaiv *WatchAccessPointsResponsePageTokenChange_FieldTerminalPathArrayItem
 func (fpaiv *WatchAccessPointsResponsePageTokenChange_FieldTerminalPathArrayItemValue) ContainsValue(source *WatchAccessPointsResponse_PageTokenChange) bool {
 	slice := fpaiv.WatchAccessPointsResponsePageTokenChange_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -5812,6 +5910,10 @@ func (fp *CreateAccessPointRequest_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == CreateAccessPointRequest_FieldPathSelectorParent
 }
 
+func (fp *CreateAccessPointRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *CreateAccessPointRequest_FieldTerminalPath) WithIValue(value interface{}) CreateAccessPointRequest_FieldPathValue {
 	switch fp.selector {
 	case CreateAccessPointRequest_FieldPathSelectorParent:
@@ -5934,6 +6036,12 @@ func (fps *CreateAccessPointRequest_FieldSubPath) ClearValueRaw(item proto.Messa
 // IsLeaf - whether field path is holds simple value
 func (fps *CreateAccessPointRequest_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *CreateAccessPointRequest_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&CreateAccessPointRequest_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *CreateAccessPointRequest_FieldSubPath) WithIValue(value interface{}) CreateAccessPointRequest_FieldPathValue {
@@ -6160,7 +6268,11 @@ func (fpaiv *CreateAccessPointRequest_FieldTerminalPathArrayItemValue) GetSingle
 func (fpaiv *CreateAccessPointRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *CreateAccessPointRequest) bool {
 	slice := fpaiv.CreateAccessPointRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -6452,6 +6564,10 @@ func (fp *UpdateAccessPointRequest_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == UpdateAccessPointRequest_FieldPathSelectorUpdateMask
 }
 
+func (fp *UpdateAccessPointRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *UpdateAccessPointRequest_FieldTerminalPath) WithIValue(value interface{}) UpdateAccessPointRequest_FieldPathValue {
 	switch fp.selector {
 	case UpdateAccessPointRequest_FieldPathSelectorAccessPoint:
@@ -6591,6 +6707,12 @@ func (fps *UpdateAccessPointRequest_FieldSubPath) ClearValueRaw(item proto.Messa
 // IsLeaf - whether field path is holds simple value
 func (fps *UpdateAccessPointRequest_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *UpdateAccessPointRequest_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&UpdateAccessPointRequest_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *UpdateAccessPointRequest_FieldSubPath) WithIValue(value interface{}) UpdateAccessPointRequest_FieldPathValue {
@@ -6816,7 +6938,11 @@ func (fpaiv *UpdateAccessPointRequest_FieldTerminalPathArrayItemValue) GetSingle
 func (fpaiv *UpdateAccessPointRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *UpdateAccessPointRequest) bool {
 	slice := fpaiv.UpdateAccessPointRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -7104,6 +7230,10 @@ func (fp *UpdateAccessPointRequestCAS_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == UpdateAccessPointRequestCAS_FieldPathSelectorFieldMask
 }
 
+func (fp *UpdateAccessPointRequestCAS_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *UpdateAccessPointRequestCAS_FieldTerminalPath) WithIValue(value interface{}) UpdateAccessPointRequestCAS_FieldPathValue {
 	switch fp.selector {
 	case UpdateAccessPointRequestCAS_FieldPathSelectorConditionalState:
@@ -7226,6 +7356,12 @@ func (fps *UpdateAccessPointRequestCAS_FieldSubPath) ClearValueRaw(item proto.Me
 // IsLeaf - whether field path is holds simple value
 func (fps *UpdateAccessPointRequestCAS_FieldSubPath) IsLeaf() bool {
 	return fps.subPath.IsLeaf()
+}
+
+func (fps *UpdateAccessPointRequestCAS_FieldSubPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	iPaths := []gotenobject.FieldPath{&UpdateAccessPointRequestCAS_FieldTerminalPath{selector: fps.selector}}
+	iPaths = append(iPaths, fps.subPath.SplitIntoTerminalIPaths()...)
+	return iPaths
 }
 
 func (fps *UpdateAccessPointRequestCAS_FieldSubPath) WithIValue(value interface{}) UpdateAccessPointRequestCAS_FieldPathValue {
@@ -7435,7 +7571,11 @@ func (fpaiv *UpdateAccessPointRequestCAS_FieldTerminalPathArrayItemValue) GetSin
 func (fpaiv *UpdateAccessPointRequestCAS_FieldTerminalPathArrayItemValue) ContainsValue(source *UpdateAccessPointRequest_CAS) bool {
 	slice := fpaiv.UpdateAccessPointRequestCAS_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}
@@ -7680,6 +7820,10 @@ func (fp *DeleteAccessPointRequest_FieldTerminalPath) IsLeaf() bool {
 	return fp.selector == DeleteAccessPointRequest_FieldPathSelectorName
 }
 
+func (fp *DeleteAccessPointRequest_FieldTerminalPath) SplitIntoTerminalIPaths() []gotenobject.FieldPath {
+	return []gotenobject.FieldPath{fp}
+}
+
 func (fp *DeleteAccessPointRequest_FieldTerminalPath) WithIValue(value interface{}) DeleteAccessPointRequest_FieldPathValue {
 	switch fp.selector {
 	case DeleteAccessPointRequest_FieldPathSelectorName:
@@ -7865,7 +8009,11 @@ func (fpaiv *DeleteAccessPointRequest_FieldTerminalPathArrayItemValue) GetSingle
 func (fpaiv *DeleteAccessPointRequest_FieldTerminalPathArrayItemValue) ContainsValue(source *DeleteAccessPointRequest) bool {
 	slice := fpaiv.DeleteAccessPointRequest_FieldTerminalPath.Get(source)
 	for _, v := range slice {
-		if reflect.DeepEqual(v, fpaiv.value) {
+		if asProtoMsg, ok := fpaiv.value.(proto.Message); ok {
+			if proto.Equal(asProtoMsg, v.(proto.Message)) {
+				return true
+			}
+		} else if reflect.DeepEqual(v, fpaiv.value) {
 			return true
 		}
 	}

@@ -109,6 +109,10 @@ func (PortForwardingServicePathSelectorMetadata) UpdateTime() PortForwardingServ
 	return PortForwardingServicePathSelectorMetadataUpdateTime{}
 }
 
+func (PortForwardingServicePathSelectorMetadata) DeleteTime() PortForwardingServicePathSelectorMetadataDeleteTime {
+	return PortForwardingServicePathSelectorMetadataDeleteTime{}
+}
+
 func (PortForwardingServicePathSelectorMetadata) Uuid() PortForwardingServicePathSelectorMetadataUuid {
 	return PortForwardingServicePathSelectorMetadataUuid{}
 }
@@ -145,6 +149,10 @@ func (PortForwardingServicePathSelectorMetadata) Syncing() PortForwardingService
 	return PortForwardingServicePathSelectorMetadataSyncing{}
 }
 
+func (PortForwardingServicePathSelectorMetadata) Lifecycle() PortForwardingServicePathSelectorMetadataLifecycle {
+	return PortForwardingServicePathSelectorMetadataLifecycle{}
+}
+
 type PortForwardingServicePathSelectorMetadataCreateTime struct{}
 
 func (PortForwardingServicePathSelectorMetadataCreateTime) FieldPath() *PortForwardingService_FieldSubPath {
@@ -176,6 +184,23 @@ func (s PortForwardingServicePathSelectorMetadataUpdateTime) WithValue(value *ti
 }
 
 func (s PortForwardingServicePathSelectorMetadataUpdateTime) WithArrayOfValues(values []*timestamp.Timestamp) *PortForwardingService_FieldSubPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
+}
+
+type PortForwardingServicePathSelectorMetadataDeleteTime struct{}
+
+func (PortForwardingServicePathSelectorMetadataDeleteTime) FieldPath() *PortForwardingService_FieldSubPath {
+	return &PortForwardingService_FieldSubPath{
+		selector: PortForwardingService_FieldPathSelectorMetadata,
+		subPath:  ntt_meta.NewMetaFieldPathBuilder().DeleteTime().FieldPath(),
+	}
+}
+
+func (s PortForwardingServicePathSelectorMetadataDeleteTime) WithValue(value *timestamp.Timestamp) *PortForwardingService_FieldSubPathValue {
+	return s.FieldPath().WithIValue(value).(*PortForwardingService_FieldSubPathValue)
+}
+
+func (s PortForwardingServicePathSelectorMetadataDeleteTime) WithArrayOfValues(values []*timestamp.Timestamp) *PortForwardingService_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
 }
 
@@ -352,20 +377,20 @@ func (s PortForwardingServicePathSelectorMetadataOwnerReferences) WithItemValue(
 	return s.FieldPath().WithIArrayItemValue(value).(*PortForwardingService_FieldSubPathArrayItemValue)
 }
 
-func (PortForwardingServicePathSelectorMetadataOwnerReferences) ApiVersion() PortForwardingServicePathSelectorMetadataOwnerReferencesApiVersion {
-	return PortForwardingServicePathSelectorMetadataOwnerReferencesApiVersion{}
-}
-
 func (PortForwardingServicePathSelectorMetadataOwnerReferences) Kind() PortForwardingServicePathSelectorMetadataOwnerReferencesKind {
 	return PortForwardingServicePathSelectorMetadataOwnerReferencesKind{}
+}
+
+func (PortForwardingServicePathSelectorMetadataOwnerReferences) Version() PortForwardingServicePathSelectorMetadataOwnerReferencesVersion {
+	return PortForwardingServicePathSelectorMetadataOwnerReferencesVersion{}
 }
 
 func (PortForwardingServicePathSelectorMetadataOwnerReferences) Name() PortForwardingServicePathSelectorMetadataOwnerReferencesName {
 	return PortForwardingServicePathSelectorMetadataOwnerReferencesName{}
 }
 
-func (PortForwardingServicePathSelectorMetadataOwnerReferences) Uid() PortForwardingServicePathSelectorMetadataOwnerReferencesUid {
-	return PortForwardingServicePathSelectorMetadataOwnerReferencesUid{}
+func (PortForwardingServicePathSelectorMetadataOwnerReferences) Region() PortForwardingServicePathSelectorMetadataOwnerReferencesRegion {
+	return PortForwardingServicePathSelectorMetadataOwnerReferencesRegion{}
 }
 
 func (PortForwardingServicePathSelectorMetadataOwnerReferences) Controller() PortForwardingServicePathSelectorMetadataOwnerReferencesController {
@@ -376,21 +401,8 @@ func (PortForwardingServicePathSelectorMetadataOwnerReferences) BlockOwnerDeleti
 	return PortForwardingServicePathSelectorMetadataOwnerReferencesBlockOwnerDeletion{}
 }
 
-type PortForwardingServicePathSelectorMetadataOwnerReferencesApiVersion struct{}
-
-func (PortForwardingServicePathSelectorMetadataOwnerReferencesApiVersion) FieldPath() *PortForwardingService_FieldSubPath {
-	return &PortForwardingService_FieldSubPath{
-		selector: PortForwardingService_FieldPathSelectorMetadata,
-		subPath:  ntt_meta.NewMetaFieldPathBuilder().OwnerReferences().ApiVersion().FieldPath(),
-	}
-}
-
-func (s PortForwardingServicePathSelectorMetadataOwnerReferencesApiVersion) WithValue(value string) *PortForwardingService_FieldSubPathValue {
-	return s.FieldPath().WithIValue(value).(*PortForwardingService_FieldSubPathValue)
-}
-
-func (s PortForwardingServicePathSelectorMetadataOwnerReferencesApiVersion) WithArrayOfValues(values []string) *PortForwardingService_FieldSubPathArrayOfValues {
-	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
+func (PortForwardingServicePathSelectorMetadataOwnerReferences) RequiresOwnerReference() PortForwardingServicePathSelectorMetadataOwnerReferencesRequiresOwnerReference {
+	return PortForwardingServicePathSelectorMetadataOwnerReferencesRequiresOwnerReference{}
 }
 
 type PortForwardingServicePathSelectorMetadataOwnerReferencesKind struct{}
@@ -407,6 +419,23 @@ func (s PortForwardingServicePathSelectorMetadataOwnerReferencesKind) WithValue(
 }
 
 func (s PortForwardingServicePathSelectorMetadataOwnerReferencesKind) WithArrayOfValues(values []string) *PortForwardingService_FieldSubPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
+}
+
+type PortForwardingServicePathSelectorMetadataOwnerReferencesVersion struct{}
+
+func (PortForwardingServicePathSelectorMetadataOwnerReferencesVersion) FieldPath() *PortForwardingService_FieldSubPath {
+	return &PortForwardingService_FieldSubPath{
+		selector: PortForwardingService_FieldPathSelectorMetadata,
+		subPath:  ntt_meta.NewMetaFieldPathBuilder().OwnerReferences().Version().FieldPath(),
+	}
+}
+
+func (s PortForwardingServicePathSelectorMetadataOwnerReferencesVersion) WithValue(value string) *PortForwardingService_FieldSubPathValue {
+	return s.FieldPath().WithIValue(value).(*PortForwardingService_FieldSubPathValue)
+}
+
+func (s PortForwardingServicePathSelectorMetadataOwnerReferencesVersion) WithArrayOfValues(values []string) *PortForwardingService_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
 }
 
@@ -427,20 +456,20 @@ func (s PortForwardingServicePathSelectorMetadataOwnerReferencesName) WithArrayO
 	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
 }
 
-type PortForwardingServicePathSelectorMetadataOwnerReferencesUid struct{}
+type PortForwardingServicePathSelectorMetadataOwnerReferencesRegion struct{}
 
-func (PortForwardingServicePathSelectorMetadataOwnerReferencesUid) FieldPath() *PortForwardingService_FieldSubPath {
+func (PortForwardingServicePathSelectorMetadataOwnerReferencesRegion) FieldPath() *PortForwardingService_FieldSubPath {
 	return &PortForwardingService_FieldSubPath{
 		selector: PortForwardingService_FieldPathSelectorMetadata,
-		subPath:  ntt_meta.NewMetaFieldPathBuilder().OwnerReferences().Uid().FieldPath(),
+		subPath:  ntt_meta.NewMetaFieldPathBuilder().OwnerReferences().Region().FieldPath(),
 	}
 }
 
-func (s PortForwardingServicePathSelectorMetadataOwnerReferencesUid) WithValue(value string) *PortForwardingService_FieldSubPathValue {
+func (s PortForwardingServicePathSelectorMetadataOwnerReferencesRegion) WithValue(value string) *PortForwardingService_FieldSubPathValue {
 	return s.FieldPath().WithIValue(value).(*PortForwardingService_FieldSubPathValue)
 }
 
-func (s PortForwardingServicePathSelectorMetadataOwnerReferencesUid) WithArrayOfValues(values []string) *PortForwardingService_FieldSubPathArrayOfValues {
+func (s PortForwardingServicePathSelectorMetadataOwnerReferencesRegion) WithArrayOfValues(values []string) *PortForwardingService_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
 }
 
@@ -475,6 +504,23 @@ func (s PortForwardingServicePathSelectorMetadataOwnerReferencesBlockOwnerDeleti
 }
 
 func (s PortForwardingServicePathSelectorMetadataOwnerReferencesBlockOwnerDeletion) WithArrayOfValues(values []bool) *PortForwardingService_FieldSubPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
+}
+
+type PortForwardingServicePathSelectorMetadataOwnerReferencesRequiresOwnerReference struct{}
+
+func (PortForwardingServicePathSelectorMetadataOwnerReferencesRequiresOwnerReference) FieldPath() *PortForwardingService_FieldSubPath {
+	return &PortForwardingService_FieldSubPath{
+		selector: PortForwardingService_FieldPathSelectorMetadata,
+		subPath:  ntt_meta.NewMetaFieldPathBuilder().OwnerReferences().RequiresOwnerReference().FieldPath(),
+	}
+}
+
+func (s PortForwardingServicePathSelectorMetadataOwnerReferencesRequiresOwnerReference) WithValue(value bool) *PortForwardingService_FieldSubPathValue {
+	return s.FieldPath().WithIValue(value).(*PortForwardingService_FieldSubPathValue)
+}
+
+func (s PortForwardingServicePathSelectorMetadataOwnerReferencesRequiresOwnerReference) WithArrayOfValues(values []bool) *PortForwardingService_FieldSubPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
 }
 
@@ -579,6 +625,65 @@ func (s PortForwardingServicePathSelectorMetadataSyncingRegions) WithArrayOfValu
 
 func (s PortForwardingServicePathSelectorMetadataSyncingRegions) WithItemValue(value string) *PortForwardingService_FieldSubPathArrayItemValue {
 	return s.FieldPath().WithIArrayItemValue(value).(*PortForwardingService_FieldSubPathArrayItemValue)
+}
+
+type PortForwardingServicePathSelectorMetadataLifecycle struct{}
+
+func (PortForwardingServicePathSelectorMetadataLifecycle) FieldPath() *PortForwardingService_FieldSubPath {
+	return &PortForwardingService_FieldSubPath{
+		selector: PortForwardingService_FieldPathSelectorMetadata,
+		subPath:  ntt_meta.NewMetaFieldPathBuilder().Lifecycle().FieldPath(),
+	}
+}
+
+func (s PortForwardingServicePathSelectorMetadataLifecycle) WithValue(value *ntt_meta.Lifecycle) *PortForwardingService_FieldSubPathValue {
+	return s.FieldPath().WithIValue(value).(*PortForwardingService_FieldSubPathValue)
+}
+
+func (s PortForwardingServicePathSelectorMetadataLifecycle) WithArrayOfValues(values []*ntt_meta.Lifecycle) *PortForwardingService_FieldSubPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
+}
+
+func (PortForwardingServicePathSelectorMetadataLifecycle) State() PortForwardingServicePathSelectorMetadataLifecycleState {
+	return PortForwardingServicePathSelectorMetadataLifecycleState{}
+}
+
+func (PortForwardingServicePathSelectorMetadataLifecycle) BlockDeletion() PortForwardingServicePathSelectorMetadataLifecycleBlockDeletion {
+	return PortForwardingServicePathSelectorMetadataLifecycleBlockDeletion{}
+}
+
+type PortForwardingServicePathSelectorMetadataLifecycleState struct{}
+
+func (PortForwardingServicePathSelectorMetadataLifecycleState) FieldPath() *PortForwardingService_FieldSubPath {
+	return &PortForwardingService_FieldSubPath{
+		selector: PortForwardingService_FieldPathSelectorMetadata,
+		subPath:  ntt_meta.NewMetaFieldPathBuilder().Lifecycle().State().FieldPath(),
+	}
+}
+
+func (s PortForwardingServicePathSelectorMetadataLifecycleState) WithValue(value ntt_meta.Lifecycle_State) *PortForwardingService_FieldSubPathValue {
+	return s.FieldPath().WithIValue(value).(*PortForwardingService_FieldSubPathValue)
+}
+
+func (s PortForwardingServicePathSelectorMetadataLifecycleState) WithArrayOfValues(values []ntt_meta.Lifecycle_State) *PortForwardingService_FieldSubPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
+}
+
+type PortForwardingServicePathSelectorMetadataLifecycleBlockDeletion struct{}
+
+func (PortForwardingServicePathSelectorMetadataLifecycleBlockDeletion) FieldPath() *PortForwardingService_FieldSubPath {
+	return &PortForwardingService_FieldSubPath{
+		selector: PortForwardingService_FieldPathSelectorMetadata,
+		subPath:  ntt_meta.NewMetaFieldPathBuilder().Lifecycle().BlockDeletion().FieldPath(),
+	}
+}
+
+func (s PortForwardingServicePathSelectorMetadataLifecycleBlockDeletion) WithValue(value bool) *PortForwardingService_FieldSubPathValue {
+	return s.FieldPath().WithIValue(value).(*PortForwardingService_FieldSubPathValue)
+}
+
+func (s PortForwardingServicePathSelectorMetadataLifecycleBlockDeletion) WithArrayOfValues(values []bool) *PortForwardingService_FieldSubPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*PortForwardingService_FieldSubPathArrayOfValues)
 }
 
 type PortForwardingServicePathSelectorSpec struct{}

@@ -33,6 +33,15 @@ div.operation .signature {
 div.operation .description {
   padding: 0.2em;
 }
+div.operation .rest {
+  font-size: 80%;
+  color: #808080;
+  padding: 0.2em;
+}
+div.operation .rest pre {
+  color: inherit;
+  margin: 2px 0px;
+}
 table th,
 table td {
   padding: 0.2em;
@@ -66,6 +75,8 @@ table.fields tbody tr td.none {
 }
 </style>
 </head>
+
+
 <body>
 <h1>Service: ZTNA (ntt.ztna.v1alpha - v1alpha)</h1>
 
@@ -117,6 +128,17 @@ table.fields tbody tr td.none {
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>GET /v1alpha/{name=projects/*/accessPoints/*} </pre>
+
+</div>
+
+
 </div>
 
 
@@ -130,6 +152,17 @@ table.fields tbody tr td.none {
 <p>BatchGetAccessPoints</p>
 
 </div>
+
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>GET /v1alpha/accessPoints:batchGet </pre>
+
+</div>
+
 
 </div>
 
@@ -145,6 +178,17 @@ table.fields tbody tr td.none {
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>GET /v1alpha/{parent=projects/*}/accessPoints </pre>
+
+</div>
+
+
 </div>
 
 
@@ -158,6 +202,17 @@ table.fields tbody tr td.none {
 <p>WatchAccessPoint</p>
 
 </div>
+
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>POST /v1alpha/{name=projects/*/accessPoints/*}:watch </pre>
+
+</div>
+
 
 </div>
 
@@ -173,6 +228,17 @@ table.fields tbody tr td.none {
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>POST /v1alpha/{parent=projects/*}/accessPoints:watch </pre>
+
+</div>
+
+
 </div>
 
 
@@ -186,6 +252,17 @@ table.fields tbody tr td.none {
 <p>CreateAccessPoint</p>
 
 </div>
+
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>POST /v1alpha/{parent=projects/*}/accessPoints (BODY: access_point)</pre>
+
+</div>
+
 
 </div>
 
@@ -201,6 +278,17 @@ table.fields tbody tr td.none {
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>PUT /v1alpha/{access_point.name=projects/*/accessPoints/*} (BODY: access_point)</pre>
+
+</div>
+
+
 </div>
 
 
@@ -214,6 +302,17 @@ table.fields tbody tr td.none {
 <p>DeleteAccessPoint</p>
 
 </div>
+
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>DELETE /v1alpha/{name=projects/*/accessPoints/*} </pre>
+
+</div>
+
 
 </div>
 
@@ -895,6 +994,17 @@ compare.</p>
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>POST /v1alpha:connect </pre>
+
+</div>
+
+
 </div>
 
 
@@ -908,6 +1018,17 @@ compare.</p>
 <p>Listen</p>
 
 </div>
+
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>POST /v1alpha:listen </pre>
+
+</div>
+
 
 </div>
 
@@ -923,6 +1044,17 @@ compare.</p>
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>POST /v1alpha:accept </pre>
+
+</div>
+
+
 </div>
 
 
@@ -936,6 +1068,17 @@ compare.</p>
 <p>GetPortForwardingService</p>
 
 </div>
+
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>GET /v1alpha/{name=projects/*/portForwardingServices/*} </pre>
+
+</div>
+
 
 </div>
 
@@ -951,6 +1094,17 @@ compare.</p>
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>GET /v1alpha/portForwardingServices:batchGet </pre>
+
+</div>
+
+
 </div>
 
 
@@ -964,6 +1118,17 @@ compare.</p>
 <p>ListPortForwardingServices</p>
 
 </div>
+
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>GET /v1alpha/{parent=projects/*}/portForwardingServices </pre>
+
+</div>
+
 
 </div>
 
@@ -979,6 +1144,17 @@ compare.</p>
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>POST /v1alpha/{name=projects/*/portForwardingServices/*}:watch </pre>
+
+</div>
+
+
 </div>
 
 
@@ -992,6 +1168,17 @@ compare.</p>
 <p>WatchPortForwardingServices</p>
 
 </div>
+
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>POST /v1alpha/{parent=projects/*}/portForwardingServices:watch </pre>
+
+</div>
+
 
 </div>
 
@@ -1007,6 +1194,17 @@ compare.</p>
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>POST /v1alpha/{parent=projects/*}/portForwardingServices (BODY: port_forwarding_service)</pre>
+
+</div>
+
+
 </div>
 
 
@@ -1021,6 +1219,17 @@ compare.</p>
 
 </div>
 
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>PUT /v1alpha/{port_forwarding_service.name=projects/*/portForwardingServices/*} (BODY: port_forwarding_service)</pre>
+
+</div>
+
+
 </div>
 
 
@@ -1034,6 +1243,17 @@ compare.</p>
 <p>DeletePortForwardingService</p>
 
 </div>
+
+
+
+
+<div class="rest">
+Equivalent REST API:
+
+<pre>DELETE /v1alpha/{name=projects/*/portForwardingServices/*} </pre>
+
+</div>
+
 
 </div>
 

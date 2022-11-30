@@ -3,8 +3,8 @@ module github.com/cloudwan/ztna-sdk
 go 1.17
 
 require (
-	github.com/cloudwan/edgelq-sdk v0.8.9
-	github.com/cloudwan/goten-sdk v0.5.1
+	github.com/cloudwan/edgelq-sdk v0.9.11
+	github.com/cloudwan/goten-sdk v0.6.3
 	github.com/golang/protobuf v1.5.2
 	github.com/google/cel-go v0.5.1
 	github.com/grpc-ecosystem/go-grpc-middleware v1.3.0

@@ -25,22 +25,23 @@ import (
 	watch_type "github.com/cloudwan/goten-sdk/runtime/api/watch_type"
 	access_point "github.com/cloudwan/ztna-sdk/resources/v1alpha/access_point"
 	empty "github.com/golang/protobuf/ptypes/empty"
+	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 )
 
 // ensure the imports are used
 var (
-	_ = json.Marshaler(nil)
+	_ = new(json.Marshaler)
 	_ = strings.Builder{}
 
 	_ = firestorepb.Value{}
 	_ = codes.NotFound
 	_ = status.Status{}
-	_ = proto.Message(nil)
-	_ = preflect.Message(nil)
+	_ = new(proto.Message)
+	_ = new(preflect.Message)
 	_ = fieldmaskpb.FieldMask{}
 
-	_ = gotenobject.FieldMask(nil)
+	_ = new(gotenobject.FieldMask)
 )
 
 // make sure we're using proto imports
@@ -48,6 +49,7 @@ var (
 	_ = &iam_project.Project{}
 	_ = &empty.Empty{}
 	_ = &field_mask.FieldMask{}
+	_ = &timestamp.Timestamp{}
 	_ = view.View(0)
 	_ = watch_type.WatchType(0)
 	_ = &access_point.AccessPoint{}
@@ -1959,6 +1961,7 @@ func FullWatchAccessPointsRequest_FieldMask() *WatchAccessPointsRequest_FieldMas
 	res.Paths = append(res.Paths, &WatchAccessPointsRequest_FieldTerminalPath{selector: WatchAccessPointsRequest_FieldPathSelectorPageToken})
 	res.Paths = append(res.Paths, &WatchAccessPointsRequest_FieldTerminalPath{selector: WatchAccessPointsRequest_FieldPathSelectorOrderBy})
 	res.Paths = append(res.Paths, &WatchAccessPointsRequest_FieldTerminalPath{selector: WatchAccessPointsRequest_FieldPathSelectorResumeToken})
+	res.Paths = append(res.Paths, &WatchAccessPointsRequest_FieldTerminalPath{selector: WatchAccessPointsRequest_FieldPathSelectorStartingTime})
 	res.Paths = append(res.Paths, &WatchAccessPointsRequest_FieldTerminalPath{selector: WatchAccessPointsRequest_FieldPathSelectorFilter})
 	res.Paths = append(res.Paths, &WatchAccessPointsRequest_FieldTerminalPath{selector: WatchAccessPointsRequest_FieldPathSelectorFieldMask})
 	res.Paths = append(res.Paths, &WatchAccessPointsRequest_FieldTerminalPath{selector: WatchAccessPointsRequest_FieldPathSelectorView})
@@ -2006,7 +2009,7 @@ func (fieldMask *WatchAccessPointsRequest_FieldMask) IsFull() bool {
 	if fieldMask == nil {
 		return false
 	}
-	presentSelectors := make([]bool, 10)
+	presentSelectors := make([]bool, 11)
 	for _, path := range fieldMask.Paths {
 		if asFinal, ok := path.(*WatchAccessPointsRequest_FieldTerminalPath); ok {
 			presentSelectors[int(asFinal.selector)] = true
@@ -2036,7 +2039,7 @@ func (fieldMask *WatchAccessPointsRequest_FieldMask) Reset() {
 
 func (fieldMask *WatchAccessPointsRequest_FieldMask) Subtract(other *WatchAccessPointsRequest_FieldMask) *WatchAccessPointsRequest_FieldMask {
 	result := &WatchAccessPointsRequest_FieldMask{}
-	removedSelectors := make([]bool, 10)
+	removedSelectors := make([]bool, 11)
 
 	for _, path := range other.GetPaths() {
 		switch tp := path.(type) {
@@ -2202,6 +2205,8 @@ func (fieldMask *WatchAccessPointsRequest_FieldMask) Project(source *WatchAccess
 				result.OrderBy = source.OrderBy
 			case WatchAccessPointsRequest_FieldPathSelectorResumeToken:
 				result.ResumeToken = source.ResumeToken
+			case WatchAccessPointsRequest_FieldPathSelectorStartingTime:
+				result.StartingTime = source.StartingTime
 			case WatchAccessPointsRequest_FieldPathSelectorFilter:
 				result.Filter = source.Filter
 			case WatchAccessPointsRequest_FieldPathSelectorFieldMask:

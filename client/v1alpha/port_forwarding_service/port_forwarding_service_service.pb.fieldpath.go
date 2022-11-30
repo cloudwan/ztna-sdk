@@ -29,13 +29,14 @@ import (
 	watch_type "github.com/cloudwan/goten-sdk/runtime/api/watch_type"
 	port_forwarding_service "github.com/cloudwan/ztna-sdk/resources/v1alpha/port_forwarding_service"
 	empty "github.com/golang/protobuf/ptypes/empty"
+	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	field_mask "google.golang.org/genproto/protobuf/field_mask"
 )
 
 // ensure the imports are used
 var (
-	_ = json.Marshaler(nil)
-	_ = fmt.Stringer(nil)
+	_ = new(json.Marshaler)
+	_ = new(fmt.Stringer)
 	_ = reflect.DeepEqual
 	_ = strings.Builder{}
 	_ = time.Second
@@ -44,11 +45,11 @@ var (
 	_ = codes.NotFound
 	_ = status.Status{}
 	_ = protojson.UnmarshalOptions{}
-	_ = proto.Message(nil)
+	_ = new(proto.Message)
 	_ = protoregistry.GlobalTypes
 	_ = fieldmaskpb.FieldMask{}
 
-	_ = gotenobject.FieldPath(nil)
+	_ = new(gotenobject.FieldPath)
 )
 
 // make sure we're using proto imports
@@ -56,6 +57,7 @@ var (
 	_ = &iam_project.Project{}
 	_ = &empty.Empty{}
 	_ = &field_mask.FieldMask{}
+	_ = &timestamp.Timestamp{}
 	_ = view.View(0)
 	_ = watch_type.WatchType(0)
 	_ = &port_forwarding_service.PortForwardingService{}
@@ -3775,10 +3777,11 @@ const (
 	WatchPortForwardingServicesRequest_FieldPathSelectorPageToken    WatchPortForwardingServicesRequest_FieldPathSelector = 3
 	WatchPortForwardingServicesRequest_FieldPathSelectorOrderBy      WatchPortForwardingServicesRequest_FieldPathSelector = 4
 	WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken  WatchPortForwardingServicesRequest_FieldPathSelector = 5
-	WatchPortForwardingServicesRequest_FieldPathSelectorFilter       WatchPortForwardingServicesRequest_FieldPathSelector = 6
-	WatchPortForwardingServicesRequest_FieldPathSelectorFieldMask    WatchPortForwardingServicesRequest_FieldPathSelector = 7
-	WatchPortForwardingServicesRequest_FieldPathSelectorView         WatchPortForwardingServicesRequest_FieldPathSelector = 8
-	WatchPortForwardingServicesRequest_FieldPathSelectorMaxChunkSize WatchPortForwardingServicesRequest_FieldPathSelector = 9
+	WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime WatchPortForwardingServicesRequest_FieldPathSelector = 6
+	WatchPortForwardingServicesRequest_FieldPathSelectorFilter       WatchPortForwardingServicesRequest_FieldPathSelector = 7
+	WatchPortForwardingServicesRequest_FieldPathSelectorFieldMask    WatchPortForwardingServicesRequest_FieldPathSelector = 8
+	WatchPortForwardingServicesRequest_FieldPathSelectorView         WatchPortForwardingServicesRequest_FieldPathSelector = 9
+	WatchPortForwardingServicesRequest_FieldPathSelectorMaxChunkSize WatchPortForwardingServicesRequest_FieldPathSelector = 10
 )
 
 func (s WatchPortForwardingServicesRequest_FieldPathSelector) String() string {
@@ -3795,6 +3798,8 @@ func (s WatchPortForwardingServicesRequest_FieldPathSelector) String() string {
 		return "order_by"
 	case WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken:
 		return "resume_token"
+	case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+		return "starting_time"
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFilter:
 		return "filter"
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -3826,6 +3831,8 @@ func BuildWatchPortForwardingServicesRequest_FieldPath(fp gotenobject.RawFieldPa
 			return &WatchPortForwardingServicesRequest_FieldTerminalPath{selector: WatchPortForwardingServicesRequest_FieldPathSelectorOrderBy}, nil
 		case "resume_token", "resumeToken", "resume-token":
 			return &WatchPortForwardingServicesRequest_FieldTerminalPath{selector: WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken}, nil
+		case "starting_time", "startingTime", "starting-time":
+			return &WatchPortForwardingServicesRequest_FieldTerminalPath{selector: WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime}, nil
 		case "filter":
 			return &WatchPortForwardingServicesRequest_FieldTerminalPath{selector: WatchPortForwardingServicesRequest_FieldPathSelectorFilter}, nil
 		case "field_mask", "fieldMask", "field-mask":
@@ -3897,6 +3904,10 @@ func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) Get(source *Watc
 			}
 		case WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken:
 			values = append(values, source.ResumeToken)
+		case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+			if source.StartingTime != nil {
+				values = append(values, source.StartingTime)
+			}
 		case WatchPortForwardingServicesRequest_FieldPathSelectorFilter:
 			if source.Filter != nil {
 				values = append(values, source.Filter)
@@ -3938,6 +3949,9 @@ func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) GetSingle(source
 		return res, res != nil
 	case WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken:
 		return source.GetResumeToken(), source != nil
+	case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+		res := source.GetStartingTime()
+		return res, res != nil
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFilter:
 		res := source.GetFilter()
 		return res, res != nil
@@ -3972,6 +3986,8 @@ func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) GetDefault() int
 		return (*port_forwarding_service.OrderBy)(nil)
 	case WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken:
 		return ""
+	case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+		return (*timestamp.Timestamp)(nil)
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFilter:
 		return (*port_forwarding_service.Filter)(nil)
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -4000,6 +4016,8 @@ func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) ClearValue(item 
 			item.OrderBy = nil
 		case WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken:
 			item.ResumeToken = ""
+		case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+			item.StartingTime = nil
 		case WatchPortForwardingServicesRequest_FieldPathSelectorFilter:
 			item.Filter = nil
 		case WatchPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -4026,6 +4044,7 @@ func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) IsLeaf() bool {
 		fp.selector == WatchPortForwardingServicesRequest_FieldPathSelectorPageToken ||
 		fp.selector == WatchPortForwardingServicesRequest_FieldPathSelectorOrderBy ||
 		fp.selector == WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken ||
+		fp.selector == WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime ||
 		fp.selector == WatchPortForwardingServicesRequest_FieldPathSelectorFilter ||
 		fp.selector == WatchPortForwardingServicesRequest_FieldPathSelectorFieldMask ||
 		fp.selector == WatchPortForwardingServicesRequest_FieldPathSelectorView ||
@@ -4050,6 +4069,8 @@ func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) WithIValue(value
 		return &WatchPortForwardingServicesRequest_FieldTerminalPathValue{WatchPortForwardingServicesRequest_FieldTerminalPath: *fp, value: value.(*port_forwarding_service.OrderBy)}
 	case WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken:
 		return &WatchPortForwardingServicesRequest_FieldTerminalPathValue{WatchPortForwardingServicesRequest_FieldTerminalPath: *fp, value: value.(string)}
+	case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+		return &WatchPortForwardingServicesRequest_FieldTerminalPathValue{WatchPortForwardingServicesRequest_FieldTerminalPath: *fp, value: value.(*timestamp.Timestamp)}
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFilter:
 		return &WatchPortForwardingServicesRequest_FieldTerminalPathValue{WatchPortForwardingServicesRequest_FieldTerminalPath: *fp, value: value.(*port_forwarding_service.Filter)}
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -4082,6 +4103,8 @@ func (fp *WatchPortForwardingServicesRequest_FieldTerminalPath) WithIArrayOfValu
 		return &WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues{WatchPortForwardingServicesRequest_FieldTerminalPath: *fp, values: values.([]*port_forwarding_service.OrderBy)}
 	case WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken:
 		return &WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues{WatchPortForwardingServicesRequest_FieldTerminalPath: *fp, values: values.([]string)}
+	case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+		return &WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues{WatchPortForwardingServicesRequest_FieldTerminalPath: *fp, values: values.([]*timestamp.Timestamp)}
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFilter:
 		return &WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues{WatchPortForwardingServicesRequest_FieldTerminalPath: *fp, values: values.([]*port_forwarding_service.Filter)}
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -4174,6 +4197,10 @@ func (fpv *WatchPortForwardingServicesRequest_FieldTerminalPathValue) AsResumeTo
 	res, ok := fpv.value.(string)
 	return res, ok
 }
+func (fpv *WatchPortForwardingServicesRequest_FieldTerminalPathValue) AsStartingTimeValue() (*timestamp.Timestamp, bool) {
+	res, ok := fpv.value.(*timestamp.Timestamp)
+	return res, ok
+}
 func (fpv *WatchPortForwardingServicesRequest_FieldTerminalPathValue) AsFilterValue() (*port_forwarding_service.Filter, bool) {
 	res, ok := fpv.value.(*port_forwarding_service.Filter)
 	return res, ok
@@ -4209,6 +4236,8 @@ func (fpv *WatchPortForwardingServicesRequest_FieldTerminalPathValue) SetTo(targ
 		(*target).OrderBy = fpv.value.(*port_forwarding_service.OrderBy)
 	case WatchPortForwardingServicesRequest_FieldPathSelectorResumeToken:
 		(*target).ResumeToken = fpv.value.(string)
+	case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+		(*target).StartingTime = fpv.value.(*timestamp.Timestamp)
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFilter:
 		(*target).Filter = fpv.value.(*port_forwarding_service.Filter)
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFieldMask:
@@ -4279,6 +4308,25 @@ func (fpv *WatchPortForwardingServicesRequest_FieldTerminalPathValue) CompareWit
 		if (leftValue) == (rightValue) {
 			return 0, true
 		} else if (leftValue) < (rightValue) {
+			return -1, true
+		} else {
+			return 1, true
+		}
+	case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+		leftValue := fpv.value.(*timestamp.Timestamp)
+		rightValue := source.GetStartingTime()
+		if leftValue == nil {
+			if rightValue != nil {
+				return -1, true
+			}
+			return 0, true
+		}
+		if rightValue == nil {
+			return 1, true
+		}
+		if leftValue.AsTime().Equal(rightValue.AsTime()) {
+			return 0, true
+		} else if leftValue.AsTime().Before(rightValue.AsTime()) {
 			return -1, true
 		} else {
 			return 1, true
@@ -4439,6 +4487,10 @@ func (fpaov *WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues) 
 		for _, v := range fpaov.values.([]string) {
 			values = append(values, v)
 		}
+	case WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime:
+		for _, v := range fpaov.values.([]*timestamp.Timestamp) {
+			values = append(values, v)
+		}
 	case WatchPortForwardingServicesRequest_FieldPathSelectorFilter:
 		for _, v := range fpaov.values.([]*port_forwarding_service.Filter) {
 			values = append(values, v)
@@ -4480,6 +4532,10 @@ func (fpaov *WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues) 
 }
 func (fpaov *WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues) AsResumeTokenArrayOfValues() ([]string, bool) {
 	res, ok := fpaov.values.([]string)
+	return res, ok
+}
+func (fpaov *WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues) AsStartingTimeArrayOfValues() ([]*timestamp.Timestamp, bool) {
+	res, ok := fpaov.values.([]*timestamp.Timestamp)
 	return res, ok
 }
 func (fpaov *WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues) AsFilterArrayOfValues() ([]*port_forwarding_service.Filter, bool) {

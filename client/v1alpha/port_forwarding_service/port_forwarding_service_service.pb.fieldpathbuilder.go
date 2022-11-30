@@ -2123,6 +2123,9 @@ func (WatchPortForwardingServicesRequestFieldPathBuilder) OrderBy() WatchPortFor
 func (WatchPortForwardingServicesRequestFieldPathBuilder) ResumeToken() WatchPortForwardingServicesRequestPathSelectorResumeToken {
 	return WatchPortForwardingServicesRequestPathSelectorResumeToken{}
 }
+func (WatchPortForwardingServicesRequestFieldPathBuilder) StartingTime() WatchPortForwardingServicesRequestPathSelectorStartingTime {
+	return WatchPortForwardingServicesRequestPathSelectorStartingTime{}
+}
 func (WatchPortForwardingServicesRequestFieldPathBuilder) Filter() WatchPortForwardingServicesRequestPathSelectorFilter {
 	return WatchPortForwardingServicesRequestPathSelectorFilter{}
 }
@@ -2217,6 +2220,20 @@ func (s WatchPortForwardingServicesRequestPathSelectorResumeToken) WithValue(val
 }
 
 func (s WatchPortForwardingServicesRequestPathSelectorResumeToken) WithArrayOfValues(values []string) *WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues {
+	return s.FieldPath().WithIArrayOfValues(values).(*WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues)
+}
+
+type WatchPortForwardingServicesRequestPathSelectorStartingTime struct{}
+
+func (WatchPortForwardingServicesRequestPathSelectorStartingTime) FieldPath() *WatchPortForwardingServicesRequest_FieldTerminalPath {
+	return &WatchPortForwardingServicesRequest_FieldTerminalPath{selector: WatchPortForwardingServicesRequest_FieldPathSelectorStartingTime}
+}
+
+func (s WatchPortForwardingServicesRequestPathSelectorStartingTime) WithValue(value *timestamp.Timestamp) *WatchPortForwardingServicesRequest_FieldTerminalPathValue {
+	return s.FieldPath().WithIValue(value).(*WatchPortForwardingServicesRequest_FieldTerminalPathValue)
+}
+
+func (s WatchPortForwardingServicesRequestPathSelectorStartingTime) WithArrayOfValues(values []*timestamp.Timestamp) *WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues {
 	return s.FieldPath().WithIArrayOfValues(values).(*WatchPortForwardingServicesRequest_FieldTerminalPathArrayOfValues)
 }
 
